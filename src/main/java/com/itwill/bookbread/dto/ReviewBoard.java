@@ -1,4 +1,4 @@
-package com.itwill.bookbread;
+package com.itwill.bookbread.dto;
 
 public class ReviewBoard {
 
