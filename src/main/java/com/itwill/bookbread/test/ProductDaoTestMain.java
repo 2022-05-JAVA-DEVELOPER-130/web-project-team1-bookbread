@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.itwill.bookbread.dao.ProductDao;
 import com.itwill.bookbread.dto.Product;
+
 import com.itwill.bookbread.dto.BookType;
 
 public class ProductDaoTestMain {
@@ -12,9 +13,14 @@ public class ProductDaoTestMain {
 		
 		ProductDao productDao = new ProductDao();
 		
-		System.out.println("전체 도서 리스트");
-		List<Product> productlist = productDao.selectAll();
-		System.out.println(productlist);
+		// Test_A) 전체도서리스트 출력
+		System.out.println(productDao.selectAll());
+		
+		// Test_B) 도서 이름으로 찾기
+		//System.out.println(productDao.selectByName("불편한 편의점"));
+		
+		// Test_B) 출판사 이름으로 찾기
+		//System.out.println(productDao.selectBypublisher("팩토리나인"));
 	}
 
 }
