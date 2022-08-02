@@ -34,7 +34,7 @@ public class ProductDao {
 	public List<Product> selectAll() throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_LIST);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_LIST_DETAIL);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			Product product = new Product(rs.getInt("p_no"), 
@@ -46,7 +46,7 @@ public class ProductDao {
 											rs.getString("p_image"),
 											rs.getString("p_detail"),
 											new BookType(rs.getInt("type_no"),
-														 null));
+														 rs.getString("p_type")));
 			productList.add(product);
 		}
 
@@ -73,8 +73,8 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductName;
 	}
 	
@@ -98,8 +98,8 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductauthor;
 	}
 	
@@ -123,16 +123,16 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductpublisher;
 	}
 	
 	// 도서 타입으로 찾기
-	public Product selectByTYPE(String type_no) throws Exception {
+	public Product selectByTYPE(int type_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_TYPE);
-		pstmt.setString(1, type_no);
+		pstmt.setInt(1, type_no);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProducttype = null;
 		if(rs.next()) {
@@ -148,16 +148,16 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProducttype;
 	}
 	
 	// 도서 번호로 찾기
-	public Product selectByNO(String p_no) throws Exception {
+	public Product selectByNO(int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NO);
-		pstmt.setString(1, p_no);
+		pstmt.setInt(1, p_no);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductNO = null;
 		if(rs.next()) {
@@ -173,8 +173,8 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductNO;
 	}
 	
@@ -183,35 +183,38 @@ public class ProductDao {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_UPDATE_PRICE);
 		pstmt.setInt(1, product.getP_price());
-		int rowCount = pstmt.executeUpdate();
+		pstmt.setInt(2, product.getP_no());
+		int updateRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
-		return rowCount;
+		return updateRowCount;
 	}
 	
 	// 도서추가
 	public int InsertProduct(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_INSERT);
-		pstmt.setInt(1, product.getP_no());
-		pstmt.setString(2, product.getP_name());
-		pstmt.setString(3, product.getP_author());
-		pstmt.setString(4, product.getP_publisher());
-		pstmt.setString(5, product.getP_publish_date());
-		pstmt.setInt(6, product.getP_price());
-		pstmt.setString(7, product.getP_image());
-		pstmt.setString(8, product.getP_detail());
-		pstmt.setInt(9, product.getBookType().getType_no());
-		int rowCount = pstmt.executeUpdate();
-		return rowCount;
+		pstmt.setString(1, product.getP_name());
+		pstmt.setString(2, product.getP_author());
+		pstmt.setString(3, product.getP_publisher());
+		pstmt.setString(4, product.getP_publish_date());
+		pstmt.setInt(5, product.getP_price());
+		pstmt.setString(6, product.getP_detail());
+		pstmt.setInt(7, product.getBookType().getType_no());
+		int insertRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return insertRowCount;
 	}
 	
 	// 도서삭제
-	public int deleteProduct(Product product)throws Exception {
+	public int deleteByProductNo(int p_no)throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt= con.prepareStatement(ProductSQL.PRODUCT_DELETE);
-		pstmt.setInt(1, product.getP_no());
-		int rowCount = pstmt.executeUpdate();
+		pstmt.setInt(1, p_no);
+		int deleteRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
-		return rowCount;
+		return deleteRowCount;
 	}
 }
