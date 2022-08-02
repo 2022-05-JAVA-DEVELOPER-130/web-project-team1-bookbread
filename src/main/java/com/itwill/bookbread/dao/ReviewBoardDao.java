@@ -12,8 +12,6 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.itwill.bookbread.dto.ReviewBoard;
 import com.itwill.bookbread.sql.ReviewBoardSQL;
-import com.itwill.user.User;
-import com.itwill.user.UserSQL;
 
 public class ReviewBoardDao {
 	private DataSource dataSource;
@@ -40,11 +38,18 @@ public class ReviewBoardDao {
 		try {
 			con=dataSource.getConnection();
 			pstmt=con.prepareStatement(ReviewBoardSQL.REVIEW_INSERT);
-			pstmt.setString(1,reviewBoard.getR_title());
-			pstmt.setString(2, reviewBoard.getR_content());
-			pstmt.setInt(3, reviewBoard.getR_count());
-			pstmt.setString(4, reviewBoard.getUserId());
-			pstmt.setInt(5, reviewBoard.getP_no());
+			/*
+			 	R_TITLE	VARCHAR2(200 BYTE)
+				R_CONTENT	VARCHAR2(1000 BYTE)
+				R_COUNT	NUMBER(20,0)
+				USERID	VARCHAR2(100 BYTE)
+				P_NO	NUMBER(10,0)
+			 */
+			pstmt.setString(1, reviewBoard.getR_title());
+			pstmt.setString(1, reviewBoard.getR_content());
+			pstmt.setInt(1, reviewBoard.getR_count());
+			pstmt.setString(1, reviewBoard.getMember().getUserId());
+			pstmt.setInt(1, reviewBoard.getProduct().getP_no());
 		} finally {
 			insertRowCount=pstmt.executeUpdate();
 			if(pstmt!=null) {
@@ -55,7 +60,6 @@ public class ReviewBoardDao {
 			}
 		}
 		return insertRowCount;
-		return 0;
 	}
 	
 	/*

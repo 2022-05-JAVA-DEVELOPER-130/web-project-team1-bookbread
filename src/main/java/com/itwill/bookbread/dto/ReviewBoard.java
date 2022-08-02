@@ -9,24 +9,24 @@ public class ReviewBoard {
 	private String r_content;
 	private int r_count;
 	/*********** Member ************/
-	private Member userId;
+	private Member member;
 	/*********** product ************/
-	private Product p_no;
+	private Product product;
 	
 	public ReviewBoard() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public ReviewBoard(int r_no, Date r_date, String r_title, String r_content, int r_count, Member userId,
-			Product p_no) {
+
+	public ReviewBoard(int r_no, Date r_date, String r_title, String r_content, int r_count, Member member,
+			Product product) {
 		super();
 		this.r_no = r_no;
 		this.r_date = r_date;
 		this.r_title = r_title;
 		this.r_content = r_content;
 		this.r_count = r_count;
-		this.userId = userId;
-		this.p_no = p_no;
+		this.member = member;
+		this.product = product;
 	}
 
 	public int getR_no() {
@@ -69,26 +69,30 @@ public class ReviewBoard {
 		this.r_count = r_count;
 	}
 
-	public Member getUserId() {
-		return userId;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setUserId(Member userId) {
-		this.userId = userId;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
-	public Product getP_no() {
-		return p_no;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setP_no(Product p_no) {
-		this.p_no = p_no;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	@Override
 	public String toString() {
 		return "ReviewBoard [r_no=" + r_no + ", r_date=" + r_date + ", r_title=" + r_title + ", r_content=" + r_content
-				+ ", r_count=" + r_count + ", userId=" + userId + ", p_no=" + p_no + "]";
+				+ ", r_count=" + r_count + ", member=" + member + ", product=" + product + "]";
 	}
+	
+	
+	
+	
 
 }
