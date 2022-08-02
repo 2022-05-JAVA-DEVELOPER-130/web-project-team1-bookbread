@@ -21,9 +21,6 @@ public class ReviewBoardDao {
 
 	public ReviewBoardDao() throws Exception {
 		Properties properties = new Properties();
-
-		properties.load(ReviewBoardDao.class.getResourceAsStream("jdbc.properties"));
-
 		properties.load(this.getClass().getResourceAsStream("/com/itwill/bookbread/common/jdbc.properties"));
 		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName(properties.getProperty("driverClass"));
