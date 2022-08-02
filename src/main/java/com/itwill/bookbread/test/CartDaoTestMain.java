@@ -14,7 +14,7 @@ public class CartDaoTestMain {
 		 */
 		/*
 		int count = cartDao.checkProduct(new Cart(0, 0, new Member("soyoon", null, null, null, null, null, null, null, null), 
-										new Product(5, null, null, null, null, 0, null, null, 0)));
+										new Product(5, null, null, null, null, 0, null, null, null)));
 		System.out.println(count);
 		*/
 		/*
@@ -22,7 +22,7 @@ public class CartDaoTestMain {
 		 */
 		/*
 		int insertCount =cartDao.insert(new Cart(0, 7, new Member("junyoung", null, null, null, null, null, null, null, null), 
-						new Product(1, null, null, null, null, 0, null, null, 0)));
+						new Product(1, null, null, null, null, 0, null, null, null)));
 		System.out.println(insertCount);
 		*/
 		/*
@@ -30,7 +30,7 @@ public class CartDaoTestMain {
 		 */
 		/*
 		int addCount =cartDao.add(new Cart(0, 3, new Member("junyoung", null, null, null, null, null, null, null, null), 
-					new Product(1, null, null, null, null, 0, null, null, 0)));
+					new Product(1, null, null, null, null, 0, null, null, null)));
 		System.out.println(addCount);
 		*/
 		/*
