@@ -251,7 +251,7 @@ public class ReviewBoardDao {
 		int removeRowCount = 0;
 		try {
 			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_DELETE_BY_P_NO);
+			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_DELETE_BY_R_NO);
 			pstmt.setInt(1,r_no);
 			removeRowCount = pstmt.executeUpdate();
 
