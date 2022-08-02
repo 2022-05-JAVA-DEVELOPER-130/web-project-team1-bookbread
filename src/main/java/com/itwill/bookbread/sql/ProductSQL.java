@@ -21,7 +21,7 @@ public class ProductSQL {
 	public final static String PRODUCT_BY_NO = "select * from product where p_no=?";
 
 	// 도서추가
-	public final static String PRODUCT_INSERT = "insert into product (p_no, p_name, p_author, p_publisher, p_publish_date, p_price, p_image, p_detail, type_no) values (?,?,?,?,?,?,?,?,?)";
+	public final static String PRODUCT_INSERT = "insert into product (p_no, p_name, p_author, p_publisher, p_publish_date, p_price, p_image, p_detail, type_no) values (product_p_no_SEQ.nextval,?,?,?,?,?,null,?,?)";
 
 	// 도서삭제
 	public final static String PRODUCT_DELETE = "delete from product where p_no=?";
