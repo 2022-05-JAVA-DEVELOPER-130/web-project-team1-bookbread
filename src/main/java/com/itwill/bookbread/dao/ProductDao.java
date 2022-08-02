@@ -37,20 +37,19 @@ public class ProductDao {
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_LIST);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
-			productList.add(new Product(rs.getInt("p_no"),
-					rs.getString("p_name"),
-					rs.getString("p_author"),
-					rs.getString("p_publisger"),
-					rs.getString("p_publish_date"),
-					rs.getInt("p_price"),
-					rs.getString("p_image"),
-					rs.getString("p_detail"),
-					new BookType(rs.getInt("type_no"),null)
-							));
+			Product product = new Product(rs.getInt("p_no"), 
+											rs.getString("p_name"), 
+											rs.getString("p_author"),
+											rs.getString("p_publisher"), 
+											rs.getString("p_publish_date"),
+											0,
+											rs.getString("p_image"),
+											rs.getString("p_detail"),
+											new BookType(rs.getInt("type_no"),
+														 null));
+			productList.add(product);
 		}
-		rs.close();
-		con.close();
-		pstmt.close();
+
 		return productList;
 	}
 	
@@ -111,7 +110,7 @@ public class ProductDao {
 		pstmt.setString(1, p_publisher);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductpublisher = null;
-		if(rs.next()) {
+		while(rs.next()) {
 			findProductpublisher = new Product(rs.getInt("p_no"),
 										rs.getString("p_name"),
 										rs.getString("p_author"),
