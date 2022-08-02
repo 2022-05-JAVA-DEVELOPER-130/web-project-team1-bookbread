@@ -79,30 +79,25 @@ public class MemberDao {
 		return removeRowCount;
 	}
 	//내 정보 보기
-	public Member select_By_No(int no) throws Exception {
+	public Member findmember(String userId) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_ID);
 		Member findmember = null;
+		pstmt.setString(1, userId);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			rs.getString(1,"userId");
-			pstmt.setString(2, member.getPassword());
-			pstmt.setString(3, member.getName());
-			pstmt.setString(4, member.getBirth());
-			pstmt.setString(5, member.getAddress());
-			pstmt.setString(6, member.getEmail());
-			pstmt.setString(7, member.getInterest());
-			findmember = new Member(null, null, null, null, null, null, null, null, null);
+			findmember = new Member(rs.getString("userId"),
+									rs.getString("password"),
+									rs.getString("passwordcehck"), userId, userId, userId, userId, userId, userId);
+		}
 		rs.close();
 		pstmt.close();
 		con.close();
 		return findmember; 
 	}
-		return findmember;
 	
 	//회원들 정보 보기
 	
-	}
 }
 	
 	
