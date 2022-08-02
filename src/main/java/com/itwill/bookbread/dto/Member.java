@@ -3,22 +3,24 @@ package com.itwill.bookbread.dto;
 public class Member {
 	private String userId;
 	private String password;
+	private String passwordCheck;
 	private String name;
 	private String phone;
 	private String birth;
 	private String address;
 	private String email;
 	private String interest;
-	
+
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Member(String userId, String password, String name, String phone, String birth, String address, String email,
-			String interest) {
+
+	public Member(String userId, String password, String passwordCheck, String name, String phone, String birth,
+			String address, String email, String interest) {
 		super();
 		this.userId = userId;
 		this.password = password;
+		this.passwordCheck = passwordCheck;
 		this.name = name;
 		this.phone = phone;
 		this.birth = birth;
@@ -41,6 +43,14 @@ public class Member {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPasswordCheck() {
+		return passwordCheck;
+	}
+
+	public void setPasswordCheck(String passwordCheck) {
+		this.passwordCheck = passwordCheck;
 	}
 
 	public String getName() {
@@ -93,8 +103,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [userId=" + userId + ", password=" + password + ", name=" + name + ", phone=" + phone
-				+ ", birth=" + birth + ", address=" + address + ", email=" + email + ", interest=" + interest + "]";
+		return "Member [userId=" + userId + ", password=" + password + ", passwordCheck=" + passwordCheck + ", name="
+				+ name + ", phone=" + phone + ", birth=" + birth + ", address=" + address + ", email=" + email
+				+ ", interest=" + interest + "]";
 	}
-
 }
