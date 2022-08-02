@@ -141,9 +141,9 @@ public class ReviewBoardDao {
 											 rs.getString("r_content"),
 											 rs.getInt("r_count"),
 											 	new Member(rs.getString("userId"),null,null,null,null,null,null,null),
-											 	new Product(0,null,null,null,null,0,null,null,null)
-											 );}
-					
+											 	new Product(rs.getInt("p_no"),null,null,null,null,0,null,null,null)
+											 );
+			}	
 			} finally {
 			if (rs != null)
 				rs.close();
@@ -174,7 +174,8 @@ public class ReviewBoardDao {
 											       rs.getString("r_title"),
 											       rs.getString("r_content"),
 											       rs.getInt("r_count"),
-											       );
+											       new Member(rs.getString("userId"),null,null,null,null,null,null,null),
+												   new Product(rs.getInt("p_no"),null,null,null,null,0,null,null,null)));
 			}
 		} finally {
 			if (rs != null)
@@ -186,5 +187,83 @@ public class ReviewBoardDao {
 		}
 		return findReviewList;
 	}
+	/*
+	 * 리뷰조회수 증가
+	 */
+	public int countUpdate(ReviewBoard reviewBoard) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int updateRowCount = 0;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_COUNT);
+			pstmt.setInt(1, reviewBoard.getR_count());
+			updateRowCount = pstmt.executeUpdate();
+		} finally {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		}
+		return updateRowCount;
+	}
+	/*
+	 * 상품번호로 리뷰검색
+	 */
+	public ArrayList<ReviewBoard> findReviewListByPno(int p_no) throws Exception{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<ReviewBoard> findReviewListByPno = new ArrayList<ReviewBoard>();
+	
+		try {
+			con = dataSource.getConnection();
+			pstmt=con.prepareStatement(ReviewBoardSQL.REVIEW_SELECT_BY_P_NO);
+			pstmt.setInt(1,p_no);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				findReviewListByPno.add(new ReviewBoard(rs.getInt("r_no"),
+											       rs.getDate("r_date"),
+											       rs.getString("r_title"),
+											       rs.getString("r_content"),
+											       rs.getInt("r_count"),
+											       new Member(rs.getString("userId"),null,null,null,null,null,null,null),
+												   new Product(rs.getInt("p_no"),null,null,null,null,0,null,null,null)));
+			}
+			} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+		}
+		return findReviewListByPno;
+	}
+	/*
+	 * 상품번호로 리뷰한개 삭제
+	 */
+	public int remove(int p_no) throws Exception {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int removeRowCount = 0;
+		try {
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_DELETE_BY_P_NO);
+			pstmt.setInt(1,p_no);
+			removeRowCount = pstmt.executeUpdate();
 
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+			if (con != null)
+				con.close();
+
+		}
+		return removeRowCount;
+	}
+
+	
 }// 끝
