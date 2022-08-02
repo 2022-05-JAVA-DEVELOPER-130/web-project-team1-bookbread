@@ -14,7 +14,7 @@ public class MemberSQL {
 			"insert into member values (?,?,?,?,?,?,?,?)";
 
 	//select_pk(내정보보기)
-	public final static String MEMBER_SELECT_BY_NO=
+	public final static String MEMBER_SELECT_BY_ID=
 			"select userId,password,name,phone,birth,address,email,interest from member where userId=?"; 
 
 	//select_all(회원들정보보기)
