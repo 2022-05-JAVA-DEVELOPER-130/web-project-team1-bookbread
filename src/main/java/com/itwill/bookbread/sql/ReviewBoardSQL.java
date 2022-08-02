@@ -30,6 +30,6 @@ public class ReviewBoardSQL {
 	public final static String REVIEW_SELECT_BY_P_NO=
 	"select * from review_board	where p_no=?";
 	//게시판번호로 리뷰한개 삭제
-	public final static String REVIEW_DELETE_BY_P_NO=
+	public final static String REVIEW_DELETE_BY_R_NO=
 			"delete from review_board where r_no=?";
 }
