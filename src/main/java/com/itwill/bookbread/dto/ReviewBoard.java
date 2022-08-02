@@ -12,7 +12,11 @@ public class ReviewBoard {
 	private Member userId;
 	/*********** product ************/
 	private Product p_no;
-
+	
+	public ReviewBoard() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public ReviewBoard(int r_no, Date r_date, String r_title, String r_content, int r_count, Member userId,
 			Product p_no) {
 		super();
