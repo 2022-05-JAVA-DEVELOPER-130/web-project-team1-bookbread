@@ -10,6 +10,8 @@ import javax.sql.DataSource;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
+import com.itwill.bookbread.dto.Member;
+import com.itwill.bookbread.dto.Product;
 import com.itwill.bookbread.dto.ReviewBoard;
 import com.itwill.bookbread.sql.ReviewBoardSQL;
 
@@ -46,12 +48,12 @@ public class ReviewBoardDao {
 				P_NO	NUMBER(10,0)
 			 */
 			pstmt.setString(1, reviewBoard.getR_title());
-			pstmt.setString(1, reviewBoard.getR_content());
-			pstmt.setInt(1, reviewBoard.getR_count());
-			pstmt.setString(1, reviewBoard.getMember().getUserId());
-			pstmt.setInt(1, reviewBoard.getProduct().getP_no());
-		} finally {
+			pstmt.setString(2, reviewBoard.getR_content());
+			pstmt.setInt(3, reviewBoard.getR_count());
+			pstmt.setString(4, reviewBoard.getMember().getUserId());
+			pstmt.setInt(5, reviewBoard.getProduct().getP_no());
 			insertRowCount=pstmt.executeUpdate();
+		} finally {
 			if(pstmt!=null) {
 				pstmt.close();
 			}
@@ -76,8 +78,8 @@ public class ReviewBoardDao {
 			pstmt.setString(1,reviewBoard.getR_title());
 			pstmt.setString(2, reviewBoard.getR_content());
 			pstmt.setInt(3, reviewBoard.getR_no());
-		} finally {
 			updateRowCount=pstmt.executeUpdate();
+		} finally {
 			if(pstmt!=null) {
 				pstmt.close();
 			}
@@ -127,12 +129,10 @@ public class ReviewBoardDao {
 											 rs.getDate("r_date"),
 											 rs.getString("r_title"),
 											 rs.getString("r_content"),
-											 rs.getInt("r_count"),
-											 null,
-											 null);
-			}
+											 rs.getInt("r_count")
+											 );
 					
-		} finally {
+			} finally {
 			if (rs != null)
 				rs.close();
 			if (pstmt != null)
@@ -160,8 +160,7 @@ public class ReviewBoardDao {
 											       rs.getString("r_title"),
 											       rs.getString("r_content"),
 											       rs.getInt("r_count"),
-											       null,
-											       null));
+											       );
 			}
 		} finally {
 			if (rs != null)
