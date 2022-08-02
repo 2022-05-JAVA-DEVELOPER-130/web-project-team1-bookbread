@@ -18,7 +18,7 @@ public class Orders {
 	private String o_desc;
 	private Date o_date;
 	private int o_price;
-	private String userid;
+	private String userId;
 	private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	public Orders() {
 		
@@ -30,7 +30,7 @@ public class Orders {
 		this.o_desc = o_desc;
 		this.o_date = o_date;
 		this.o_price = o_price;
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public int getO_no() {
@@ -66,11 +66,11 @@ public class Orders {
 	}
 
 	public String getUserid() {
-		return userid;
+		return userId;
 	}
 
 	public void setUserid(String userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public List<OrderItem> getOrderItemList() {
@@ -84,7 +84,7 @@ public class Orders {
 	@Override
 	public String toString() {
 		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_date=" + o_date + ", o_price=" + o_price
-				+ ", userid=" + userid + ", orderItemList=" + orderItemList + "]";
+				+ ", userid=" + userId + ", orderItemList=" + orderItemList + "]";
 	}
 
 	
