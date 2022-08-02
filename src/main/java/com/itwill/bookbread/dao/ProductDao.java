@@ -66,7 +66,7 @@ public class ProductDao {
 										rs.getString("p_name"),
 										rs.getString("p_author"),
 										rs.getString("p_publisher"),
-										rs.getString("p_publish_date")
+										rs.getString("p_publish_date"),
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
@@ -91,7 +91,7 @@ public class ProductDao {
 										rs.getString("p_name"),
 										rs.getString("p_author"),
 										rs.getString("p_publisher"),
-										rs.getString("p_publish_date")
+										rs.getString("p_publish_date"),
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
@@ -116,7 +116,7 @@ public class ProductDao {
 										rs.getString("p_name"),
 										rs.getString("p_author"),
 										rs.getString("p_publisher"),
-										rs.getString("p_publish_date")
+										rs.getString("p_publish_date"),
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
@@ -141,7 +141,7 @@ public class ProductDao {
 										rs.getString("p_name"),
 										rs.getString("p_author"),
 										rs.getString("p_publisher"),
-										rs.getString("p_publish_date")
+										rs.getString("p_publish_date"),
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
@@ -166,7 +166,7 @@ public class ProductDao {
 										rs.getString("p_name"),
 										rs.getString("p_author"),
 										rs.getString("p_publisher"),
-										rs.getString("p_publish_date")
+										rs.getString("p_publish_date"),
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
