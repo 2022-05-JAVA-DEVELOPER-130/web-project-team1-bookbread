@@ -11,7 +11,7 @@ public class ReviewBoardDaoTestMain {
 
 	public static void main(String[] args) throws Exception {
 		ReviewBoardDao reviewBoardDao=new ReviewBoardDao();
-	
+	    System.out.println(reviewBoardDao.findReviewList());
 		
 
 	}
