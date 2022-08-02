@@ -23,7 +23,7 @@ public class ReviewBoardDao {
 
 		Properties properties = new Properties();
 		properties.load(ReviewBoardDao.class.getResourceAsStream("jdbc.properties"));
-		basicDataSource.setDriverClassName(properties.getProperty("driverClassName"));
+		basicDataSource.setDriverClassName(properties.getProperty("driverClass"));
 		basicDataSource.setUrl(properties.getProperty("url"));
 		basicDataSource.setUsername(properties.getProperty("username"));
 		basicDataSource.setPassword(properties.getProperty("password"));
