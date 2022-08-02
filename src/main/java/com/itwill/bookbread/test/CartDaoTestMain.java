@@ -37,7 +37,7 @@ public class CartDaoTestMain {
 		 * 장바구니에서 해당 제품 수량 수정
 		 */
 		/*
-		int updateCount =cartDao.update(new Cart(6, 10, null, null));
+		int updateCount =cartDao.update(new Cart(6, 10, new Member("junyoung", null, null, null, null, null, null, null, null), null));
 		System.out.println(updateCount);
 		*/
 		

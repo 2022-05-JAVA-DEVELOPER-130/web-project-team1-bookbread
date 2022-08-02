@@ -34,45 +34,42 @@ public class OrdersDao {
 		PreparedStatement pstmt1 = null;
 		PreparedStatement pstmt2 = null;
 		try {
-			con=dataSource.getConnection();
+			con = dataSource.getConnection();
 			con.setAutoCommit(false);
 			/*
 			 * transaction 시작
 			 */
-			
-			//orders insert
+			/*
+			 * order 삽입
+			 */
 			pstmt1 = con.prepareStatement(OrdersSQL.INSERT_ORDERS);
 			pstmt1.setString(1, orders.getO_desc());
 			pstmt1.setInt(2, orders.getO_price());
 			pstmt1.setString(3, orders.getUserId());
 			pstmt1.executeUpdate();
-			
-			//orderItem insert
+			/*
+			 * orderitem 삽입
+			 */
 			pstmt2 = con.prepareStatement(OrdersSQL.INSERT_ORDER_ITEM);
-			
-			for(OrderItem orderItem : orders.getOrderItemList()) {
-			pstmt2.clearParameters(); //확실하게 하기 위해서 다 날리고 executeUpdate
-			pstmt2.setInt(1, orderItem.getOi_qty());
-			pstmt2.setInt(2, orderItem.getProduct().getP_no());
-			pstmt2.executeUpdate();
-			
+			for (OrderItem orderItem : orders.getOrderItemList()) {
+				pstmt2.clearParameters();
+				pstmt2.setInt(1, orderItem.getOi_qty());
+				pstmt2.setInt(2, orderItem.getProduct().getP_no());
+				pstmt2.executeUpdate();
+				
 			}
 			/*
-			 * transaction 종료(성공)
+			 * transaction종료(성공)
 			 */
 			con.commit();
-			
-			
-		} catch (Exception e) {
-			/*
-			 * transaction 종료(실패)
-			 */
-			e.printStackTrace();
+		}catch (Exception e) {
+			 e.printStackTrace();
 			con.rollback();
 			throw e;
 		}
-		con.close();
 		return 0;
 	}
-	
+	/*
+	 * 주문 선택 삭제
+	 */
 }

@@ -1,6 +1,7 @@
 package com.itwill.bookbread.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -90,7 +91,6 @@ public class CartDao {
 		
 		pstmt.setInt(1, cart.getCart_qty());
 		pstmt.setInt(2, cart.getCart_no());
-		
 		int updateCount = pstmt.executeUpdate();
 		
 		return updateCount;
