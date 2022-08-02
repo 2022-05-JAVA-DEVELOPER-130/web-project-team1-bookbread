@@ -9,14 +9,14 @@ public class Product {
 	private int p_price;
 	private String p_image;
 	private String p_detail;
-	private int type_no;
+	private BookType booktype;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Product(int p_no, String p_name, String p_author, String p_publisher, String p_publish_date, int p_price,
-			String p_image, String p_detail, int type_no) {
+			String p_image, String p_detail, BookType booktype) {
 		super();
 		this.p_no = p_no;
 		this.p_name = p_name;
@@ -26,7 +26,7 @@ public class Product {
 		this.p_price = p_price;
 		this.p_image = p_image;
 		this.p_detail = p_detail;
-		this.type_no = type_no;
+		this.booktype = booktype;
 	}
 
 	public int getP_no() {
@@ -93,19 +93,19 @@ public class Product {
 		this.p_detail = p_detail;
 	}
 
-	public int getType_no() {
-		return type_no;
+	public BookType getBookType() {
+		return booktype;
 	}
 
-	public void setType_no(int type_no) {
-		this.type_no = type_no;
+	public void setBookType(BookType booktype) {
+		this.booktype = booktype;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [p_no=" + p_no + ", p_name=" + p_name + ", p_author=" + p_author + ", p_publisher="
 				+ p_publisher + ", p_publish_date=" + p_publish_date + ", p_price=" + p_price + ", p_image=" + p_image
-				+ ", p_detail=" + p_detail + ", type_no=" + type_no + "]";
+				+ ", p_detail=" + p_detail + ", BookType=" + booktype + "]";
 	}
 	
 	

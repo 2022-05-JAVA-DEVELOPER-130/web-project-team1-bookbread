@@ -32,6 +32,7 @@ public class ReviewBoardDao {
 	/*
 	 * 새로운 리뷰생성
 	 */
+	
 	public int create(ReviewBoard reviewBoard) throws Exception{
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -54,6 +55,7 @@ public class ReviewBoardDao {
 			}
 		}
 		return insertRowCount;
+		return 0;
 	}
 	
 	/*

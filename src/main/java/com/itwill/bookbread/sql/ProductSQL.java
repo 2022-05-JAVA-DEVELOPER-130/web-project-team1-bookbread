@@ -17,8 +17,11 @@ public class ProductSQL {
 	// 도서타입으로 도서찾기
 	public final static String PRODUCT_BY_TYPE = "select * from product where type_no=?";
 
-	// 도서번호로 도서정보찾기
+	// 도서번호로 도서찾기
 	public final static String PRODUCT_BY_NO = "select * from product where p_no=?";
+	
+	// 도서가격 수정
+	public final static String PRODUCT_UPDATE_PRICE = "update product set p_price=? where p_no=?";
 
 	// 도서추가
 	public final static String PRODUCT_INSERT = "insert into product (p_no, p_name, p_author, p_publisher, p_publish_date, p_price, p_image, p_detail, type_no) values (product_p_no_SEQ.nextval,?,?,?,?,?,null,?,?)";

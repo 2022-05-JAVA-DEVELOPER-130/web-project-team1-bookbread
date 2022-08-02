@@ -28,6 +28,6 @@ public class MemberSQL {
 
 	//(비밀번호 찾기)
 	public final static String FIND_MEMBER_PASSWORD=
-			"select * from member where name=? and userId=?";
+			"select * from member where userId=? and email=?";
 
 }
