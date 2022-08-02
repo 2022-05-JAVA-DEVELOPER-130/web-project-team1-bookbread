@@ -117,11 +117,11 @@ public class ReviewBoardDao {
 	/*
 	 * userId가쓴 리뷰 보기
 	 */
-	public ReviewBoard findReview(String userId) throws Exception{
+	public ArrayList<ReviewBoard> findReview(String userId) throws Exception{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ReviewBoard findReview=null;
+		ArrayList<ReviewBoard> findReview = new ArrayList<ReviewBoard>();
 		/*
 	 	R_TITLE	VARCHAR2(200 BYTE)
 		R_CONTENT	VARCHAR2(1000 BYTE)
@@ -134,15 +134,15 @@ public class ReviewBoardDao {
 			pstmt=con.prepareStatement(ReviewBoardSQL.REVIEW_SELECET_BY_ID);
 			pstmt.setString(1, userId);
 			rs=pstmt.executeQuery();
-			if(rs.next()){
-				findReview = new ReviewBoard(rs.getInt("r_no"),
+			while(rs.next()) {
+				findReview.add( new ReviewBoard(rs.getInt("r_no"),
 											 rs.getDate("r_date"),
 											 rs.getString("r_title"),
 											 rs.getString("r_content"),
 											 rs.getInt("r_count"),
 											 	new Member(rs.getString("userId"),null,null,null,null,null,null,null),
 											 	new Product(rs.getInt("p_no"),null,null,null,null,0,null,null,null)
-											 );
+											 ));
 			}	
 			} finally {
 			if (rs != null)
@@ -245,7 +245,7 @@ public class ReviewBoardDao {
 	/*
 	 * 상품번호로 리뷰한개 삭제
 	 */
-	public int remove(int p_no) throws Exception {
+	public int removeByNo(int p_no) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int removeRowCount = 0;
