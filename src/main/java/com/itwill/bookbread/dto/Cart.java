@@ -4,18 +4,18 @@ package com.itwill.bookbread.dto;
 public class Cart {
 	private int cart_no;
 	private int cart_qty;
-	private String userId;
+	private Member member;
 	private Product product;
 	
 	public Cart() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cart(int cart_no, int cart_qty, String userId, Product product) {
+	public Cart(int cart_no, int cart_qty, Member member, Product product) {
 		super();
 		this.cart_no = cart_no;
 		this.cart_qty = cart_qty;
-		this.userId = userId;
+		this.member = member;
 		this.product = product;
 	}
 
@@ -35,12 +35,12 @@ public class Cart {
 		this.cart_qty = cart_qty;
 	}
 
-	public String getUserId() {
-		return userId;
+	public Member getMember() {
+		return member;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
 	public Product getProduct() {
@@ -53,9 +53,8 @@ public class Cart {
 
 	@Override
 	public String toString() {
-		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", userId=" + userId + ", product=" + product
+		return "Cart [cart_no=" + cart_no + ", cart_qty=" + cart_qty + ", member=" + member + ", product=" + product
 				+ "]";
 	}
-	
 	
 }
