@@ -1,6 +1,8 @@
 package com.itwill.bookbread.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /*
  * 이름      널?       유형            
@@ -17,9 +19,9 @@ public class Orders {
 	private Date o_date;
 	private int o_price;
 	private String userid;
-	 
+	private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 	public Orders() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public Orders(int o_no, String o_desc, Date o_date, int o_price, String userid) {
@@ -71,11 +73,19 @@ public class Orders {
 		this.userid = userid;
 	}
 
+	public List<OrderItem> getOrderItemList() {
+		return orderItemList;
+	}
+
+	public void setOrderItemList(List<OrderItem> orderItemList) {
+		this.orderItemList = orderItemList;
+	}
+
 	@Override
 	public String toString() {
 		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_date=" + o_date + ", o_price=" + o_price
-				+ ", userid=" + userid + "]";
+				+ ", userid=" + userid + ", orderItemList=" + orderItemList + "]";
 	}
-	
+
 	
 }
