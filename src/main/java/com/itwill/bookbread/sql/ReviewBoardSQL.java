@@ -29,7 +29,7 @@ public class ReviewBoardSQL {
 	//select_상품번호 (PK로 보기)
 	public final static String REVIEW_SELECT_BY_P_NO=
 	"select * from review_board	where p_no=?";
-	//상품번호로 리뷰한개 삭제
+	//게시판번호로 리뷰한개 삭제
 	public final static String REVIEW_DELETE_BY_P_NO=
-			"delete from review_board where p_no=?";
+			"delete from review_board where r_no=?";
 }
