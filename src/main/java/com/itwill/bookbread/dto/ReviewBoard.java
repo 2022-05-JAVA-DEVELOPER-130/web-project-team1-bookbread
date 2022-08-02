@@ -1,6 +1,6 @@
 package com.itwill.bookbread.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ReviewBoard {
 	private int r_no;
