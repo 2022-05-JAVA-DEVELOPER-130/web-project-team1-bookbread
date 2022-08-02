@@ -44,7 +44,7 @@ public class OrdersDao {
 			pstmt1 = con.prepareStatement(OrdersSQL.INSERT_ORDERS);
 			pstmt1.setString(1, orders.getO_desc());
 			pstmt1.setInt(2, orders.getO_price());
-			pstmt1.setString(3, orders.getUserid());
+			pstmt1.setString(3, orders.getUserId());
 			pstmt1.executeUpdate();
 			
 			//orderItem insert
