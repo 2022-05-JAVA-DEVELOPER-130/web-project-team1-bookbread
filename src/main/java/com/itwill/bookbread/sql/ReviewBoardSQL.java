@@ -25,4 +25,9 @@ public class ReviewBoardSQL {
 	//리뷰별 조회수 증가
 	public final static String REVIEW_COUNT=
 	"update review_board set r_count=r_count+1 where r_no=?";
+	
+	//select_상품번호 (PK로 보기)
+	public final static String REVIEW_SELECT_BY_P_NO=
+	"select * from review_board	where p_no=?";
+	
 }

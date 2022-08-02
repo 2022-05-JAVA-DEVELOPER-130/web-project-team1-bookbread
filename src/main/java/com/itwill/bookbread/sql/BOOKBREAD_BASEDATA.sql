@@ -44,7 +44,16 @@ insert into cart(cart_no, cart_qty, userid, p_no) values(cart_cart_no_SEQ.nextva
 
 
 /**********************orders insert************************/
-insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 14000, 'junyoung');
+-- 로그인한 회원(junyoung)님의 주문(1번 제품 1개, 2번 제품 1개)
+insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 27800, 'junyoung');
+insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval, 1, orders_o_no_SEQ.currval,1);
+insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval, 1, orders_o_no_SEQ.currval,2);
+
+-- 로그인한 회원(junyoung)님의 주문(5번 제품 1개, 7번 제품 1개)
+insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 26900, 'junyoung');
+insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval, 1, orders_o_no_SEQ.currval,5);
+insert into order_item(oi_no,oi_qty,o_no,p_no) values(order_item_oi_no_SEQ.nextval, 1, orders_o_no_SEQ.currval,7);
+
 insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 14000, 'soyoon');
 insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 14000, 'yongchan');
 insert into orders(o_no, o_desc, o_date, o_price, userid) values (orders_o_no_SEQ.nextval, '불편한 편의점 외 1권', sysdate, 14000, 'jiwon');
