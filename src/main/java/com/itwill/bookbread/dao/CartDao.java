@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
+import com.itwill.bookbread.dto.BookType;
 import com.itwill.bookbread.dto.Cart;
 import com.itwill.bookbread.dto.Member;
 import com.itwill.bookbread.dto.Product;
@@ -40,9 +41,12 @@ public class CartDao {
 		pstmt.setInt(2, cart.getProduct().getP_no());
 		ResultSet rs = pstmt.executeQuery();
 		int count = -999;
-		if(rs.next()) {
-			count = rs.getInt(1);
-		}
+		
+		rs.next();
+		count = rs.getInt(1);
+		
+			
+		
 		con.close();
 		return count;
 	}
@@ -139,7 +143,7 @@ public class CartDao {
 											rs.getInt("p_price"), 
 											rs.getString("p_image"), 
 											rs.getString("p_detail"), 
-											rs.getInt("type_no")));
+											new BookType()));
 		}
 		con.close();
 		return cartItem;
@@ -157,7 +161,7 @@ public class CartDao {
 		while(rs.next()) {
 			Cart cart = new Cart(rs.getInt("cart_no"),
 									rs.getInt("cart_qty"), 
-									new Member(), 
+									new Member(),
 									new Product(rs.getInt("p_no"), 
 											rs.getString("p_name"), 
 											rs.getString("p_author"),
@@ -166,7 +170,7 @@ public class CartDao {
 											rs.getInt("p_price"),
 											rs.getString("p_image"),
 											rs.getString("p_detail"),
-											rs.getInt("type_no")));
+											new BookType()));
 			cartItemList.add(cart);
 		}
 		
