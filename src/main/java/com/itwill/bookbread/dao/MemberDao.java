@@ -37,12 +37,8 @@ public class MemberDao {
 	}
 	//회원가입
 	public int create(Member member) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int insertRowCount = 0;
-		try {
-		con = dataSource.getConnection();
-		pstmt = con.prepareStatement(MemberSQL.MEMBER_INSERT);
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_INSERT);
 		pstmt.setString(1,member.getUserId());
 		pstmt.setString(2,member.getPassword());
 		pstmt.setString(3,member.getName());
@@ -51,75 +47,58 @@ public class MemberDao {
 		pstmt.setString(6,member.getAddress());
 		pstmt.setString(7,member.getEmail());
 		pstmt.setString(8,member.getInterest());
-		insertRowCount = pstmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
+		int insertRowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
 		return insertRowCount;
 	}
 	//정보수정
 	public int update(Member member)throws Exception{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int updateRowCount=0;
-		try {
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(MemberSQL.MEMBER_UPDATE);
-			pstmt.setString(1, member.getName());
-			pstmt.setString(2, member.getPhone());
-			pstmt.setString(3, member.getBirth());
-			pstmt.setString(4, member.getAddress());
-			pstmt.setString(5, member.getEmail());
-			pstmt.setString(6, member.getInterest());
-			pstmt.setString(7, member.getUserId());
-			updateRowCount = pstmt.executeUpdate();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_UPDATE);
+		pstmt.setString(1, member.getName());
+		pstmt.setString(2, member.getPhone());
+		pstmt.setString(3, member.getBirth());
+		pstmt.setString(4, member.getAddress());
+		pstmt.setString(5, member.getEmail());
+		pstmt.setString(6, member.getInterest());
+		pstmt.setString(7, member.getUserId());
+		int updateRowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
 		return updateRowCount;
 	}
 	//회원탈퇴
 	public int delete(String userId) throws Exception{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		int removeRowCount = 0;
-		try {
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
-			pstmt.setString(1, userId);
-			removeRowCount = pstmt.executeUpdate();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
+		pstmt.setString(1, userId);
+		int removeRowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();
 		return removeRowCount;
 	}
 	//내 정보 보기
-	public int select_By_No(Member member) throws Exception {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-			con = dataSource.getConnection();
-			pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_ID);
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
-				pstmt.setString(1, member.getUserId());
-				pstmt.setString(2, member.getPassword());
-				pstmt.setString(3, member.getName());
-				pstmt.setString(4, member.getBirth());
-				pstmt.setString(5, member.getAddress());
-				pstmt.setString(6, member.getEmail());
-				pstmt.setString(7, member.getInterest());
-			rs.close();
-		
-			pstmt.close();
-			con.close();
-		
+	public Member select_By_No(int no) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BY_ID);
+		Member findmember = null;
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			rs.getString(1,"userId");
+			pstmt.setString(2, member.getPassword());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, member.getBirth());
+			pstmt.setString(5, member.getAddress());
+			pstmt.setString(6, member.getEmail());
+			pstmt.setString(7, member.getInterest());
+			findmember = new Member(null, null, null, null, null, null, null, null, null);
+		rs.close();
+		pstmt.close();
+		con.close();
+		return findmember; 
 	}
+		return findmember;
 	
 	//회원들 정보 보기
 	
