@@ -17,7 +17,7 @@ public class ProductSQL {
 	// 도서타입으로 도서찾기
 	public final static String PRODUCT_BY_TYPE = "select * from product where type_no=?";
 
-	// 도서번호로 도서정보찾기
+	// 도서번호로 도서찾기
 	public final static String PRODUCT_BY_NO = "select * from product where p_no=?";
 	
 	// 도서가격 수정
