@@ -9,7 +9,7 @@ public class MemberDaoTestMain {
 		// TODO Auto-generated method stub
 		
 		MemberDao memberDao = new MemberDao();
-		//System.out.println(memberDao.create(new Member("bbb","aaa","aaa","aaa","aaa","aaa","aaa","aaa")));
+		//System.out.println(memberDao.create(new Member("zzz","aaa","aaa","aaa","aaa","aaa","aaa","aaa")));
 		//System.out.println(memberDao.update(new Member("heechul", "null", "김희철", "010-6666-6666", "2022-11-11", "서울시 강서구", "kim@testmail.com", "동화")));
 		//System.out.println(memberDao.delete("bbb"));
 		//System.out.println(memberDao.findMember("aaa"));

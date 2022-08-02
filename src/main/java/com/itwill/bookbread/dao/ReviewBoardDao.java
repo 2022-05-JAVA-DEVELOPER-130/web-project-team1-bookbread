@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.jasper.tagplugins.jstl.core.Remove;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.itwill.bookbread.dto.Member;
@@ -16,18 +17,20 @@ import com.itwill.bookbread.dto.ReviewBoard;
 import com.itwill.bookbread.sql.ReviewBoardSQL;
 
 public class ReviewBoardDao {
-	private DataSource dataSource;
+	private BasicDataSource dataSource;
 
 	public ReviewBoardDao() throws Exception {
-		BasicDataSource basicDataSource = new BasicDataSource();
-
 		Properties properties = new Properties();
+
 		properties.load(ReviewBoardDao.class.getResourceAsStream("jdbc.properties"));
+
+		properties.load(this.getClass().getResourceAsStream("/com/itwill/bookbread/common/jdbc.properties"));
+		BasicDataSource basicDataSource = new BasicDataSource();
 		basicDataSource.setDriverClassName(properties.getProperty("driverClass"));
 		basicDataSource.setUrl(properties.getProperty("url"));
-		basicDataSource.setUsername(properties.getProperty("username"));
+		basicDataSource.setUsername(properties.getProperty("user"));
 		basicDataSource.setPassword(properties.getProperty("password"));
-		this.dataSource = basicDataSource;
+		dataSource = basicDataSource;
 	}
 
 	/*
