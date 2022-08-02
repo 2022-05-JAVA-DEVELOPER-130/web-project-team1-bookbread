@@ -36,7 +36,7 @@ public class OrderDaoTestMain {
 	
 	
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
-		orderItemList.add(new OrderItem(0, 0, 0, new Product(0, null, null, null, null, 0, null, null, 0)));
+		orderItemList.add(new OrderItem(0, 0, 0, new Product(0, null, null, null, null, 0, null, null, null)));
 		
 		Orders newOrder = new Orders(0, null, null, 0, null, orderItemList);
 		orderDao.create(newOrder);
