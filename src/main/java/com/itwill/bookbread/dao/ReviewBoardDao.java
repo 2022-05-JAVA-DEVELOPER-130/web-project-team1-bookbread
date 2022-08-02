@@ -243,16 +243,16 @@ public class ReviewBoardDao {
 		return findReviewListByPno;
 	}
 	/*
-	 * 상품번호로 리뷰한개 삭제
+	 * 게시판번호로 리뷰한개 삭제
 	 */
-	public int removeByNo(int p_no) throws Exception {
+	public int removeByNo(int r_no) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int removeRowCount = 0;
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_DELETE_BY_P_NO);
-			pstmt.setInt(1,p_no);
+			pstmt.setInt(1,r_no);
 			removeRowCount = pstmt.executeUpdate();
 
 		} finally {
