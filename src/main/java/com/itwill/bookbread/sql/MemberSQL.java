@@ -20,5 +20,14 @@ public class MemberSQL {
 	//select_all(회원들정보보기)
 	public final static String MEMBER_SELECT_ALL=
 			"select * from member";
+	
+
+	//(아이디 찾기)
+	public final static String FIND_MEMBER_ID=
+			"select * from member where name=? and phone=?";
+
+	//(비밀번호 찾기)
+	public final static String FIND_MEMBER_PASSWORD=
+			"select * from member where name=? and userId=?";
 
 }
