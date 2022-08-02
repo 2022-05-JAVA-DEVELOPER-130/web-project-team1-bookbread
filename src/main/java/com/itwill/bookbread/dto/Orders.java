@@ -23,69 +23,60 @@ public class Orders {
 	public Orders() {
 		
 	}
-	
-	public Orders(int o_no, String o_desc, Date o_date, int o_price, String userid) {
+	public Orders(int o_no, String o_desc, Date o_date, int o_price, String userId, List<OrderItem> orderItemList) {
 		super();
 		this.o_no = o_no;
 		this.o_desc = o_desc;
 		this.o_date = o_date;
 		this.o_price = o_price;
-		this.userId = userid;
+		this.userId = userId;
+		this.orderItemList = orderItemList;
 	}
-
 	public int getO_no() {
 		return o_no;
 	}
-
 	public void setO_no(int o_no) {
 		this.o_no = o_no;
 	}
-
 	public String getO_desc() {
 		return o_desc;
 	}
-
 	public void setO_desc(String o_desc) {
 		this.o_desc = o_desc;
 	}
-
 	public Date getO_date() {
 		return o_date;
 	}
-
 	public void setO_date(Date o_date) {
 		this.o_date = o_date;
 	}
-
 	public int getO_price() {
 		return o_price;
 	}
-
 	public void setO_price(int o_price) {
 		this.o_price = o_price;
 	}
-
-	public String getUserid() {
+	public String getUserId() {
 		return userId;
 	}
-
-	public void setUserid(String userid) {
-		this.userId = userid;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
-
 	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
-
 	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
-
 	@Override
 	public String toString() {
 		return "Orders [o_no=" + o_no + ", o_desc=" + o_desc + ", o_date=" + o_date + ", o_price=" + o_price
-				+ ", userid=" + userId + ", orderItemList=" + orderItemList + "]";
+				+ ", userId=" + userId + ", orderItemList=" + orderItemList + "]";
 	}
-
+	
+	
+	
+	
 	
 }
+	
