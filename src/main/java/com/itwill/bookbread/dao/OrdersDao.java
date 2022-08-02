@@ -35,6 +35,11 @@ public class OrdersDao {
 		PreparedStatement pstmt2 = null;
 		try {
 			con=dataSource.getConnection();
+			con.setAutoCommit(false);
+			/*
+			 * transaction 시작
+			 */
+			
 			//orders insert
 			pstmt1 = con.prepareStatement(OrdersSQL.INSERT_ORDERS);
 			pstmt1.setString(1, orders.getO_desc());
@@ -52,16 +57,21 @@ public class OrdersDao {
 			pstmt2.executeUpdate();
 			
 			}
+			/*
+			 * transaction 종료(성공)
+			 */
 			con.commit();
-			con.setAutoCommit(false);
 			
 			
 		} catch (Exception e) {
+			/*
+			 * transaction 종료(실패)
+			 */
 			e.printStackTrace();
 			con.rollback();
 			throw e;
 		}
-		
+		con.close();
 		return 0;
 	}
 	
