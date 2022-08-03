@@ -29,7 +29,7 @@ public class OrdersService {
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		orderItemList.add(orderItem);
 		String desc = orderItemList.get(0).getProduct().getP_name()+"외"+(oi_qty-1)+"권";
-		int totprice=orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price();
+		int totprice=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
 		Orders newOrder = new Orders(0, desc, null, totprice, userId, orderItemList);
 		return ordersDao.create(newOrder);
 	}
