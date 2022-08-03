@@ -12,7 +12,11 @@ public class EncodingFilter implements Filter {
 	 * web.xml에서 전달된 인코딩 값을 초기화하는 메써드.
 	 * <filter>
 		<filter-name>Encoding Filter</filter-name>
+<<<<<<< HEAD
 		<filter-class>com.itwill.shop.common.EncodingFilter</filter-class>
+=======
+		<filter-class>com.itwill.bookbread.common.EncodingFilter</filter-class>
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team1-bookbread.git
 		<init-param>
 			<param-name>encoding</param-name>
 			<param-value>UTF-8</param-value>
