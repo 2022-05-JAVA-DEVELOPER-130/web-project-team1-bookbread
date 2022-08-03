@@ -59,13 +59,14 @@ public class MemberDao {
 	public int update(Member member)throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_UPDATE);
-		pstmt.setString(1, member.getName());
-		pstmt.setString(2, member.getPhone());
-		pstmt.setString(3, member.getBirth());
-		pstmt.setString(4, member.getAddress());
-		pstmt.setString(5, member.getEmail());
-		pstmt.setString(6, member.getInterest());
-		pstmt.setString(7, member.getUserId());
+		pstmt.setString(1, member.getPassword());
+		pstmt.setString(2, member.getName());
+		pstmt.setString(3, member.getPhone());
+		pstmt.setString(4, member.getBirth());
+		pstmt.setString(5, member.getAddress());
+		pstmt.setString(6, member.getEmail());
+		pstmt.setString(7, member.getInterest());
+		pstmt.setString(8, member.getUserId());
 		int updateRowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();

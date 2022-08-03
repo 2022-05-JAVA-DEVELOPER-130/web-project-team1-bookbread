@@ -3,7 +3,7 @@ package com.itwill.bookbread.sql;
 public class MemberSQL {
 	//update_pk(회원정보수정)
 	public final static String MEMBER_UPDATE=
-			"update member set name=?,phone=?,birth=?,address=?,email=?,interest=? where userId=?";
+			"update member set password=?,name=?,phone=?,birth=?,address=?,email=?,interest=? where userId=?";
 
 	//delete_pk(회원탈퇴)
     public final static String MEMBER_DELETE=
