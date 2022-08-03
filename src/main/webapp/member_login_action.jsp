@@ -22,7 +22,7 @@
 		 request.setAttribute("fMember", fMember);
 		 
 		 RequestDispatcher rd=
-		 	request.getRequestDispatcher("user_login_form.jsp");
+		 	request.getRequestDispatcher("member_login_form.jsp");
 		 rd.forward(request, response);
 	 }else if(rowCount==1){
 		 //1:패쓰워드 불일치
