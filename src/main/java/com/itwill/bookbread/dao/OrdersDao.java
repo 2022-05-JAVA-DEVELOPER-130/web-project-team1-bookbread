@@ -133,7 +133,7 @@ public class OrdersDao {
 				List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 				do {// int oi_no, int oi_qty, int o_no, Product product
 					orderItemList.add(new OrderItem(rs2.getInt("oi_no"), rs2.getInt("oi_qty"), rs2.getInt("o_no"),
-//int p_no, String p_name, String p_author, String p_publisher, String p_publish_date, int p_price,String p_image, String p_detail, BookType booktype
+					//int p_no, String p_name, String p_author, String p_publisher, String p_publish_date, int p_price,String p_image, String p_detail, BookType booktype
 							new Product(rs2.getInt("p_no"), rs2.getString("p_name"), rs2.getString("p_author"),
 									rs2.getString("p_publisher"), rs2.getString("p_publish_date"),
 									rs2.getInt("p_price"), rs2.getString("p_image"), rs2.getString("p_detail"), null)));
@@ -148,7 +148,7 @@ public class OrdersDao {
 	
 	
 	/*
-	 *  주문 전체 조회 //안 쓸 것 같지만 일단 만들어놓기
+	 *  주문 전체 조회 
 	 */
 	public List<Orders> orderListAll(String userId) throws Exception{
 		Connection con = dataSource.getConnection();
@@ -159,22 +159,17 @@ public class OrdersDao {
 		ResultSet rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
-			listAll.add(new Orders(rs.getInt("o_no"), 
-									rs.getString("o_desc"), 
-									rs.getDate("o_date"), 
-									rs.getInt("o_price"), 
-									userId, 
-									null));
+			Orders newOrder = new Orders(rs.getInt("o_no"), 
+										rs.getString("o_desc"), 
+										rs.getDate("o_date"), 
+										rs.getInt("o_price"), 
+										userId, 
+										null);
+			listAll.add(newOrder);
 		}
 		
 		return listAll;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }
