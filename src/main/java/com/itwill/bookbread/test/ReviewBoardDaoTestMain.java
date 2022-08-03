@@ -21,9 +21,9 @@ public class ReviewBoardDaoTestMain {
 		//System.out.println(reviewBoardDao.findReview("jiwon"));
 		//System.out.println(reviewBoardDao.remove("jiwon"));
 		//System.out.println(reviewBoardDao.update(new ReviewBoard(1,null,"책3","3",0,new Member("jiwon","","","","","","",""),new Product(3,"","","","",0,"","",new BookType(0,"")))));
-		System.out.println(reviewBoardDao.create(new ReviewBoard(0,null,"책4","4",0,new Member("jiwon","","","","","","",""),new Product(4,"","","","",0,"","",new BookType(0,"")))));
-		System.out.println(reviewBoardDao.countUpdate(new ReviewBoard(2,null,"","",1,new Member("jiwon","","","","","","",""),new Product(4,"","","","",0,"","",new BookType(0,"")))));
-		System.out.println(reviewBoardDao.removeByNo(2));
+		//System.out.println(reviewBoardDao.create(new ReviewBoard(0,null,"책4","4",0,new Member("jiwon","","","","","","",""),new Product(4,"","","","",0,"","",new BookType(0,"")))));
+		//System.out.println(reviewBoardDao.countUpdate(3));
+		//System.out.println(reviewBoardDao.removeByNo(2));
 	}
 
 }
