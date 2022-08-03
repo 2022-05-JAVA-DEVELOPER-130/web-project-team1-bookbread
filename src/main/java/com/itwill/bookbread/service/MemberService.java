@@ -25,10 +25,10 @@ public class MemberService {
 	public Member login(String userId, String password) throws Exception {
 		Member member = memberDao.findMember(userId);
 		if (member == null) {
-			throw new UserNotFoundException("아이디 틀림ㅋㅎ.");// 아이디 존재하지 않을때
+			throw new UserNotFoundException("아이디 틀림ㅎㅋㅎ");// 아이디 존재하지 않을때
 		} else {
 			if (!member.isMatchPassword(password)) {
-				throw new PasswordMismatchException("비밀번호 틀림ㅎㅎㅋ");
+				throw new PasswordMismatchException("비밀번호 틀림ㅎㅎㅋ"); // 비밀번호 틀렸을때
 			}
 		}
 		return member;
