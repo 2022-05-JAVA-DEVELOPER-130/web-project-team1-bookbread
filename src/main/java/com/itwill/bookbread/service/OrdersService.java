@@ -50,6 +50,7 @@ public class OrdersService {
 		String desc = orderItemList.get(0).getProduct().getP_name()+" 외 "+(oi_tot_qty-1)+" 권 ";
 		Orders order = new Orders(0, desc, null, o_tot_price, userId, orderItemList);
 		ordersDao.create(order);
+		//선택된 카트번호들 삭제
 		for(int i = 0; i<cart_nostr_array.length; i++) {
 			cartDao.selectDelete(Integer.parseInt(cart_nostr_array[i]));
 		}
