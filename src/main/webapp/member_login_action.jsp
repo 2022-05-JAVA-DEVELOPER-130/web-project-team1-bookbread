@@ -31,7 +31,7 @@ try{
 	rd.forward(request, response);
 	***********************************/
 	/***************case1[redirect]****************/
-	response.sendRedirect("user_login_form.jsp?msg1="+URLEncoder.encode(e.getMessage(), "UTF-8"));
+	response.sendRedirect("member_login_form.jsp?msg1="+URLEncoder.encode(e.getMessage(), "UTF-8"));
 	/************************************/
 	/*****************case2[정상응답]**********************
 	out.println("<script>");
@@ -50,7 +50,7 @@ try{
 	rd.forward(request, response);
 	***********************************/
 	/***************case1[redirect]****************/
-	response.sendRedirect("user_login_form.jsp?msg2="+URLEncoder.encode(e.getMessage(), "UTF-8"));
+	response.sendRedirect("member_login_form.jsp?msg2="+URLEncoder.encode(e.getMessage(), "UTF-8"));
 	/************************************/
 	/*****************case2[정상응답]**********************
 	out.println("<script>");
@@ -60,6 +60,6 @@ try{
 	********************************************/
 }catch(Exception e){
 	e.printStackTrace();
-	response.sendRedirect("user_error.jsp");
+	response.sendRedirect("member_error.jsp");
 }
 %>			
