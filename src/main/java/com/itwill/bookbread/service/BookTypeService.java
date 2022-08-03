@@ -18,9 +18,5 @@ public class BookTypeService {
 		return bookTypeDao.selectAll();
 	}
 	
-	// 번호로 booktype 출력하기
-	public BookType selectBookTypeByNo(int type_no) throws Exception {
-		return bookTypeDao.BooktypeByNo(type_no);
-	}
 	
 }
