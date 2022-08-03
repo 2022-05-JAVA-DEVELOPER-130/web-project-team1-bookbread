@@ -349,19 +349,19 @@ ol.carousel-indicators li.active {
 }
 .product-hover ul li a {
     color: #fff;
-    background: #40bea7;
+    background: #f4e6a8;
     padding: 8px;
     font-size: 15pt;
 }
 .product-hover ul li a:hover {
-    color: #40bea7;
+    color: #f4e6a8;
     background: #fff;
 }
 .blog {
     
 }
 .blog-title {
-    background: #40bea7;
+    background: rgb(244, 230, 168);
     height: 45px;
     margin: 0px 15px 30px;
     padding: 2px 15px;
@@ -398,7 +398,7 @@ ol.carousel-indicators li.active {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #40bea7;
+    background: rgb(64, 190, 167);
     padding: 20px 30px;
     text-align: center;
     text-transform: uppercase;
@@ -409,7 +409,7 @@ ol.carousel-indicators li.active {
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #40bea7;
+    background: #f4e6a8;
     padding: 10px 20px;
     text-align: center;
     text-transform: uppercase;
@@ -502,11 +502,11 @@ ol.carousel-indicators li.active {
     border: 3px solid #ebebeb;
 }
 .thumb-image li.active img {
-    border-color: #40bea7;
+    border-color: rgb(244, 230, 168);
 }
 .short-description .col-md-6, .short-description .col-md-2, .short-description .col-md-10 {
     padding-left: 0px;
-    color: #40bea7;
+    color: #f4e6a8;
 }
 .thumb-main-image img {
     width: 100%;
@@ -604,7 +604,7 @@ p.short-info {
     color: #6d6d6d;
 }
 .social-share ul li a:hover {
-    color: #40bea7;
+    color: #f4e6a8;
 }
 .purchase-form button.btn-theme {
     text-transform: uppercase;

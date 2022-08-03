@@ -68,7 +68,7 @@ function login() {
 								<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
 									<tr>
-										<td width=100 align="center" bgcolor="E6ECDE" height="22">사용자
+										<td width=100 align="center" bgcolor="ffecbb" height="22">사용자
 											아이디</td>
 										<td width=190 align="center" bgcolor="ffffff"
 											style="padding-left: 5px"><input type="text"
@@ -77,7 +77,7 @@ function login() {
 											color="red"><%=msg1%></font></td>
 									</tr>
 									<tr>
-										<td width=100 align="center" bgcolor="E6ECDE" height="22">비밀번호</td>
+										<td width=100 align="center" bgcolor="ffecbb" height="22">비밀번호</td>
 										<td width=190 align="center" bgcolor="ffffff"
 											style="padding-left: 5px"><input type="password"
 											style="width: 150" name="password"
