@@ -94,7 +94,7 @@ public class ReviewBoardDao {
 	/*
 	 * 리뷰삭제
 	 */
-	public int remove(String userId) throws Exception {
+	public int removeByUserId(String userId) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int removeRowCount = 0;
@@ -117,11 +117,11 @@ public class ReviewBoardDao {
 	/*
 	 * userId가쓴 리뷰 보기
 	 */
-	public ArrayList<ReviewBoard> findReview(String userId) throws Exception{
+	public ArrayList<ReviewBoard> findReviewById(String userId) throws Exception{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<ReviewBoard> findReview = new ArrayList<ReviewBoard>();
+		ArrayList<ReviewBoard> findReviewById = new ArrayList<ReviewBoard>();
 		/*
 	 	R_TITLE	VARCHAR2(200 BYTE)
 		R_CONTENT	VARCHAR2(1000 BYTE)
@@ -135,7 +135,7 @@ public class ReviewBoardDao {
 			pstmt.setString(1, userId);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				findReview.add( new ReviewBoard(rs.getInt("r_no"),
+				findReviewById.add( new ReviewBoard(rs.getInt("r_no"),
 											 rs.getDate("r_date"),
 											 rs.getString("r_title"),
 											 rs.getString("r_content"),
@@ -152,7 +152,7 @@ public class ReviewBoardDao {
 			if (con != null)
 				con.close();
 		}
-		return findReview;
+		return findReviewById;
 	}
 	
 
@@ -190,14 +190,14 @@ public class ReviewBoardDao {
 	/*
 	 * 리뷰조회수 증가
 	 */
-	public int countUpdate(ReviewBoard reviewBoard) throws Exception {
+	public int countUpdate(int r_count) throws Exception {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int updateRowCount = 0;
 		try {
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(ReviewBoardSQL.REVIEW_COUNT);
-			pstmt.setInt(1, reviewBoard.getR_count());
+			pstmt.setInt(1, r_count);
 			updateRowCount = pstmt.executeUpdate();
 		} finally {
 			if (pstmt != null) {

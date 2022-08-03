@@ -16,12 +16,11 @@ public class MemberSQL {
 	//select_pk(내정보보기)
 	public final static String MEMBER_SELECT_BY_ID=
 			"select userId,password,name,phone,birth,address,email,interest from member where userId=?"; 
-
+	
 	//select_all(회원들정보보기)
 	public final static String MEMBER_SELECT_ALL=
 			"select * from member";
 	
-
 	//(아이디 찾기)
 	public final static String FIND_MEMBER_ID=
 			"select * from member where name=? and phone=?";
@@ -30,4 +29,7 @@ public class MemberSQL {
 	public final static String FIND_MEMBER_PASSWORD=
 			"select * from member where userId=? and email=?";
 
+	//(아이디중복체크)
+	public final static String MEMBER_SELECT_BT_ID_COUNT=
+			"select count(*) cnt from member where userId=?";
 }
