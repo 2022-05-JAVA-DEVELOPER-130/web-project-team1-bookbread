@@ -18,7 +18,7 @@ img {
     font-family: 'Open Sans', sans-serif;
 }
 .btn-theme {
-    background: #40bea7;
+    background: #d17c0a;
     border-radius: 0px;
     color: #fff !important;
     font-size: 10pt;
@@ -29,7 +29,7 @@ img {
     background: #494949;
 }
 .top-bar {
-    background-color: #40bea7;
+    background-color: #f4bf6f;
     min-height: 58px;
 }
 .social,
@@ -80,7 +80,6 @@ form.navbar-form input {
     min-width: 450px;
     border-width: 1px;
     border-radius: 0px;
-    border-color: #40bea7;
     color: #000;
     padding: 20px;
     font-size: 10pt;
@@ -102,7 +101,7 @@ form.navbar-form button {
     width: 100%;
 }
 .cart-icon {
-    background-color: #40bea7;
+    background-color: #f4bf6f;
     color:#fff;
     padding: 10px 15px;
     width: 40px;
@@ -120,7 +119,7 @@ form.navbar-form button {
 }
 
 .navigation {
-    background: #40bea7;
+    background: #f4bf6f;
 }
 .navigation nav {
     border: none;
@@ -148,7 +147,7 @@ form.navbar-form button {
     box-shadow: none !important;
 }
 .shop-category ul.dropdown-menu {
-    background: #40bea7;
+    background: #f4bf6f;
     border-radius: 0px;
     border:0px;
     padding-top: 17px;
@@ -202,7 +201,7 @@ ol.carousel-indicators li {
     border: none;
 }
 ol.carousel-indicators li.active {
-    background: #40bea7;
+    background: #f4bf6f;
 }
 .small-slider .carousel-caption {
     text-align: left;
@@ -253,20 +252,20 @@ ol.carousel-indicators li.active {
 .single-process i.fa {
     color: #fff;
     font-size: 35px;
-    border: 3px solid #40bea7;
+    border: 3px solid #f4bf6f;
     border-radius: 50%;
     padding: 20px;
-    background: #40bea7;
+    background: #f4bf6f;
 }
 .single-process:hover i.fa {
     background: #fff;
-    color:#40bea7;
+    color:#f4bf6f;
 }
 .featured-items {
     padding: 60px 0px;
 }
 .nav.nav-tabs {
-    background: #40bea7;
+    background: #f4bf6f;
     border: none;
     text-transform: uppercase;  
     margin: 0px 15px 30px;
@@ -274,7 +273,7 @@ ol.carousel-indicators li.active {
     font-family: 'raleway', sans-serif;
 }
 .nav.nav-tabs li.active a {
-    background: #3aa28f;
+    background: #f4bf6f;
     border: none;
     border-radius: 0px;
 }
@@ -289,7 +288,7 @@ ol.carousel-indicators li.active {
 .nav.nav-tabs li:hover a {
     border: 0px;
     border-radius: 0px;
-    background: #3aa28f;
+    background: #f4bf6f;
     color: #fff;
 }
 .nav.nav-tabs li.collection-url a {
@@ -297,7 +296,7 @@ ol.carousel-indicators li.active {
     padding: 11px;
 }
 .single-product {
-    border:3px solid #40bea7;
+    border:3px solid #f4bf6f;
     margin-bottom: 30px;
     position: relative;
     transition: .2s all ease-in-out;
@@ -319,7 +318,7 @@ ol.carousel-indicators li.active {
     transition: .2s all ease-in-out;
 }
 .product-description {
-    background: #40bea7;
+    background: #f4bf6f;
 }
 .product-description p {
     margin: 0px;
