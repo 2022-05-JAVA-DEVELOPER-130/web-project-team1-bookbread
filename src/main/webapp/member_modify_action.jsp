@@ -4,7 +4,7 @@
 <%@include file="login_check.jspf"%>
 <%
 	if(request.getMethod().equals("GET")){
-		response.sendRedirect("member_modify_form.jsp");
+		response.sendRedirect("shop_main.jsp");
 		return;
 	}
 	try{
@@ -26,13 +26,3 @@
 	}
 
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
