@@ -20,15 +20,20 @@ public class MemberService {
 	}
 	
 	//로그인
-	public Member login(String userId,String password) throws Exception {
+	public int login(String userId,String password) throws Exception {
+		int result=-1;
 		Member member = memberDao.findMember(userId);
 		if(member == null) {
-			throw new UserNotFoundException(userId + "는 존재하지 않는 아이디입니다.");
+			result=0;//아이디 존재하지 않을때
+		}else {
+			if(member.isMatchPassword(password)) {
+				result=2;//패스워드 일치
+			}else {
+				result=1;//패스워드 불일치
+			}
 		}
-		if(member.isMatchPassword(password)) {
-			throw new UserNotFoundException("패쓰워드가 일치하지 않습니다");
-		}
-		return member;
+		
+		return result;
 	}
 	
 	//회원정보

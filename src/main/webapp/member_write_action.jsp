@@ -15,14 +15,7 @@
 	String interest = (String) request.getParameter("interest");
 	
 	MemberService memberService = new MemberService();
-	int rowCount = memberService.create(new Member(userId,
-												   password,
-												   name,
-												   phone,
-												   birth,
-												   address,
-												   email,
-												   interest));
+	int rowCount = memberService.create(new Member(userId,password,name,phone,birth,address,email,interest));
 %>
 <!DOCTYPE html>
 <html>
