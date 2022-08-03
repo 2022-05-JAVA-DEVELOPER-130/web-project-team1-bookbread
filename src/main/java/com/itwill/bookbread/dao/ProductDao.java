@@ -78,6 +78,30 @@ public class ProductDao {
 		return findProductName;
 	}
 	
+	// 도서이름 리스트 찾기
+	public List<Product> selectListName(String p_name)throws Exception{
+		List<Product> productListname = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
+		pstmt.setString(1, p_name);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListname.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+							);
+		}
+		con.close();
+		return productListname;
+	}
+	
 	// 저자 이름으로 찾기
 	public Product selectByauthor(String p_author) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -102,6 +126,31 @@ public class ProductDao {
 		con.close();
 		return findProductauthor;
 	}
+	
+	// 저자이름 리스트 찾기
+	public List<Product> selectListAuthor(String p_author)throws Exception{
+		List<Product> productListauthor = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_AUTHOR);
+		pstmt.setString(1, p_author);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListauthor.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListauthor;
+	}
+	
 	
 	// 출판사 이름으로 찾기
 	public Product selectBypublisher(String p_publisher) throws Exception {
@@ -128,6 +177,31 @@ public class ProductDao {
 		return findProductpublisher;
 	}
 	
+	// 출판사이름 리스트 찾기
+	public List<Product> selectListPublisher(String p_publisher)throws Exception{
+		List<Product> productListpublisher = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_PUBLISHER);
+		pstmt.setString(1, p_publisher);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListpublisher.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListpublisher;
+	}
+	
+	
 	// 도서 타입으로 찾기
 	public Product selectByTYPE(int type_no) throws Exception {
 		Connection con = dataSource.getConnection();
@@ -152,6 +226,31 @@ public class ProductDao {
 		con.close();
 		return findProducttype;
 	}
+	
+	// 타입으로 리스트 찾기
+	public List<Product> selectListType(String type_no)throws Exception{
+		List<Product> productListType = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_TYPE);
+		pstmt.setString(1, type_no);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListType.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListType;
+	}
+	
 	
 	// 도서 번호로 찾기
 	public Product selectByNO(int p_no) throws Exception {

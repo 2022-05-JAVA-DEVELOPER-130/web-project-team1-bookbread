@@ -10,16 +10,16 @@ public class ProductSQL {
 
 	// 도서이름으로 도서찾기
 	public final static String PRODUCT_BY_NAME = "select * from product where p_name=?";
-
+	
 	// 저자이름으로 도서찾기
 	public final static String PRODUCT_BY_AUTHOR = "select * from product where p_author=?";
-
+	
 	// 출판사이름으로 도서찾기
 	public final static String PRODUCT_BY_PUBLISHER = "select * from product where p_publisher=?";
-
+	
 	// 도서타입으로 도서찾기
 	public final static String PRODUCT_BY_TYPE = "select * from product where type_no=?";
-
+	
 	// 도서번호로 도서찾기
 	public final static String PRODUCT_BY_NO = "select * from product where p_no=?";
 	

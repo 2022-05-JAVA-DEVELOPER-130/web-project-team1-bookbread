@@ -6,12 +6,10 @@ import com.itwill.bookbread.dao.ProductDao;
 import com.itwill.bookbread.dto.BookType;
 import com.itwill.bookbread.dto.Product;
 
-import com.itwill.bookbread.dto.BookType;
-
 public class ProductDaoTestMain {
 
 	public static void main(String[] args) throws Exception {
-		
+
 		ProductDao productDao = new ProductDao();
 		
 		// Test_A) 전체도서리스트 출력
@@ -40,6 +38,18 @@ public class ProductDaoTestMain {
 	
 		// Test_I) 도서 삭제
 		//System.out.println(productDao.deleteByProductNo(1));
+		
+		// 도서 이름리스트
+		//System.out.println(productDao.selectListName("신규도서1"));
+		
+		// 저자 이름리스트
+		//System.out.println(productDao.selectListAuthor("박준영"));
+		
+		// 출판사 이름리스트
+		//System.out.println(productDao.selectListPublisher("아이티윌"));
+		
+		// 도서 타입리스트
+		//System.out.println(productDao.selectListType("3"));
 	}
 
 }

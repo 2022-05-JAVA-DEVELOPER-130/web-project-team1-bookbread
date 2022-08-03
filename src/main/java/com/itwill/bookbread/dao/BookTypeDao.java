@@ -44,11 +44,11 @@ public class BookTypeDao {
 	}
 	
 	// 번호로 도서 타입 선택
-	public BookType BooktypeByNo(int type_no)throws Exception {
+	public BookType BooktypeByNo(BookType booktype)throws Exception {
 		BookType BooktypeByNo = null;
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(BookTypeSQL.TYPE_SELECT_BY_NO);
-		pstmt.setInt(1, type_no);
+		pstmt.setInt(1, booktype.getType_no());
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
 			BooktypeByNo = new BookType(rs.getInt("type_no"),
@@ -58,31 +58,31 @@ public class BookTypeDao {
 	}
 	
 	// 타입추가
-	public int insertBookType(int type_no, String p_type)throws Exception{
+	public int insertBookType(BookType booktype)throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(BookTypeSQL.TYPE_INSERT);
-		pstmt.setInt(1, type_no);
-		pstmt.setString(2, p_type);
+		pstmt.setInt(1, booktype.getType_no());
+		pstmt.setString(2, booktype.getP_type());
 		int rowCount =pstmt.executeUpdate();
 		return rowCount;
 	}
 	
 	// 타입수정
-	public int UpdateBookType(int type_no, String p_type) throws Exception {
+	public int UpdateBookType(BookType booktype) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(BookTypeSQL.TYPE_UPDATE);
-		pstmt.setInt(1, type_no);
-		pstmt.setString(2, p_type);
+		pstmt.setInt(1, booktype.getType_no());
+		pstmt.setString(2, booktype.getP_type());
 		int rowCount = pstmt.executeUpdate();
 		con.close();
 		return rowCount;
 	}
 	
 	// 타입삭제
-	public int DeleteBookType(int type_no) throws Exception {
+	public int DeleteBookType(BookType booktype) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(BookTypeSQL.TYPE_DELETE);
-		pstmt.setInt(1, type_no);
+		pstmt.setInt(1, booktype.getType_no());
 		int rowCount = pstmt.executeUpdate();
 		con.close();
 		return rowCount;

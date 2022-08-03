@@ -5,7 +5,7 @@ import java.util.List;
 import com.itwill.bookbread.dao.BookTypeDao;
 import com.itwill.bookbread.dto.BookType;
 
-public class BookTypeTestMain {
+public class BookTypeDaoTestMain {
 	
 	public static void main(String[] args) throws Exception {
 		
