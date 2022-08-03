@@ -3,10 +3,12 @@
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
-/*	if(request.getMethod().equalsIgnoreCase("GET")){
+/*
+		if(request.getMethod().equalsIgnoreCase("GET")){
 		response.sendRedirect("shop_main.jsp");
 		return;
-	}*/
+		}
+*/
 	MemberService memberService = new MemberService();
 	Member member = memberService.findMember(sUserId);
 %>
@@ -44,10 +46,17 @@
 				<td><input type="text" name="email" value="<%=member.getEmail()%>"></td>
 			</tr>
 			<tr>
-				<td>흥미</td>
+				<td>취미</td>
 				<td><input type="text" name="interest" value="<%=member.getInterest()%>"></td>
 			</tr>
 		</table>
 	</form>
+			<table>
+				<tr>
+					<td>
+						<input type="button" value="수정" onClick="memberModifyAction();">&nbsp;
+					</td>
+				</tr>
+			</table>
 </body>
 </html>

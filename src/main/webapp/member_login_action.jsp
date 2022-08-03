@@ -7,6 +7,7 @@
     pageEncoding="UTF-8" session="true"%>
 
 <%
+<<<<<<< HEAD
 if(request.getMethod().equalsIgnoreCase("GET")){
 	response.sendRedirect("user_login_form.jsp");
 	return;
@@ -63,3 +64,26 @@ try{
 	response.sendRedirect("user_error.jsp");
 }
 %>
+=======
+	if (request.getMethod().equalsIgnoreCase("GET")) {
+		response.sendRedirect("member_login_form.jsp");
+		return;
+	}
+	String userId = request.getParameter("userId");
+	String password =request.getParameter("password");
+	MemberService memberService= new MemberService();
+	Member rowCount = memberService.login(userId, password);
+		 
+	
+%>			
+			
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+</body>
+</html>
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team1-bookbread.git
