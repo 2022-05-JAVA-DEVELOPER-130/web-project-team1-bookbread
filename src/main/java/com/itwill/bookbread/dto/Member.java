@@ -89,6 +89,15 @@ public class Member {
 	public void setInterest(String interest) {
 		this.interest = interest;
 	}
+	//password 일치여부
+	public boolean isMatchPassword(String password) {
+		boolean isMatch=false;
+		if(this.password.equals(password)) {
+			isMatch=true;
+		}
+		return isMatch;
+	}
+	
 
 	@Override
 	public String toString() {
