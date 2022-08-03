@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-<<<<<<< HEAD
+
 String msg1 = (String) request.getAttribute("msg1");
 if (msg1 == null)
 	msg1 = "";
@@ -13,14 +13,7 @@ if (msg2 == null)
 Member fMember = (Member) request.getAttribute("fMember");
 if (fMember == null)
 	fMember = new Member("", "", "", "", "", "", "", "");
-=======
-String msg1=(String)request.getAttribute("msg1");
-if(msg1==null)msg1="";
-String msg2=(String)request.getAttribute("msg2");
-if(msg2==null)msg2="";
-Member fMember=(Member)request.getAttribute("fMember");
-if(fMember==null)fMember=new Member("","","","","","","","");
->>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team1-bookbread.git
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
