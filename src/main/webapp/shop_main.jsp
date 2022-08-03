@@ -1,10 +1,18 @@
+<%@page import="com.itwill.bookbread.dto.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+ProductService productService = new ProductService();
+
+
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>책빵 메인</title>
+<title>한셈몰 메인</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel=stylesheet href="css/styles.css" type="text/css">
 <link rel=stylesheet href="css/menu.css" type="text/css"> 
