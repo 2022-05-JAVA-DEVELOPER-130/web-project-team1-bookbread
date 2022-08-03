@@ -228,11 +228,11 @@ public class ProductDao {
 	}
 	
 	// 타입으로 리스트 찾기
-	public List<Product> selectListType(String type_no)throws Exception{
+	public List<Product> selectListType(int type_no)throws Exception{
 		List<Product> productListType = new ArrayList<>();
 		Connection con =dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_TYPE);
-		pstmt.setString(1, type_no);
+		pstmt.setInt(1, type_no);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
 			productListType.add(

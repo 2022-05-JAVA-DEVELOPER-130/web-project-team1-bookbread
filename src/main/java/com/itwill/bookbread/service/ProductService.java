@@ -17,7 +17,8 @@ public class ProductService {
 	
 	// 도서 전체 리스트찾기
 	public List<Product> selectAll() throws Exception{
-		return productdao.selectAll();
+		List<Product> productList = productdao.selectAll();
+		return productList;
 	}
 	
 	// 도서이름으로 리스트찾기
@@ -36,7 +37,7 @@ public class ProductService {
 	}
 	
 	// 도서타입으로 리스트찾기
-	public List<Product> selectListType(String type_no)throws Exception {
+	public List<Product> selectListType(int type_no)throws Exception {
 		return productdao.selectListType(type_no);
 	}
 	
