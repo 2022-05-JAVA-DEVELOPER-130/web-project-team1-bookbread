@@ -16,6 +16,8 @@ public class OrdersSQL {
 	 * 주문번호 1개 상세조회
 	 */
 	public static final String SELECT_O_NO = "select o_no from orders where userid = ?";
+	public static final String SELECT_ORDER_NO="select o_no from orders where userid =?";
+	
 	public static final String ORDER_LIST_BY_O_NO="select * from orders o join order_item oi on oi.o_no = o.o_no join product p on p.p_no = oi.p_no where o.userid= ? and o.o_no=?";
 	/*
 	 * 주문번호 선택 삭제

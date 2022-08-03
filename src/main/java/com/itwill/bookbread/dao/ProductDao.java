@@ -34,23 +34,22 @@ public class ProductDao {
 	public List<Product> selectAll() throws Exception {
 		List<Product> productList = new ArrayList<Product>();
 		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_LIST);
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_LIST_DETAIL);
 		ResultSet rs = pstmt.executeQuery();
 		while(rs.next()) {
-			productList.add(new Product(rs.getInt("p_no"),
-					rs.getString("p_name"),
-					rs.getString("p_author"),
-					rs.getString("p_publisger"),
-					rs.getString("p_publish_date"),
-					rs.getInt("p_price"),
-					rs.getString("p_image"),
-					rs.getString("p_detail"),
-					new BookType(rs.getInt("type_no"),null)
-							));
+			Product product = new Product(rs.getInt("p_no"), 
+											rs.getString("p_name"), 
+											rs.getString("p_author"),
+											rs.getString("p_publisher"), 
+											rs.getString("p_publish_date"),
+											0,
+											rs.getString("p_image"),
+											rs.getString("p_detail"),
+											new BookType(rs.getInt("type_no"),
+														 rs.getString("p_type")));
+			productList.add(product);
 		}
-		rs.close();
-		con.close();
-		pstmt.close();
+
 		return productList;
 	}
 	
@@ -74,9 +73,33 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductName;
+	}
+	
+	// 도서이름 리스트 찾기
+	public List<Product> selectListName(String p_name)throws Exception{
+		List<Product> productListname = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NAME);
+		pstmt.setString(1, p_name);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListname.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+							);
+		}
+		con.close();
+		return productListname;
 	}
 	
 	// 저자 이름으로 찾기
@@ -99,10 +122,35 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductauthor;
 	}
+	
+	// 저자이름 리스트 찾기
+	public List<Product> selectListAuthor(String p_author)throws Exception{
+		List<Product> productListauthor = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_AUTHOR);
+		pstmt.setString(1, p_author);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListauthor.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListauthor;
+	}
+	
 	
 	// 출판사 이름으로 찾기
 	public Product selectBypublisher(String p_publisher) throws Exception {
@@ -111,7 +159,7 @@ public class ProductDao {
 		pstmt.setString(1, p_publisher);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductpublisher = null;
-		if(rs.next()) {
+		while(rs.next()) {
 			findProductpublisher = new Product(rs.getInt("p_no"),
 										rs.getString("p_name"),
 										rs.getString("p_author"),
@@ -124,16 +172,41 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductpublisher;
 	}
 	
+	// 출판사이름 리스트 찾기
+	public List<Product> selectListPublisher(String p_publisher)throws Exception{
+		List<Product> productListpublisher = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_PUBLISHER);
+		pstmt.setString(1, p_publisher);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListpublisher.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListpublisher;
+	}
+	
+	
 	// 도서 타입으로 찾기
-	public Product selectByTYPE(String type_no) throws Exception {
+	public Product selectByTYPE(int type_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_TYPE);
-		pstmt.setString(1, type_no);
+		pstmt.setInt(1, type_no);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProducttype = null;
 		if(rs.next()) {
@@ -149,16 +222,41 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProducttype;
 	}
 	
+	// 타입으로 리스트 찾기
+	public List<Product> selectListType(String type_no)throws Exception{
+		List<Product> productListType = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_TYPE);
+		pstmt.setString(1, type_no);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListType.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListType;
+	}
+	
+	
 	// 도서 번호로 찾기
-	public Product selectByNO(String p_no) throws Exception {
+	public Product selectByNO(int p_no) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_BY_NO);
-		pstmt.setString(1, p_no);
+		pstmt.setInt(1, p_no);
 		ResultSet rs = pstmt.executeQuery();
 		Product findProductNO = null;
 		if(rs.next()) {
@@ -174,8 +272,8 @@ public class ProductDao {
 										);
 		}
 		rs.close();
-		con.close();
 		pstmt.close();
+		con.close();
 		return findProductNO;
 	}
 	
@@ -184,35 +282,38 @@ public class ProductDao {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_UPDATE_PRICE);
 		pstmt.setInt(1, product.getP_price());
-		int rowCount = pstmt.executeUpdate();
+		pstmt.setInt(2, product.getP_no());
+		int updateRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
-		return rowCount;
+		return updateRowCount;
 	}
 	
 	// 도서추가
 	public int InsertProduct(Product product) throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_INSERT);
-		pstmt.setInt(1, product.getP_no());
-		pstmt.setString(2, product.getP_name());
-		pstmt.setString(3, product.getP_author());
-		pstmt.setString(4, product.getP_publisher());
-		pstmt.setString(5, product.getP_publish_date());
-		pstmt.setInt(6, product.getP_price());
-		pstmt.setString(7, product.getP_image());
-		pstmt.setString(8, product.getP_detail());
-		pstmt.setInt(9, product.getBookType().getType_no());
-		int rowCount = pstmt.executeUpdate();
-		return rowCount;
+		pstmt.setString(1, product.getP_name());
+		pstmt.setString(2, product.getP_author());
+		pstmt.setString(3, product.getP_publisher());
+		pstmt.setString(4, product.getP_publish_date());
+		pstmt.setInt(5, product.getP_price());
+		pstmt.setString(6, product.getP_detail());
+		pstmt.setInt(7, product.getBookType().getType_no());
+		int insertRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return insertRowCount;
 	}
 	
 	// 도서삭제
-	public int deleteProduct(Product product)throws Exception {
+	public int deleteByProductNo(int p_no)throws Exception {
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt= con.prepareStatement(ProductSQL.PRODUCT_DELETE);
-		pstmt.setInt(1, product.getP_no());
-		int rowCount = pstmt.executeUpdate();
+		pstmt.setInt(1, p_no);
+		int deleteRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
-		return rowCount;
+		return deleteRowCount;
 	}
 }
