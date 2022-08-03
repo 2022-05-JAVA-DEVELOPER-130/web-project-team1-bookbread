@@ -8,7 +8,7 @@
 
 <%
 if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("user_login_form.jsp");
+	response.sendRedirect("member_login_form.jsp");
 	return;
 }
 String userId=null;
