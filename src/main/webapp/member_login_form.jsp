@@ -34,7 +34,7 @@ if (msg2 == null)
 
 <script type="text/javascript">
 function MemberCreate() {
-	f.action = "user_write_form.jsp";
+	f.action = "member_write_form.jsp";
 	f.submit();
 }
 
@@ -50,7 +50,7 @@ function login() {
 		return false;
 	}
 
-	f.action = "user_login_action.jsp";
+	f.action = "member_login_action.jsp";
 	f.submit();
 }
 </script>
