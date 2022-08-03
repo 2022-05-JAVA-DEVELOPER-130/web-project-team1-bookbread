@@ -36,9 +36,6 @@ public class ReviewBoardDaoTestMain {
 		// Test_E) 리뷰전체보기
 		//System.out.println(reviewBoardDao.findReviewList());
 
-		// Test_F) 리뷰조회수 증가
-		//System.out.println(reviewBoardDao.countUpdate(new ReviewBoard(2,null,"","",1,new Member("jiwon","","","","","","",""),new Product(4,"","","","",0,"","",new BookType(0,"")))));
-
 		// Test_G) 상품번호의 리뷰 전체리스트보기
 		//System.out.println(reviewBoardDao.findReviewListByPno(1));
 
