@@ -3,7 +3,7 @@
   <display-name>project_shop_web_application</display-name>
   <filter>
     <filter-name>Encoding Filter</filter-name>
-    <filter-class>com.itwill.filter.EncodingFilter</filter-class>
+    <filter-class>com.itwill.shop.common.EncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
       <param-value>UTF-8</param-value>
