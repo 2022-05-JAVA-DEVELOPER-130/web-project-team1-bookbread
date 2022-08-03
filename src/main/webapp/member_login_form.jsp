@@ -22,7 +22,8 @@ if(fMember==null)fMember=new Member("","","","","","","","");
 	아이디<input type="text" name="userId" value="<%=fMember.getUserId()%>"><br>
 	패스워드<input type="text" name="password" value=<%=fMember.getPassword()%>><br>
 
-	<input type = "submit" >
+	<input type="button" value="로그인"	>
+	<input type="button" value="회원가입" >
 </form>
 
 
