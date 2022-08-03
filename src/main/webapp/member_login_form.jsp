@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form method ='post' >
+	id<input type="text" name="userId" value="abc"><br>
+	password<input type="text" name="password" value="abc"><br>
+
+	<input type = "submit">
+</form>
+
 
 </body>
 </html>
