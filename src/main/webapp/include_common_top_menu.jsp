@@ -6,18 +6,13 @@
 	pageEncoding="UTF-8"%>
 
 <%
-String msg1 = request.getParameter("msg1");
-String msg2 = request.getParameter("msg2");
-if (msg1 == null)
-	msg1 = "";
-if (msg2 == null)
-	msg2 = "";
+	String sUserId = (String)session.getAttribute("sUserId");
 %>
 <script type="text/javascript">
 	function login_message(){
 		alert('로그인을 해주세요.');
 		location.href = 'member_login_form.jsp';
-	}	
+	}
 </script>
 
 <div class="top-bar">
