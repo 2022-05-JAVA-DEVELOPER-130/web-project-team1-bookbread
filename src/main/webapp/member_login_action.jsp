@@ -30,7 +30,7 @@ if(result==0){
 	RequestDispatcher rd= request.getRequestDispatcher("member_login_form.jsp");
 	
 }else if(result==2){
-	session.setAttribute("sUserId",userId);
+	session.setAttribute("userId",userId);
 	response.sendRedirect("shop_main.jsp");
 }
 
