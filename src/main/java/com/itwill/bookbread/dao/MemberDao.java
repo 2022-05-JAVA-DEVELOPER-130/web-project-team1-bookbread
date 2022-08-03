@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import javax.print.attribute.standard.PresentationDirection;
+
 import org.apache.jasper.tagplugins.jstl.core.Remove;
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.apache.tomcat.jdbc.pool.DataSource;
@@ -169,6 +171,24 @@ public class MemberDao {
 		con.close();
 		return findPassword;
 	}
+	//아이디 중복체크
+	public boolean existedUser(String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_BT_ID_COUNT);
+		pstmt.setString(1, userId);
+		ResultSet rs = pstmt.executeQuery();
+		boolean isExist = false;
+		rs.next();
+		int count = rs.getInt("cnt");
+		if(count == 1) {
+			isExist = true;
+		}
+		rs.close();
+		pstmt.close();
+		con.close();
+		return isExist;
+	}
+	
 	
 }
 	
