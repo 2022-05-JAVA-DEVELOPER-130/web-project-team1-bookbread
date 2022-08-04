@@ -80,7 +80,7 @@
 			return false;
 		}
 		f.action = "member_wrtie_action.jsp";
-		f.method='POST';
+		f.method = 'POST';
 		f.submit();
 	}
 	function shopMain() {
@@ -103,12 +103,12 @@
 		<table>
 			<tr>
 				<td>사용자 아이디</td>
-				<td><input type="text" name="userId" value="<%=fmember.getUserId()%>"><br><%=msg %>
+				<td><input type="text" name="userId" value="<%=fmember.getUserId()%>"><br>
 				</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="passowrd" value="<%=fmember.getPassword()%>"><br>
+				<td><input type="password" name="password" value="<%=fmember.getPassword()%>"><br>
 				</td>
 			</tr>
 			<tr>
@@ -142,7 +142,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td>취미</td>
+				<td>관심 도서분야</td>
 				<td><input type="text" name="interest" value="<%=fmember.getInterest()%>"><br>
 				</td>
 			</tr>
