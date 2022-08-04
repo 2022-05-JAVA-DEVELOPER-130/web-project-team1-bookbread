@@ -82,7 +82,11 @@ Cart cart = null;
 
 
 </head>
-<body>
+<body onload="cart_item_select_count();" bgcolor=#FFFFFF text=#000000 leftmargin=0 topmargin=0
+	marginwidth=0 marginheight=0>
+<form name="cart_view_form" style="margin:0">
+		<input type="hidden" name="buyType">
+	</form>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp" />
 	<!-- include_common_top_menu.jsp end-->
@@ -97,19 +101,21 @@ Cart cart = null;
 		<div class="container">
 			<div class="row">
 				<%
-				int cart_size = cartList.size();
 				int cart_column_size = 4;
 				int cart_line_count = 1;
 				int tot_price = 0;
 
-				for (int i = 0; i < cartList.size(); i++) {
-					cart = cartList.get(i);
-					tot_price += cart.getProduct().getP_price() * cart.getCart_qty();
-				%>
-
+				for (int i=0;i<cartList.size();i++) {
+					cart=cartList.get(i);
+			%>
+			
+			<%
+			if(i%cart_column_size==0){}
+			%>
+			
 				<%
-				if (i % cart_column_size == 0) {
-				}
+				
+				
 				%>
 				<div class="col-md-4 col-sm-4">
 					<div class="slider small-slider">
@@ -134,9 +140,11 @@ Cart cart = null;
 								</div>
 								<div align="center">
 									가격:<%=cart.getProduct().getP_price()%><br> 
-									<form action="cart_update_action.jsp" method="post"
+									
+									
+									<form method="post"
 												id="cart_update_form_<%=cart.getCart_no()%>">
-				<i								nput type="hidden" name="cart_no"
+												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> 
 													<input type="button" value="-"
 													onclick="changeNumber('-','cart_update_form_<%=cart.getCart_no()%>');"/>
@@ -146,7 +154,7 @@ Cart cart = null;
 													type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cart.getCart_no()%>');"/>
 												<input type="hidden" name="cart_product_unit_price" value="<%=cart.getProduct().getP_price()%>"/>	
-											</form>
+									</form>
 								</div>
 
 							</div>
@@ -176,7 +184,7 @@ Cart cart = null;
 		<table style="padding-left: 10px" border="0" cellpadding="0"
 			cellspacing="1" width="1800">
 			<tr>
-				<td align=center>&nbsp;&nbsp; <a href="product_list.jsp"
+				<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
 					class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
  if (cartList.size() >= 1) {
  %> <a href="javascript:cart_view_form_order_submit();" class=m1>총 <span
@@ -184,10 +192,11 @@ Cart cart = null;
 						주문하기[주문폼]
 				</a> 
 				<form action="cart_delete_item_acion.jsp" method="post">
-				<input type="submit" value="선택삭제"name="cart_no">
+					<input type="submit" value="선택삭제"name="cart_no">
+				</form>
 				<form action="cart_delete_action.jsp" method="post">
-				<input type="submit" value="전체삭제" name="cart_userId">
-			</form>
+					<input type="submit" value="전체삭제" name="cart_userId">
+				</form>
 				
 <%
  }
