@@ -1,5 +1,3 @@
-<%@page import="com.itwill.bookbread.dao.BookTypeDao"%>
-<%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,9 +6,7 @@
 Member fmember = (Member)request.getAttribute("fmember");
 if (fmember == null) {
 	fmember = new Member("", "", "", "", "", "", "", "");
-BookType bookType = (BookType)request.getAttribute("bookType");
 }
-BookTypeDao bookTypeDao = new BookTypeDao();
 String msg = (String)request.getAttribute("msg");
 if(msg==null)msg="";
 %>
