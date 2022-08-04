@@ -52,7 +52,7 @@ function mainBack() {
 					background=""><table
 						width="50" border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><a href="#" onclick="mainBack();"><img
+							<td><a href="shop_main.jsp" onclick="mainBack();"><img
 									src="image/close.JPG"
 									width="60" height="30" border="0"></a></td>
 						</tr>
