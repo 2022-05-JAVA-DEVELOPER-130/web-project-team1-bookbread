@@ -78,6 +78,57 @@ Cart cart = null;
 		form.action = 'cart_update_item_action.jsp';
 		form.submit();
 	}
+	/*
+	cart 아이템전체선택해제
+	*/
+	function cart_item_all_select(e){
+		var cart_item_no_check_list = document.getElementsByName("cart_item_no_check");
+		if(e.target.checked){
+			for (var i = 0; i < cart_item_no_check_list.length; i++) {
+				cart_item_no_check_list.item(i).checked=true;
+			}
+		}else{
+			for (var i = 0; i < cart_item_no_check_list.length; i++) {
+				cart_item_no_check_list.item(i).checked=false;
+			}
+		}
+	}
+	function cart_view_form_select_submit() {
+		var cart_item_no_check_list = document
+				.getElementsByName("cart_item_no_check");
+		var isChecked = false;
+		for (var i = 0; i < cart_item_no_check_list.length; i++) {
+			if (cart_item_no_check_list.item(i).checked === true) {
+				isChecked = true;
+				break;
+			}
+		}
+		if (!isChecked) {
+			alert('제품을선택해주세요');
+
+			return;
+		}
+		document.cart_view_form.buyType.value = 'cart_select';
+		document.cart_view_form.method = 'POST';
+		document.cart_view_form.action = 'order_create_form.jsp';
+		document.cart_view_form.submit();
+	}
+	function cart_item_all_select_checkbox_deselect(){
+		document.getElementById('all_select_checkbox').checked=false;
+	}
+	/*
+	cart item1개삭제하기
+	 */
+	function cart_delete_item_action(formId) {
+		if(window.confirm('해당상품을 장바구니에서 삭제하시겠습니까?')){
+			var form = document.getElementById(formId);
+			form.method = 'POST';
+			form.action = 'cart_delete_item_action.jsp';
+			form.submit();
+		}
+		
+	}
+
 </script>
 
 
@@ -97,6 +148,9 @@ Cart cart = null;
 		<tr valign=bottom>
 			<td width=30% align="center" class=t1><font size=4 color=#000000><b>내&nbsp장바구니</b></font></td>
 	</table>
+	<div width=70% align=center>
+	전체선택<input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();">
+	</div>
 	<div class="slider">
 		<div class="container">
 			<div class="row">
@@ -107,6 +161,7 @@ Cart cart = null;
 
 				for (int i=0;i<cartList.size();i++) {
 					cart=cartList.get(i);
+					tot_price+=cart.getCart_qty()*cart.getProduct().getP_price();
 			%>
 			
 			<%
@@ -128,7 +183,7 @@ Cart cart = null;
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
-								<input type="checkbox" name="cart_item_no_check" >
+								 <input type="checkbox" name="cart_item_no_check" onchange="cart_item_all_select_checkbox_deselect();cart_item_select_count();" value="<%=cart.getCart_no()%>" checked="checked">
 								<!--내 장바구니타이틀이랑 체크박스가 들어가야할 것 같은.. -->
 								<div class="item active"
 									style="background-image: url('images/<%=cart.getProduct().getP_image()%>')">
@@ -155,6 +210,21 @@ Cart cart = null;
 													onclick="changeNumber('+','cart_update_form_<%=cart.getCart_no()%>');"/>
 												<input type="hidden" name="cart_product_unit_price" value="<%=cart.getProduct().getP_price()%>"/>	
 									</form>
+									<form id="cart_delete_item_form_<%=cart.getCart_no()%>">
+												<input type="hidden" name="cart_no"
+													value="<%=cart.getCart_no()%>"> <a
+													href="javascript:cart_delete_item_action('cart_delete_item_form_<%=cart.getCart_no()%>');">
+													<svg xmlns="http://www.w3.org/2000/svg" width="14"
+														height="14" viewBox="0 0 28 28" class="icon--close">
+													<g fill="none" fill-rule="evenodd"> <path
+														d="M0 0H28V28H0z"></path> <g fill="#9B9BA0"
+														transform="translate(6 6)" class="icon--close__group">
+													<rect width="2" height="18" x="7" y="-1" rx="1"
+														transform="rotate(-135 8 8)"></rect> <rect width="2"
+														height="18" x="7" y="-1" rx="1"
+														transform="rotate(-45 8 8)"></rect> </g> </g> </svg>
+												</a>
+											</form>
 								</div>
 
 							</div>
@@ -191,9 +261,6 @@ Cart cart = null;
 						style="font-weight: bold;" id="cart_item_select_count"><%=cartList.size()%></span>개
 						주문하기[주문폼]
 				</a> 
-				<form action="cart_delete_item_acion.jsp" method="post">
-					<input type="submit" value="선택삭제"name="cart_no">
-				</form>
 				<form action="cart_delete_action.jsp" method="post">
 					<input type="submit" value="전체삭제" name="cart_userId">
 				</form>
