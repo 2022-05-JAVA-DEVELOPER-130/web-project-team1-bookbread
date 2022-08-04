@@ -18,7 +18,7 @@ Member member = memberService.findMember(sUserId);
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Delicious Book Modify</title>
+<title>회원정보 수정</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -32,6 +32,24 @@ Member member = memberService.findMember(sUserId);
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+
+<script type="text/javascript">
+	function memberModifyAction() {
+		document.f.action = "member_modify_action.jsp";
+		document.f.method = 'POST';
+		document.f.submit();
+	}
+	function memberview() {
+		f.action="member_view.jsp";
+		f.submit();
+	}
+	function membermain() {
+		f.action="shop_main.jsp"
+		f.submit();
+	}
+</script>
+
+
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
@@ -41,48 +59,47 @@ Member member = memberService.findMember(sUserId);
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
 
-	<form method="post">
+	<form name="f" method="post">
 		<table>
 			<tr>
 				<td>사용자 아이디</td>
-				<td><%=sUserId%></td>
+				<td><%=member.getUserId()%></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="text" name="password"
-					value="<%=member.getPassword()%>"></td>
+				<td><input type="password" name="password" value="<%=member.getPassword()%>"></td>
+			</tr>
+			<tr>
+				<td>비밀번호확인</td>
+				<td><input type="password" name="password" value="<%=member.getPassword()%>"></td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name"
-					value="<%=member.getName()%>"></td>
+				<td><input type="text" name="name" value="<%=member.getName()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text" name="birth"
-					value="<%=member.getBirth()%>"></td>
+				<td><input type="text" name="birth" value="<%=member.getBirth()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="address"
-					value="<%=member.getAddress()%>"></td>
+				<td><input type="text" name="address" value="<%=member.getAddress()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" name="email"
-					value="<%=member.getEmail()%>"></td>
+				<td><input type="text" name="email" value="<%=member.getEmail()%>">&nbsp;</td>
 			</tr>
 			<tr>
 				<td>취미</td>
-				<td><input type="text" name="interest"
-					value="<%=member.getInterest()%>"></td>
+				<td><input type="text" name="interest" value="<%=member.getInterest()%>">&nbsp;</td>
 			</tr>
 		</table>
 	</form>
 	<table>
 		<tr>
-			<td><input type="button" value="수정"
-				onClick="memberModifyAction();">&nbsp;</td>
+			<td><input type="button" value="수정" onClick="memberModifyAction();">&nbsp;</td>
+			<td><input type="button" value="돌아가기" onClick="memberview();">&nbsp;</td>
+			<td><input type="button" value="메인" onClick="membermain();">&nbsp;</td>
 		</tr>
 	</table>
 
