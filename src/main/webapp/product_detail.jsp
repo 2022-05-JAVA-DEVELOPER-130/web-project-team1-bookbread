@@ -45,25 +45,32 @@
 	function add_cart_popup_window(){
 		if (<%=!isLogin%>) {
 			alert('로그인 하세요');
-			location.href = 'user_login_form.jsp';
+			location.href = 'member_login_form.jsp';
 		} else {
 			
 			var left = Math.ceil(( window.screen.width)/3);
 			var top = Math.ceil(( window.screen.height)/3); 
 			console.log(left);
 			console.log(top);
-			var cartWin = window.open("about:blank","cartForm","width=420,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+			var cartWin = window.open("about:blank","cartForm","width=300,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
 			document.add_cart_form.action = 'cart_add_action_popup_window.jsp';
 			document.add_cart_form.target = 'cartForm';
 			document.add_cart_form.method = 'POST';
 			document.add_cart_form.submit();
 		}
 	}
+	
+	function add_cart(){
+		if (<%=!isLogin%>) {
+			alert('로그인 하세요');
+			location.href = 'member_login_form.jsp';
+		}
+	}
 
 	function order_create_form() {
 		if (<%=!isLogin%>) {
 			alert('로그인 하세요');
-			location.href = 'user_login_form.jsp';
+			location.href = 'member_login_form.jsp';
 		} else {
 			document.product_detail_form.method = 'POST';
 			document.product_detail_form.action = 'order_create_form.jsp';
@@ -71,7 +78,7 @@
 		}
 	}
 	function productList() {
-		location.href = 'product_list.jsp';
+		location.href = 'product_list1.jsp?type_no='+'<%=product.getBookType().getType_no()%>';
 	}
 </script>
 </head>
@@ -110,7 +117,7 @@
 										</ul>
 									</td>
 									<td width=30% height=300 align=center class=t1>
-										<form name="add_cart_form" method="post" action="cart_add_action.jsp">
+										<form name="add_cart_form" method="post" onclick="add_cart();">
 											수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
@@ -147,7 +154,7 @@
 										onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
-							</table></td>
+							</table>
 
 
 
