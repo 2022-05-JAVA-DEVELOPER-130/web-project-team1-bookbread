@@ -6,16 +6,16 @@
 
 <%
 ProductService productService = new ProductService();
-List<Product> productList = productService.selectAll();
+String type_noStr = request.getParameter("type_no");
+List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
 %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Delicious Book Bread</title>
+<title>Delicious Book List</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -30,7 +30,6 @@ List<Product> productList = productService.selectAll();
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp" />
@@ -38,6 +37,7 @@ List<Product> productList = productService.selectAll();
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
+
 <div class="slider">
 <div class="container">
 <div class="row">
@@ -65,7 +65,7 @@ List<Product> productList = productService.selectAll();
 					<div class="carousel-inner" role="listbox">
 						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
 							<div class="carousel-caption">
-								<a href="product_detail.jsp?p_no=<%=product.getP_no()%>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<a href="" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							</div>
 						</div>
 					</div>
@@ -78,6 +78,14 @@ List<Product> productList = productService.selectAll();
 </div>
 </div>
 </div>
+
+
+
+		
+
+
+
+
 	<!-- jQuery Library -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>

@@ -1,5 +1,14 @@
+<%@page import="com.itwill.bookbread.dto.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+
+<%
+ProductService productService = new ProductService();
+String type_noStr = request.getParameter("type_no");
+List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,15 +32,56 @@
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
-	<jsp:include page="include_common_top_menu.jsp"/>
+	<jsp:include page="include_common_top_menu.jsp" />
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
-	<jsp:include page="include_common_top.jsp"/>
+	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
 
+<div class="slider">
+<div class="container">
+<div class="row">
+	<%
+	int product_size=productList.size();
+	int product_column_size=4;
+	int product_line_count = 1;
+	
+	
+	for (int i=0;i<productList.size();i++) {
+			Product product=productList.get(i);
+	%>
+	
+	<%
+	if(i%product_column_size==0){}
+	%>
+		<div class="col-md-4 col-sm-4">
+			<div class="slider small-slider">
+				<div id="small-featured" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#small-featured" data-slide-to="0" class="active"></li>
+					</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
+							<div class="carousel-caption">
+								<a href="" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+							</div>
+						</div>
+					</div>
+				</div>
+		<h1>&nbsp;</h1>
+			</div>
+			<%if(i%product_column_size==3){}%>
+		</div>
+		<%} %>
+</div>
+</div>
+</div>
 
 
 
+		
 
 
 

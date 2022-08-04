@@ -18,7 +18,7 @@ img {
     font-family: 'Open Sans', sans-serif;
 }
 .btn-theme {
-    background: #d17c0a;
+    background: #f4b352;
     border-radius: 0px;
     color: #fff !important;
     font-size: 10pt;
@@ -29,7 +29,7 @@ img {
     background: #494949;
 }
 .top-bar {
-    background-color: #f4bf6f;
+    background-color: white;
     min-height: 58px;
 }
 .social,
@@ -205,7 +205,6 @@ ol.carousel-indicators li.active {
 }
 .small-slider .carousel-caption {
     text-align: left;
-	margin: 20px 20px 20px 20px;
 }
 .big-slider .carousel-caption {
     top: 25%;

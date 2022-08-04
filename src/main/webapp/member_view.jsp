@@ -62,7 +62,7 @@
 			<td><%=member.getEmail() %></td>
 		</tr>
 		<tr>
-			<td>취미</td>
+			<td>관심 도서분야</td>
 			<td><%=member.getInterest() %></td>
 		</tr>
 	</table>
