@@ -1,3 +1,5 @@
+<%@page import="com.itwill.bookbread.dao.BookTypeDao"%>
+<%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +8,9 @@
 Member fmember = (Member)request.getAttribute("fmember");
 if (fmember == null) {
 	fmember = new Member("", "", "", "", "", "", "", "");
+BookType bookType = (BookType)request.getAttribute("bookType");
 }
+BookTypeDao bookTypeDao = new BookTypeDao();
 String msg = (String)request.getAttribute("msg");
 if(msg==null)msg="";
 %>
@@ -143,7 +147,11 @@ if(msg==null)msg="";
 			</tr>
 			<tr>
 				<td>관심 도서분야</td>
-				<td><input type="text" name="interest" value="<%=fmember.getInterest()%>"><br>
+				<td>
+				<input type="radio" name="interest" value="소설">소설&nbsp;
+				<input type="radio" name="interest" value="경영경제">경영경제&nbsp;
+				<input type="radio" name="interest" value="어린이">어린이&nbsp;
+				<input type="radio" name="interest" value="교육" checked>교육&nbsp;
 				</td>
 			</tr>
 		</table>
