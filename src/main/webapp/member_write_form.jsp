@@ -82,8 +82,8 @@
 		f.action = "member_write_action.jsp";
 		f.submit();
 	}
-	function memberList() {
-		f.action="member_list.jsp";
+	function shopMain() {
+		f.action="shop_main.jsp";
 		f.submit();
 	}
 	
@@ -102,56 +102,55 @@
 		<table>
 			<tr>
 				<td>사용자 아이디</td>
-				<td><input type="text" name="userId"
-					value="<%=fmember.getUserId()%>"><br><font color="red"><%=msg %></font>
+				<td><input type="text" name="userId" value="<%=fmember.getUserId()%>"><br><font color="red"><%=msg %></font>
 				</td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="passowrd"
-					value="<%=fmember.getPassword()%>"><br></td>
+				<td><input type="password" name="passowrd" value="<%=fmember.getPassword()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>비밀번호확인</td>
-				<td><input type="password" name="password2"
-					value="<%=fmember.getPassword()%>"><br></td>
+				<td><input type="password" name="password2" value="<%=fmember.getPassword()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name"
-					value="<%=fmember.getName()%>"><br></td>
+				<td><input type="text" name="name" value="<%=fmember.getName()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>전화번호</td>
-				<td><input type="text" name="phone"
-					value="<%=fmember.getPhone()%>"><br></td>
+				<td><input type="text" name="phone" value="<%=fmember.getPhone()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text" name="birth"
-					value="<%=fmember.getBirth()%>"><br></td>
+				<td><input type="text" name="birth" value="<%=fmember.getBirth()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><input type="text" name="address"
-					value="<%=fmember.getAddress()%>"><br></td>
+				<td><input type="text" name="address" value="<%=fmember.getAddress()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="text" name="email"
-					value="<%=fmember.getEmail()%>"><br></td>
+				<td><input type="text" name="email" value="<%=fmember.getEmail()%>"><br>
+				</td>
 			</tr>
 			<tr>
 				<td>취미</td>
-				<td><input type="text" name="interest"
-					value="<%=fmember.getInterest()%>"><br></td>
+				<td><input type="text" name="interest" value="<%=fmember.getInterest()%>"><br>
+				</td>
 			</tr>
 		</table>
 	</form>
 	<table>
 		<tr>
-			<td><input type="button" value="회원가입" onclick="memberCreate();">&nbsp;
-				<input type="button" value="목록" onclick="memberList();">&nbsp;<br>
+			<td><input type="button" value="회원가입" onClick="memberCreate();">&nbsp;
+				<input type="button" value="목록" onClick="shopMain();">
 			</td>
 		</tr>
 	</table>
