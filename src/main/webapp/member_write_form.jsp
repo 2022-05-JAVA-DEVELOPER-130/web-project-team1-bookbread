@@ -80,7 +80,10 @@
 			return false;
 		}
 		f.action = "member_write_action.jsp";
-		f.method='POST';
+		f.submit();
+	}
+	function memberList() {
+		f.action="member_list.jsp";
 		f.submit();
 	}
 	
@@ -95,7 +98,7 @@
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
 
-	<form name="f" method="post" action="member_write_action.jsp">
+	<form name="f" method="post">
 		<table>
 			<tr>
 				<td>사용자 아이디</td>
