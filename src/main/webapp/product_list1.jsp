@@ -65,7 +65,7 @@ List<Product> productList = productService.selectListType(Integer.parseInt(type_
 					<div class="carousel-inner" role="listbox">
 						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
 							<div class="carousel-caption">
-								<a href="" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<a href="product_detail.jsp?p_no=<%=product.getP_no()%>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							</div>
 						</div>
 					</div>

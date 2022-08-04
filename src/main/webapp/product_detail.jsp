@@ -5,9 +5,10 @@
     
     
   <%
+  
   String p_noStr = request.getParameter("p_no");
   if (p_noStr == null || p_noStr.equals("")) {
-		response.sendRedirect("product_list.jsp");
+		response.sendRedirect("product_list1.jsp");
 		return;
   }
   

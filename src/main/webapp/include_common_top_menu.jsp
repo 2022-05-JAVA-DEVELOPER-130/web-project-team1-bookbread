@@ -32,10 +32,10 @@
 						<%} else {
 							Member sMember = new MemberService().findMember(sUserId);
 						%>
-							<li><a href="member_view.jsp"> 마이페이지</a></li>
-							<li><a href="member_logout_action.jsp">로그아웃</a></li>
-							<li><a href="cart_view.jsp">장바구니</a></li>
-							<li><a href="order_list.jsp">주문조회</a></li>
+							<li><a href="member_view.jsp" style="color: black;"> 마이페이지</a></li>
+							<li><a href="member_logout_action.jsp" style="color: black;">로그아웃</a></li>
+							<li><a href="cart_view.jsp" style="color: black;">장바구니</a></li>
+							<li><a href="order_list.jsp" style="color: black;">주문조회</a></li>
 						<%} %>
 						</ul>
 					</div>
