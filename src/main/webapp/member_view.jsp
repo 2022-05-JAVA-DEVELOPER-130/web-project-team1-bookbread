@@ -66,10 +66,9 @@ Member member = memberService.findMember(sUserId);
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-							<a href=member_remove_action.jsp><p
-									onclick="alert('정말 탈퇴하시겠습니까?')">
+							<a href=member_remove_action.jsp; onclick="alert('정말 탈퇴하시겠습니까?')";>
 									<b>회원탈퇴하기</b>
-								</p></a>
+							</a>
 						</td>
 					</tr>
 

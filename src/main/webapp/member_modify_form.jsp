@@ -40,11 +40,11 @@ Member member = memberService.findMember(sUserId);
 		document.f.submit();
 	}
 	function memberview() {
-		f.action="member_view.jsp";
+		f.action = "member_view.jsp";
 		f.submit();
 	}
 	function membermain() {
-		f.action="shop_main.jsp"
+		f.action = "shop_main.jsp"
 		f.submit();
 	}
 </script>
@@ -58,58 +58,91 @@ Member member = memberService.findMember(sUserId);
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
-
-	<form name="f" method="post">
+	<br/><br/>
 		<table>
-			<tr>
-				<td>사용자 아이디</td>
-				<td><%=member.getUserId()%></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password" value="<%=member.getPassword()%>"></td>
-			</tr>
-			<tr>
-				<td>비밀번호확인</td>
-				<td><input type="password" name="password" value="<%=member.getPassword()%>"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="name" value="<%=member.getName()%>">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td><input type="text" name="birth" value="<%=member.getBirth()%>">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>주소</td>
-				<td><input type="text" name="address" value="<%=member.getAddress()%>">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>이메일</td>
-				<td><input type="text" name="email" value="<%=member.getEmail()%>">&nbsp;</td>
-			</tr>
-			<tr>
-				<td>취미</td>
-				<td><input type="text" name="interest" value="<%=member.getInterest()%>">&nbsp;</td>
-			</tr>
-		</table>
+			<form name="f" method="post">
+				<table align=center width="30%" border="1" cellpadding="0"
+					cellspacing="1" bgcolor="BBBBBB" bordercolor="#fff">
+
+					<tr>
+						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
+							<font color="#fff"><b>회원아이디</b></font>
+						</td>
+						<td style="padding-left: 15px"><%=member.getUserId()%></td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+							<font color="#fff"><b>비밀번호</b></font>
+						<td style="padding-left: 15px"><input type="password" name="password"
+							value="<%=member.getPassword()%>"></td>
+
+
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+							<font color="#fff"><b>비밀번호 재확인</b></font>
+						<td style="padding-left: 15px"><input type="password" name="password"
+							value="<%=member.getPassword()%>"></td>
+						
+						
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>이름</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="name"
+							value="<%=member.getName()%>">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>생년월일</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="birth"
+							value="<%=member.getBirth()%>">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>주소</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="address"
+							value="<%=member.getAddress()%>">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>이메일</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="email"
+							value="<%=member.getEmail()%>">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>관심 도서분야</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="interest"
+							value="<%=member.getInterest()%>">&nbsp;</td>
+
+
+					</tr>
+				</table>
 	</form>
-	<table>
+	<br/>
+	<table align=center >
 		<tr>
-			<td><input type="button" value="수정" onClick="memberModifyAction();">&nbsp;</td>
+			<td><input type="button" value="수정"
+						onClick="memberModifyAction();">&nbsp;</td>
 			<td><input type="button" value="돌아가기" onClick="memberview();">&nbsp;</td>
 			<td><input type="button" value="메인" onClick="membermain();">&nbsp;</td>
 		</tr>
 	</table>
+</table>
 
 
 	<!-- jQuery Library -->
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+				src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- Script -->
 	<script src="js/script.js"></script>
 	<h1>&nbsp;</h1>
@@ -118,5 +151,7 @@ Member member = memberService.findMember(sUserId);
 		<jsp:include page="include_common_bottom.jsp" />
 		<!-- include_common_bottom.jsp end-->
 	</div>
+
+
 </body>
 </html>
