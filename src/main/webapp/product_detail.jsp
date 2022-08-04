@@ -59,13 +59,6 @@
 			document.add_cart_form.submit();
 		}
 	}
-	
-	function add_cart(){
-		if (<%=!isLogin%>) {
-			alert('로그인 하세요');
-			location.href = 'member_login_form.jsp';
-		}
-	}
 
 	function order_create_form() {
 		if (<%=!isLogin%>) {
@@ -117,7 +110,7 @@
 										</ul>
 									</td>
 									<td width=30% height=300 align=center class=t1>
-										<form name="add_cart_form" method="post" onclick="add_cart();">
+										<form name="add_cart_form" method="post" action="cart_add_action.jsp">
 											수량 :
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
@@ -134,7 +127,7 @@
 												<option value="9">9
 												<option value="10">10
 											</select> 권<br><br> 
-												<input type=submit value="장바구니에담기[장바구니보여주기]" /><br><br> 
+												<input type=submit value="장바구니에담기[장바구니보여주기]"/><br><br> 
 												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기[계속쇼핑팝업]" />
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
