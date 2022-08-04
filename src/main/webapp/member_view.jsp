@@ -26,6 +26,16 @@ Member member = memberService.findMember(sUserId);
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+
+<script type="text/javascript">
+	function userRemove() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			document.f.action = "member_remove_action.jsp";
+			document.f.method = 'POST';
+			document.f.submit();
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
@@ -37,45 +47,40 @@ Member member = memberService.findMember(sUserId);
 	<br />
 	<br />
 	<br />
-	<form method="post">
-		<table>
+	<table>
 
-			<form name="f" method="post">
-				<table align=center width="20%" border="1" cellpadding="0"
-					cellspacing="1" bgcolor="BBBBBB" bordercolor="#BDBDBD">
-					<tr>
-						<td width=100 height=65 bgcolor="#f4bf6f" align=center class=t1>
-							<font color="#fff"><b>회원서비스</b></font>
-						</td>
-					</tr>
+		<form name="f" method="post">
+			<table align=center width="20%" border="1" cellpadding="0"
+				cellspacing="1" bgcolor="BBBBBB" bordercolor="#BDBDBD">
+				<tr>
+					<td width=100 height=65 bgcolor="#f4bf6f" align=center class=t1>
+						<font color="#fff"><b>회원서비스</b></font>
+					</td>
+				</tr>
 
-					<tr>
-						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-							<a href=member_modify_form.jsp><b>나의정보수정</b></a>
-						</td>
-					</tr>
-					<tr>
-						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-							<a href=><b>나의리뷰보기</b></a>
-						</td>
-					</tr>
-					<tr>
-						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-							<a href=order_list.jsp><b>나의주문내역</b></a>
-						</td>
-					</tr>
-					<tr>
-						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-							<a href=member_remove_action.jsp; onclick="alert('정말 탈퇴하시겠습니까?')";>
-									<b>회원탈퇴하기</b>
-							</a>
-						</td>
-					</tr>
+				<tr>
+					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href=member_modify_form.jsp><b>나의정보수정</b></a>
+					</td>
+				</tr>
+				<tr>
+					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href=><b>나의리뷰보기</b></a>
+					</td>
+				</tr>
+				<tr>
+					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href=order_list.jsp><b>나의주문내역</b></a>
+					</td>
+				</tr>
+				<tr>
+					<td width=100 height=40 align=center bgcolor="ffffff" class=t1
+						onClick="userRemove()"><a href=#><b>회원탈퇴하기</b></a></td>
+				</tr>
 
-				</table>
-			</form>
-		</table>
-	</form>
+			</table>
+		</form>
+	</table>
 	<br />
 
 

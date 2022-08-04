@@ -1,5 +1,4 @@
 <%@page import="com.itwill.bookbread.service.MemberService"%>
-<%@page import="java.nio.file.attribute.UserPrincipalLookupService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
