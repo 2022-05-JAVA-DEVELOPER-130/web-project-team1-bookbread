@@ -246,7 +246,7 @@ Cart cart = null;
 	<table>
 		<table align=center border="0" cellpadding=0">
 			<tr>
-				<td align>총&nbsp;가격&nbsp;:&nbsp;<%=tot_price%>&nbsp;원
+				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;원
 				</td>
 		</table>
 
@@ -254,7 +254,7 @@ Cart cart = null;
 		<table style="padding-left: 10px" border="0" cellpadding="0"
 			cellspacing="1" width="1800">
 			<tr>
-				<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
+				<td align=center>&nbsp;&nbsp; <a href="product_list1.jsp"
 					class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
  if (cartList.size() >= 1) {
  %> <a href="javascript:cart_view_form_order_submit();" class=m1>총 <span
