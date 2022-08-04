@@ -3,8 +3,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
-	MemberService memberService = new MemberService();
-	Member member = memberService.findMember(sUserId);
+MemberService memberService = new MemberService();
+Member member = memberService.findMember(sUserId);
 %>
 <!DOCTYPE html>
 <html>
@@ -29,55 +29,75 @@
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
-	<jsp:include page="include_common_top_menu.jsp"/>
+	<jsp:include page="include_common_top_menu.jsp" />
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
-	<jsp:include page="include_common_top.jsp"/>
+	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
-	
-<form method="post">
+<br /><br /><br />
+	<form method="post">
+		<table>
+
+			<form name="f" method="post">
+				<table  align=center width="20%" border="1" cellpadding="0"
+					cellspacing="1" bgcolor="BBBBBB" bordercolor="#BDBDBD">
+					<tr>
+						<td width=100 height=70 bgcolor="#f4bf6f" align=center class=t1><font color="#fff"><b>회원서비스</b></font></td>
+					</tr>
+
+					<tr>
+						<td width=100 height=40 align=center bgcolor="ffffff" class=t1> 
+						<a href=member_modify_form.jsp><b>나의정보수정</b></a></td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href=><b>나의리뷰보기</b></a></td>
+					</tr>
+						<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href=order_list.jsp><b>나의주문내역</b></a></td>
+				</table>
+			</form>
+			<br />
+			<tr>
+				<td>사용자 아이디</td>
+				<td><%=sUserId%></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><%=member.getName()%></td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><%=member.getPhone()%></td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td><%=member.getBirth()%></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><%=member.getAddress()%></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><%=member.getEmail()%></td>
+			</tr>
+			<tr>
+				<td>관심 도서분야</td>
+				<td><%=member.getInterest()%></td>
+			</tr>
+		</table>
+	</form>
 	<table>
 		<tr>
-			<td>사용자 아이디</td>
-			<td><%=sUserId %></td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><%=member.getName() %></td>
-		</tr>
-		<tr>
-			<td>전화번호</td>
-			<td><%=member.getPhone() %></td>
-		</tr>
-		<tr>
-			<td>생년월일</td>
-			<td><%=member.getBirth() %></td>
-		</tr>
-		<tr>
-			<td>주소</td>
-			<td><%=member.getAddress() %></td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td><%=member.getEmail() %></td>
-		</tr>
-		<tr>
-			<td>관심 도서분야</td>
-			<td><%=member.getInterest() %></td>
+			<td><input type="button" value="수정" onClick="memberModify()">&nbsp;
+				<input type="button" value="탈퇴" onClick="memberRemove()">&nbsp;
+			</td>
 		</tr>
 	</table>
-</form>
-<table>
-	<tr>
-		<td>
-			<input type="button" value="수정" onClick="memberModify()">&nbsp;
-			<input type="button" value="탈퇴" onClick="memberRemove()">&nbsp;
-		</td>
-	</tr>
-</table>
 
 
-<!-- jQuery Library -->
+	<!-- jQuery Library -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
