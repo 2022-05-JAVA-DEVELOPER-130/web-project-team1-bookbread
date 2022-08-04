@@ -79,13 +79,16 @@ if(msg==null)msg="";
 			f.interest.focus();
 			return false;
 		}
-		f.action = "member_wrtie_action.jsp";
+		f.action = "member_write_action.jsp";
 		f.method = 'POST';
 		f.submit();
 	}
 	function shopMain() {
 		f.action="shop_main.jsp";
 		f.submit();
+	}
+	function operIdCheck(){
+		window.open('member_id_chenk_form.jsp','checkForm','resizable = no,scrollbar = no');
 	}
 	
 </script>

@@ -51,8 +51,8 @@ public class MemberService {
 	}
 
 	// 아이디 중복체크
-	public boolean existedUser(String userdId) throws Exception {
-		boolean isExist = memberDao.existedUser(userdId);
+	public boolean existedUser(String userId) throws Exception {
+		boolean isExist = memberDao.existedUser(userId);
 		if (isExist) {
 			return true;
 		} else {
