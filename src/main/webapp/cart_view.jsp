@@ -3,13 +3,12 @@
 <%@page import="com.itwill.bookbread.service.CartService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!-- <@include file="login_check.jspf"> -->
+<%@include file="login_check.jspf"%>
 
 <%
-String sUserId = "soyoon";
 CartService cartService = new CartService();
 List<Cart> cartList = cartService.cartItemList(sUserId);
-
+Cart cart=null;
 %>
 <!DOCTYPE html>
 <html>
@@ -31,6 +30,13 @@ List<Cart> cartList = cartService.cartItemList(sUserId);
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+<script type="text/javascript">
+
+
+
+</script>
+
+
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
@@ -39,8 +45,65 @@ List<Cart> cartList = cartService.cartItemList(sUserId);
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
 	<!-- include_common_top.jsp end-->
+<div class="slider">
+<div class="container">
+<div class="row">
+	<%
+	int cart_size=cartList.size();
+	int cart_column_size=4;
+	int cart_line_count = 1;
 	
-<%=cartList %>
+	
+	for (int i=0;i<cartList.size();i++) {
+			cart=cartList.get(i);
+	%>
+	
+	<%
+	if(i%cart_column_size==0){}
+	%>
+		<div class="col-md-4 col-sm-4">
+			<div class="slider small-slider">
+				<div id="small-featured" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#small-featured" data-slide-to="0" class="active"></li>
+					</ol>
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+					<input type="checkbox"> 
+					<!--내 장바구니타이틀이랑 체크박스가 들어가야할 것 같은.. -->
+						<div class="item active" style="background-image: url('images/<%=cart.getProduct().getP_image()%>')">
+							<div class="carousel-caption">
+								<a href="product_detail.jsp?p_no= <%=cart.getProduct().getP_no() %>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+							</div>
+						</div>
+						<div align="center">
+						가격:<%=cart.getProduct().getP_price() %>
+						</div>
+						
+					</div>
+				</div>
+		<h1>&nbsp;</h1>
+			</div>
+			<%if(i%cart_column_size==3){}%>
+			
+		</div>
+		<%} %>
+</div>
+</div>
+</div>
+		<table style="padding-left:10px" border="0" cellpadding="0" cellspacing="1" width="590">
+		<form action="cart_delete_item_acion.jsp" method="post">
+		<tr>
+		<td align=center><input type="submit" value="선택삭제" name ="cart_no">
+		</form>
+		
+		
+		<form action="cart_delete_action.jsp" method="post">
+		<input type="submit" value="전체삭제" name="cart_userId">
+		</tr>
+		</form>
+		</table>
 
 <!-- jQuery Library -->
 	<script
