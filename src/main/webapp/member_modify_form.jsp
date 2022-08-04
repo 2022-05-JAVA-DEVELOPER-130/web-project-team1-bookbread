@@ -119,11 +119,7 @@ Member member = memberService.findMember(sUserId);
 						<font color="#fff"><b>관심 도서분야</b></font>
 						</td>
 						<td style="padding-left: 15px">
-						<input type="radio" name="interest" value="소설">소설&nbsp;
-						<input type="radio" name="interest" value="경영경제">경영경제&nbsp;
-						<input type="radio" name="interest" value="어린이">어린이&nbsp;
-						<input type="radio" name="interest" value="교육">교육&nbsp;
-						</td>
+						<input type="text" name="interest" readonly="readonly" value="<%=member.getInterest()%>">&nbsp;</td>
 
 
 					</tr>
