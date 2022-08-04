@@ -5,12 +5,12 @@
 
 <%
 	if(request.getMethod().equalsIgnoreCase("GET")){
-		response.sendRedirect("cart_view.jsp");
+		response.sendRedirect("product_list.jsp");
 		return;
 	}
-	String cart_noStr = request.getParameter("cart_no");
+	String cart_no = request.getParameter("cart_no");
 	CartService cartService = new CartService();
-	cartService.selectDelete(Integer.parseInt(cart_noStr));
+	cartService.selectDelete(Integer.parseInt(cart_no));
 	response.sendRedirect("cart_view.jsp");
 
 %>

@@ -118,8 +118,8 @@ Member member = memberService.findMember(sUserId);
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
 						<font color="#fff"><b>관심 도서분야</b></font>
 						</td>
-						<td style="padding-left: 15px"><input type="text" name="interest"
-							value="<%=member.getInterest()%>">&nbsp;</td>
+						<td style="padding-left: 15px">
+						<input type="text" name="interest" readonly="readonly" value="<%=member.getInterest()%>">&nbsp;</td>
 
 
 					</tr>

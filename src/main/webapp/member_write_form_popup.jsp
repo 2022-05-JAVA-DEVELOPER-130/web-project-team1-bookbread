@@ -142,7 +142,11 @@
 			</tr>
 			<tr>
 				<td>관심 도서분야</td>
-				<td><input type="text" name="interest" value=""><br>
+				<td>
+				<input type="radio" name="interest" value="소설">소설&nbsp;
+				<input type="radio" name="interest" value="경영경제">경영경제&nbsp;
+				<input type="radio" name="interest" value="어린이">어린이&nbsp;
+				<input type="radio" name="interest" value="교육" checked>교육&nbsp;
 				</td>
 			</tr>
 		</table>
