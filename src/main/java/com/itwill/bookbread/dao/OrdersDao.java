@@ -82,12 +82,21 @@ public class OrdersDao {
 	 * 주문 선택 삭제
 	 */
 	public int selectDelete(int o_no) throws Exception {
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(OrdersSQL.ORDER_DELETE_BY_NO);
-
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int deleteCount = 0;
+		try {
+		con = dataSource.getConnection();
+		con.setAutoCommit(false);
+		pstmt=con.prepareStatement(OrdersSQL.ORDER_DELETE_BY_NO);
 		pstmt.setInt(1, o_no);
-		int deleteCount = pstmt.executeUpdate();
-
+		deleteCount = pstmt.executeUpdate();
+		con.commit();
+		}catch (Exception e) {
+			con.rollback();
+			e.printStackTrace();
+			throw e;
+		}
 		con.close();
 		return deleteCount;
 	}
@@ -96,14 +105,21 @@ public class OrdersDao {
 	 * 주문 전체 삭제
 	 */
 	public int deleteAll(String userId) throws Exception {
-		Connection con = dataSource.getConnection();
-		PreparedStatement pstmt = con.prepareStatement(OrdersSQL.ORDER_DELETE_ALL);
-
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int deleteAllCount = 0;
+		try {
+		con= dataSource.getConnection();
+		con.setAutoCommit(false);
+		pstmt=con.prepareStatement(OrdersSQL.ORDER_DELETE_ALL);
 		pstmt.setString(1, userId);
-
-		int deleteAllCount = pstmt.executeUpdate();
-
-		con.close();
+		deleteAllCount = pstmt.executeUpdate();
+		con.commit();
+		}catch (Exception e) {
+			con.rollback();
+			e.printStackTrace();
+			throw e;
+		}
 		return deleteAllCount;
 	}
 

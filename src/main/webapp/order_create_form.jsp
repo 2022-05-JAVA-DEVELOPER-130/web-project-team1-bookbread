@@ -2,6 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 
+<%
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("order_list.jsp");
+		return;
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%>
+
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">

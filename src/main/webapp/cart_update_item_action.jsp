@@ -3,6 +3,8 @@
 <%@include file="login_check.jspf"%>
 
 <%
-
+	if(request.getMethod().equalsIgnoreCase("GET")){
+		response.sendRedirect("cart_view.jsp");
+	}
 
 %>
