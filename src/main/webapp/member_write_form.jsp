@@ -75,7 +75,7 @@ if(msg==null)msg="";
 			return false;
 		}
 		if (f.interest.value == "") {
-			alert("취미를 입력하세요");
+			alert("관심 도서분야를 입력하세요");
 			f.interest.focus();
 			return false;
 		}
@@ -86,9 +86,6 @@ if(msg==null)msg="";
 	function shopMain() {
 		f.action="shop_main.jsp";
 		f.submit();
-	}
-	function operIdCheck(){
-		window.open('member_id_chenk_form.jsp','checkForm','resizable = no,scrollbar = no');
 	}
 	
 </script>
