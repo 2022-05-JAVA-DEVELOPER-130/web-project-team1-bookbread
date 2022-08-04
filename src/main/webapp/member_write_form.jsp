@@ -33,7 +33,7 @@
 
 <script type="text/javascript">
 	
-	function MemberCreate() {
+	function memberCreate() {
 		if (document.f.userId.value == "") {
 			alert("사용자 아이디를 입력하세요");
 			f.userId.focus();
@@ -79,7 +79,7 @@
 			f.interest.focus();
 			return false;
 		}
-		f.action = "member_write_action.jsp";
+		f.action = "member_wrtie_action.jsp";
 		f.submit();
 	}
 	function shopMain() {
