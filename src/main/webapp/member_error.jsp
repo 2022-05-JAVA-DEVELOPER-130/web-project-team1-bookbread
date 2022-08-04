@@ -7,7 +7,12 @@
 <meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>
 <link href='/challenge/neo_include/good2.css' rel='stylesheet'
 	type='text/css'>
-<script Language='JavaScript' src='/challenge/neo_include/neverdie.js'></script>
+<script Language='JavaScript' >
+function mainBack() {
+	f.action = "shop_main.jsp";
+	f.submit();
+}
+</script>
 </head>
 
 
@@ -47,7 +52,7 @@
 					background=""><table
 						width="50" border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td><a href="#" onclick="history.back();"><img
+							<td><a href="#" onclick="mainBack();"><img
 									src="image/close.JPG"
 									width="60" height="30" border="0"></a></td>
 						</tr>
