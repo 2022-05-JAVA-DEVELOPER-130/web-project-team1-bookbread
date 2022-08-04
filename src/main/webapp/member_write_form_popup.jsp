@@ -69,7 +69,7 @@
 			return false;
 		}
 		if (f.interest.value == "") {
-			alert("취미를 입력하세요");
+			alert("관심 도서분야를 입력하세요");
 			f.interest.focus();
 			return false;
 		}
