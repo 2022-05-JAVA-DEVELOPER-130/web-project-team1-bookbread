@@ -29,7 +29,7 @@ Member member = memberService.findMember(sUserId);
 
 <script type="text/javascript">
 	function userRemove() {
-		if (confirm("정말 삭제하시겠습니까?")) {
+		if (confirm("정말 탈퇴하시겠습니까? (당신의 지식레벨이 -1 될 수 있습니다.)")) {
 			document.f.action = "member_remove_action.jsp";
 			document.f.method = 'POST';
 			document.f.submit();
