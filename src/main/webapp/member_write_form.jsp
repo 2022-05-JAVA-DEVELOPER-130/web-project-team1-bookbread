@@ -87,9 +87,6 @@ if(msg==null)msg="";
 		f.action="shop_main.jsp";
 		f.submit();
 	}
-	function operIdCheck(){
-		window.open('member_id_chenk_form.jsp','checkForm','resizable = no,scrollbar = no');
-	}
 	
 </script>
 
