@@ -10,7 +10,7 @@
 <%@include file="login_check.jspf"%>
 <%
 OrdersService ordersService=new OrdersService();
-List<Orders> orderList=ordersService.ordersList(sUserId);
+List<Orders> orderList=ordersService.ordersListAll(sUserId);
 %>
 <!DOCTYPE html>
 <html>
@@ -47,26 +47,25 @@ List<Orders> orderList=ordersService.ordersList(sUserId);
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
 	<!-- include_common_top.jsp end-->
-		<div id="content">
+		<div id="content" align="center">
 				<table border=0 cellpadding=0 cellspacing=0>
 					<tr>
 						<td><br />
-							<table style="padding-left: 10px" border=0 cellpadding=0
-								cellspacing=0>
-								<tr>
-									<td bgcolor="f4f4f4" height="22">&nbsp;&nbsp;<b>책 -
-											주문 목록</b></td>
-								</tr>
+						
+						<td align="center" class=t1><font size=4 color=#000000><b>주문목록</b></font></td>
+							</table>
+							
 							</table> <!--form-->
+							<br>
 							<form name="f" method="post">
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문번호</font></td>
-										<td width=145 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문이름</font></td>
-										<td width=112 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문날짜</font></td>
-										<td width=136 height=25 bgcolor="E6ECDE" align=center class=t1><font>주문가격</font></td>
-										<td width=80 height=25 bgcolor="E6ECDE" align=center class=t1><font></font></td>
+										<td width=145 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문번호</font></td>
+										<td width=145 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문이름</font></td>
+										<td width=112 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문날짜</font></td>
+										<td width=136 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문가격</font></td>
+										<td width=80 height=25 bgcolor="white" align=center class=t1><font></font></td>
 									</tr>
 
 									<!-- order start -->

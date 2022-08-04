@@ -1,5 +1,8 @@
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 a {
     text-decoration: none;
@@ -228,6 +231,10 @@ ol.carousel-indicators li.active {
     position: relative;
 }
 .banner-caption h3 {
+	 font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
     font-family: 'raleway', sans-serif;
     text-transform: uppercase;
     font-weight: 400;
@@ -243,6 +250,10 @@ ol.carousel-indicators li.active {
     padding: 65px 0px;
 }
 .single-process h3 {
+	 font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
     font-family: 'raleway', sans-serif;
     text-transform: uppercase;
     font-weight: 400;
@@ -269,7 +280,10 @@ ol.carousel-indicators li.active {
     text-transform: uppercase;  
     margin: 0px 15px 30px;
     overflow: hidden;
-    font-family: 'raleway', sans-serif;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 .nav.nav-tabs li.active a {
     background: #f4bf6f;
@@ -364,7 +378,10 @@ ol.carousel-indicators li.active {
     height: 45px;
     margin: 0px 15px 30px;
     padding: 2px 15px;
-    font-family: 'raleway', sans-serif;
+     font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 .blog-title h2, .blog-title a {
     color: #fff;
@@ -417,7 +434,10 @@ ol.carousel-indicators li.active {
 }
 .single-post h4.post-title {
     font-weight: 600;
-    font-family: 'raleway', sans-serif;
+     font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 .footer {
     background: #191919;
@@ -447,7 +467,10 @@ ol.carousel-indicators li.active {
     text-transform: uppercase;
     font-weight: 600;
     padding-bottom: 10px;
-    font-family: 'raleway', sans-serif;
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 .widget-inner, .widget-inner a {
     color: #d5d5d5;
@@ -467,7 +490,10 @@ ol.carousel-indicators li.active {
     background: #0e0e0e;
     padding: 30px 0px;
     color: #fff;
-    font-family: 'raleway', sans-serif;
+     font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 
@@ -630,4 +656,8 @@ ul.product-info-btn li:first-child a {
 }
 ul.product-info-btn li:last-child a {
     border: none;
+}
+.mymenu{
+	padding : 30px;
+	 color: #323232;
 }

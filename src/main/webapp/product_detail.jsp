@@ -106,7 +106,7 @@
 											</b></li>
 											<li><b><font color=#000000>도서가격 : <%=product.getP_price()%>원&nbsp;&nbsp;&nbsp;
 											</font></b></li>
-											<li><b><font color=#848484>[MD리뷰]&nbsp;<%=product.getP_detail()%></font></b></li>
+											<li><font color=#848484>[MD리뷰]&nbsp;<%=product.getP_detail()%></font></li>
 										</ul>
 									</td>
 									<td width=30% height=300 align=center class=t1>
