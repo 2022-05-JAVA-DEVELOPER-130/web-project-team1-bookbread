@@ -80,6 +80,7 @@
 			return false;
 		}
 		f.action = "member_wrtie_action.jsp";
+		f.method='POST';
 		f.submit();
 	}
 	function shopMain() {
@@ -102,7 +103,7 @@
 		<table>
 			<tr>
 				<td>사용자 아이디</td>
-				<td><input type="text" name="userId" value="<%=fmember.getUserId()%>"><br><font color="red"><%=msg %></font>
+				<td><input type="text" name="userId" value="<%=fmember.getUserId()%>"><br><%=msg %>
 				</td>
 			</tr>
 			<tr>
