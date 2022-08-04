@@ -11,14 +11,14 @@
 		return;
 	}
 	
-	String userId = (String) request.getParameter("userId");
-	String password = (String) request.getParameter("password");
-	String name = (String) request.getParameter("name");
-	String phone = (String) request.getParameter("phone");
-	String birth = (String) request.getParameter("birth");
-	String address = (String) request.getParameter("address");
-	String email = (String) request.getParameter("email");
-	String interest = (String) request.getParameter("interest");
+	String userId = request.getParameter("userId");
+	String password = request.getParameter("password");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
+	String birth = request.getParameter("birth");
+	String address = request.getParameter("address");
+	String email = request.getParameter("email");
+	String interest = request.getParameter("interest");
 	Member newMember = null;	
 	
 	try{
