@@ -89,7 +89,7 @@ if (fmember == null) {
 	</form>
 	<table>
 		<tr>
-			<td><input type="button" value="회원가입" onclick="memberCreate();">&nbsp;<br>
+			<td><input type="button" value="회원가입" onclick="memberCreate();">&nbsp;
 				<input type="button" value="목록" onclick="memberList();">&nbsp;<br>
 			</td>
 		</tr>
