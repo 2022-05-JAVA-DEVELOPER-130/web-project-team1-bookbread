@@ -1,3 +1,5 @@
+<%@page import="com.itwill.bookbread.dto.BookType"%>
+<%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -11,6 +13,8 @@
 */
 MemberService memberService = new MemberService();
 Member member = memberService.findMember(sUserId);
+Product product = new Product();
+BookType bookType = new BookType();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -119,7 +123,16 @@ Member member = memberService.findMember(sUserId);
 						<font color="#fff"><b>관심 도서분야</b></font>
 						</td>
 						<td style="padding-left: 15px">
-						<input type="text" name="interest" readonly="readonly" value="<%=member.getInterest()%>">&nbsp;</td>
+						
+						<input type="radio" name="interest" value="소설"  checked
+						<% if(member.getInterest().equalsIgnoreCase("소설")){%>checked<%}%>>소설&nbsp;
+						<input type="radio" name="interest" value="경영경제" 
+						<% if(member.getInterest().equalsIgnoreCase("경영경제")){%>checked<%}%>>경영경제&nbsp;
+						<input type="radio" name="interest" value="어린이" 
+						<% if(member.getInterest().equalsIgnoreCase("어린이")){%>checked<%}%>>어린이&nbsp;
+						<input type="radio" name="interest" value="교육" 
+						<% if(member.getInterest().equalsIgnoreCase("교육")){%>checked<%}%>>교육&nbsp;
+						</td>
 
 
 					</tr>
