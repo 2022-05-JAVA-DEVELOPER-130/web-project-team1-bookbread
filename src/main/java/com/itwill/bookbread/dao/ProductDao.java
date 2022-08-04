@@ -268,7 +268,7 @@ public class ProductDao {
 										rs.getInt("p_price"),
 										rs.getString("p_image"),
 										rs.getString("p_detail"),
-										new BookType(rs.getInt("type_no"),null)
+										new BookType(rs.getInt("type_no"),rs.getString("p_type"))
 										);
 		}
 		rs.close();

@@ -38,17 +38,59 @@ BookType bookType = new BookType();
 <link rel="stylesheet" href="css/responsive.css">
 
 <script type="text/javascript">
-	function memberModifyAction() {
-		document.f.action = "member_modify_action.jsp";
-		document.f.method = 'POST';
-		document.f.submit();
-	}
 	function memberview() {
 		f.action = "member_view.jsp";
 		f.submit();
 	}
 	function membermain() {
 		f.action = "shop_main.jsp"
+		f.submit();
+	}
+	
+	function memberModifyCheck() {
+		if (f.password.value == "") {
+			alert("비밀번호를 입력하세요");
+			f.password.focus();
+			return false;
+		}
+		if (f.password2.value == "") {
+			alert("비밀번호확인을 입력하세요");
+			f.password2.focus();
+			return false;
+		}
+		if (f.name.value == "") {
+			alert("사용자 이름을 입력하세요");
+			f.name.focus();
+			return false;
+		}
+		if (f.phone.value == "") {
+			alert("전화번호를 입력하세요");
+			f.phone.focus();
+			return false;
+		}
+		if (f.birth.value == "") {
+			alert("생년월일을 입력하세요");
+			f.birth.focus();
+			return false;
+		}
+		if (f.address.value == "") {
+			alert("주소를 입력하세요");
+			f.address.focus();
+			return false;
+		}
+		if (f.email.value == "") {
+			alert("이메일을 입력하세요");
+			f.email.focus();
+			return false;
+		}
+		if (f.password.value != f.password2.value){
+			alert("비밀번호가 일치하지 않습니다.");
+			f.password.focus();
+			f.password.select();
+			return false;
+		}
+		f.action = "member_modify_action.jsp";
+		f.method = 'POST';
 		f.submit();
 	}
 </script>
@@ -65,9 +107,14 @@ BookType bookType = new BookType();
 	<br/><br/>
 		<table>
 			<form name="f" method="post">
+				<table align=center width="30%" border="1" cellpadding="0" bordercolor="#fff">
+					<tr width="40%" height=60 align=center bgcolor="#f4bf6f" class=t1>
+						<td><font color="#fff" size=4px><b>회원 정보수정</b></font></td>
+					</tr>
+				</table>
+					
 				<table align=center width="30%" border="1" cellpadding="0"
 					cellspacing="1" bgcolor="BBBBBB" bordercolor="#fff">
-
 					<tr>
 						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
 							<font color="#fff"><b>회원아이디</b></font>
@@ -79,23 +126,26 @@ BookType bookType = new BookType();
 							<font color="#fff"><b>비밀번호</b></font>
 						<td style="padding-left: 15px"><input type="password" name="password"
 							value="<%=member.getPassword()%>"></td>
-
-
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
-							<font color="#fff"><b>비밀번호 재확인</b></font>
-						<td style="padding-left: 15px"><input type="password" name="password"
+							<font color="#fff"><b>비밀번호 확인</b></font>
+						<td style="padding-left: 15px"><input type="password" name="password2"
 							value="<%=member.getPassword()%>"></td>
-						
-						
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>이름</b></font>
+						<font color="#fff"><b>이 름</b></font>
 						</td>
 						<td style="padding-left: 15px"><input type="text" name="name"
 							value="<%=member.getName()%>">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>전화번호</b></font>
+						</td>
+						<td style="padding-left: 15px"><input type="text" name="phone"
+							value="<%=member.getPhone()%>">&nbsp;</td>
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
@@ -106,7 +156,7 @@ BookType bookType = new BookType();
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>주소</b></font>
+						<font color="#fff"><b>주 소</b></font>
 						</td>
 						<td style="padding-left: 15px"><input type="text" name="address"
 							value="<%=member.getAddress()%>">&nbsp;</td>
@@ -138,11 +188,11 @@ BookType bookType = new BookType();
 					</tr>
 				</table>
 	</form>
-	<br/>
+	<br/><br/>
 	<table align=center >
 		<tr>
 			<td><input type="button" value="수정"
-						onClick="memberModifyAction();">&nbsp;</td>
+						onClick="memberModifyCheck();">&nbsp;</td>
 			<td><input type="button" value="돌아가기" onClick="memberview();">&nbsp;</td>
 			<td><input type="button" value="메인" onClick="membermain();">&nbsp;</td>
 		</tr>

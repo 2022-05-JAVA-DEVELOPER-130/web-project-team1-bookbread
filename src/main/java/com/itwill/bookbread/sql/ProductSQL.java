@@ -21,7 +21,7 @@ public class ProductSQL {
 	public final static String PRODUCT_BY_TYPE = "select * from product where type_no=?";
 	
 	// 도서번호로 도서찾기
-	public final static String PRODUCT_BY_NO = "select * from product where p_no=?";
+	public final static String PRODUCT_BY_NO = "select * from product p join book_type b on p.type_no = b.type_no where p_no=?";
 	
 	// 도서가격 수정
 	public final static String PRODUCT_UPDATE_PRICE = "update product set p_price=? where p_no=?";

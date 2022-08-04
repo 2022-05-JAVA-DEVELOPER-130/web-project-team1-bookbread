@@ -18,9 +18,9 @@
 		String birth = request.getParameter("birth");
 		String address = request.getParameter("address");
 		String email = request.getParameter("email");
-		String interst = request.getParameter("interest");
+		String interest = request.getParameter("interest");
 		
-		Member member = new Member(sUserId,password,name,phone,birth,address,email,"");
+		Member member = new Member(sUserId,password,name,phone,birth,address,email,interest);
 		MemberService memberService = new MemberService();
 		
 		int updateRowCount = memberService.update(member);

@@ -68,9 +68,10 @@
 			f.email.focus();
 			return false;
 		}
-		if (f.interest.value == "") {
-			alert("관심 도서분야를 입력하세요");
-			f.interest.focus();
+		if (f.password.value != f.password2.value){
+			alert("비밀번호가 일치하지 않습니다.");
+			f.password.focus();
+			f.password.select();
 			return false;
 		}
 		f.action = "member_write_action.jsp";

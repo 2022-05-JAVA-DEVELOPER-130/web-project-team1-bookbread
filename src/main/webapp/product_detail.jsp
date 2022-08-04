@@ -1,3 +1,4 @@
+<%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
 <%@page import="com.itwill.bookbread.service.ReviewBoardService"%>
@@ -23,7 +24,6 @@
   ProductService productService = new ProductService();
   Product product = productService.selectByNO(Integer.parseInt(p_noStr));
   ReviewBoardService reviewBoardService = new ReviewBoardService();
-  
   ReviewBoard reviewBoard = new ReviewBoard();
   
   %>
@@ -65,6 +65,18 @@
 			document.add_cart_form.submit();
 		}
 	}
+	
+	function add_cart_action(){
+		if (<%=!isLogin%>) {
+			alert('로그인 하세요');
+			location.href = 'member_login_form.jsp';
+		} else {
+			document.add_cart_form.action = 'cart_add_action.jsp';
+			document.add_cart_form.target = 'cartForm';
+			document.add_cart_form.method = 'POST';
+			document.add_cart_form.submit();
+		}
+	}
 
 	function order_create_form() {
 		if (<%=!isLogin%>) {
@@ -90,7 +102,7 @@
 	<!-- include_common_top.jsp end-->
 
 
-<table style="margin: auto" border=0 width=70% height=376
+<table style="margin: auto" border=0 width=70% height=400
 								align=center>
 								<tr valign=bottom>
 									<td width=15% align=center class=t1><font size=2
@@ -103,16 +115,24 @@
 								<tr width=100%>
 									<td colspan=3 height=5><hr color=#556b2f></td>
 								</tr>
-								<tr width=100%>
-									<td width=15% height=300 align=center><img border=0
-										src='images/<%=product.getP_image()%>' width=120 height=200></td>
+								<tr>
+									<td align=center><img border=0
+										src='images/<%=product.getP_image()%>'></td>
 									<td width=30% height=300 class=t1>
 										<ul type="disc">
-											<li><b>도서명 : <%=product.getP_name()%>&nbsp;&nbsp;&nbsp;
+											<li type="none"><font size=6px><b><%=product.getP_name()%></b></font>&nbsp;&nbsp;&nbsp;
+											</b></li><br/>
+											<li><font size=3px><b>저&nbsp;&nbsp;&nbsp;자 : <%=product.getP_author()%></b></font> &nbsp;&nbsp;&nbsp;
 											</b></li>
-											<li><b><font color=#000000>도서가격 : <%=product.getP_price()%>원&nbsp;&nbsp;&nbsp;
-											</font></b></li>
-											<li><font color=#848484>[MD리뷰]&nbsp;<%=product.getP_detail()%></font></li>
+											<li><font size=3px><b>출판사 : <%=product.getP_publisher()%></b></font>&nbsp;&nbsp;&nbsp;
+											</b></li>
+											<li><font size=3px><b>출판일 : <%=product.getP_publish_date()%></b></font>&nbsp;&nbsp;&nbsp;
+											</b></li>
+											<li><font size=3px><b>분&nbsp;&nbsp;&nbsp;류 : <%=product.getBookType().getP_type()%></b></font>&nbsp;&nbsp;&nbsp;
+											</b></li>
+											<li><b><font size=3px color=#000000>도서가격 : <%=product.getP_price()%>원</font></b>&nbsp;&nbsp;&nbsp;
+											</font></b></li><br/>
+											<li><font color=#848484>[MD리뷰]&nbsp;<%=product.getP_detail()%></font></li><br/><br/>
 										</ul>
 									</td>
 									<td width=30% height=300 align=center class=t1>
@@ -142,18 +162,18 @@
 								<tr>
 									<td colSpan=3 height=21><hr color=#556b2f></td>
 								</tr>
-							</table> <!-- 
-							</form>
-							-->
-
+							</table>
 
 							<table style="margin: auto" border="0" cellpadding="0" cellspacing="1">
-								<tr>
+								<tr valign=bottom>
 									<td align=center><input type="button" value="주문하기[주문폼]"
 										onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
 								</tr>
-							</table>
+							</table><br/><br/><br/>
+							
+							
+							
 <table style="margin: auto" border=0 width=70% height=376
 								align=center>
 								<tr valign=top>
