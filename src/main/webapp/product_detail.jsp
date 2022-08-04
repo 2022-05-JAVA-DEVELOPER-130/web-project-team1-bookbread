@@ -8,7 +8,7 @@
   
   String p_noStr = request.getParameter("p_no");
   if (p_noStr == null || p_noStr.equals("")) {
-		response.sendRedirect("product_list1.jsp");
+		response.sendRedirect("shop_main.jsp");
 		return;
   }
   
@@ -84,21 +84,32 @@
 	<!-- include_common_top.jsp end-->
 
 
-<table style="margin-left: 10px" border=0 width=80% height=376
+<table style="margin: auto" border=0 width=70% height=376
 								align=center>
 								<tr valign=bottom>
-									<td width=30% align=center class=t1><font size=2
-										color=#0000FF><b>주문량</b></font></td>
+									<td width=15% align=center class=t1><font size=2
+										color=#000000><b>도&nbsp;&nbsp;서</b></font></td>
+									<td width=45% align=center class=t1><font size=2
+										color=#000000><b>도서 소개</b></font></td>
 									<td width=40% align=center class=t1><font size=2
-										color=#0000FF><b>멍멍이 이름</b></font></td>
-									<td width=30% align=center class=t1><font size=2
-										color=#0000FF><b>멍멍이 소개</b></font></td>
+										color=#000000><b>주&nbsp;&nbsp;문</b></font></td>
 								</tr>
 								<tr width=100%>
 									<td colspan=3 height=5><hr color=#556b2f></td>
 								</tr>
 								<tr width=100%>
-									<td width=30% height=200 align=center class=t1>
+									<td width=15% height=300 align=center><img border=0
+										src='images/<%=product.getP_image()%>' width=120 height=200></td>
+									<td width=30% height=300 class=t1>
+										<ul type="disc">
+											<li><b>도서명 : <%=product.getP_name()%>&nbsp;&nbsp;&nbsp;
+											</b></li>
+											<li><b><font color=#000000>도서가격 : <%=product.getP_price()%>원&nbsp;&nbsp;&nbsp;
+											</font></b></li>
+											<li><b><font color=#848484>[MD리뷰]&nbsp;<%=product.getP_detail()%></font></b></li>
+										</ul>
+									</td>
+									<td width=30% height=300 align=center class=t1>
 										<form name="add_cart_form" method="post" action="cart_add_action.jsp">
 											수량 :
 											<!-- 
@@ -115,22 +126,11 @@
 												<option value="8">8
 												<option value="9">9
 												<option value="10">10
-											</select> 마리<br><br> 
+											</select> 권<br><br> 
 												<input type=submit value="장바구니에담기[장바구니보여주기]" /><br><br> 
 												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기[계속쇼핑팝업]" />
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
-									</td>
-									<td width=40% height=200 align=center><img border=0
-										src='image/<%=product.getP_image()%>' width=120 height=200></td>
-									<td width=30% height=200 class=t1>
-										<ol type="disc">
-											<li><b>견종 : <%=product.getP_name()%>&nbsp;&nbsp;&nbsp;
-											</b></li>
-											<li><font color=#FF0000>가격 : <%=product.getP_price()%>&nbsp;&nbsp;&nbsp;
-											</font></li>
-											<li><font color=#0000FF><%=product.getP_detail()%></font></li>
-										</ol>
 									</td>
 								</tr>
 								<tr>
@@ -141,7 +141,7 @@
 							-->
 
 
-							<table border="0" cellpadding="0" cellspacing="1">
+							<table style="margin: auto" border="0" cellpadding="0" cellspacing="1">
 								<tr>
 									<td align=center><input type="button" value="주문하기[주문폼]"
 										onClick="order_create_form();"> &nbsp; <input
