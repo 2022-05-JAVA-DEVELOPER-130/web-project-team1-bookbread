@@ -26,5 +26,5 @@ public class OrdersSQL {
 	/*
 	 * 로그인된 회원 주문내역 전체 삭제 
 	 */
-	public static final String ORDER_DELETE_ALL="delete * from orders where userid=?";
+	public static final String ORDER_DELETE_ALL="delete from orders where userid=?";
 }
