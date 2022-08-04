@@ -8,7 +8,7 @@
 			<div class="row">
 					<div class="logo">
 						<a href="shop_main.jsp">
-						<center><img src="image/BookBreadLogo.png"	alt="Book Bread"></center>
+						<center><img src="image/BookBreadLogo.png"	alt="Book Bread" style="width: 120px;height: 120px;"></center>
 						</a>
 					</div>
 			</div>

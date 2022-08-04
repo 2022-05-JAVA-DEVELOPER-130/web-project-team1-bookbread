@@ -27,8 +27,8 @@
 						<%
 						if(sUserId == null){
 						%>
-							<li><a href="member_write_form.jsp"> 회원가입</a></li>
-							<li><a href="member_login_form.jsp">로그인</a></li>
+							<li><a href="member_write_form.jsp" style="color: black;"> 회원가입</a></li>
+							<li><a href="member_login_form.jsp" style="color: black;">로그인</a></li>
 						<%} else {
 							Member sMember = new MemberService().findMember(sUserId);
 						%>
