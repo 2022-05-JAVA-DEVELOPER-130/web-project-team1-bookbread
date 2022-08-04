@@ -3,11 +3,10 @@
     pageEncoding="UTF-8"%>
 <%
 	String sUserId=(String)session.getAttribute("sUserId");
-	sUserId="jiwon";
-//	Member sUser=(Member)session.getAttribute("sUser");
-/* 	if(sUserId==null){
+	Member sUser=(Member)session.getAttribute("sUser");
+	if(sUserId==null){
 		response.sendRedirect("shop_main.jsp");
 		sUserId="junyoung";
 		return;
-	} */
+	}
 %>  
