@@ -1,3 +1,4 @@
+<%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="com.itwill.bookbread.dto.Cart"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.bookbread.service.CartService"%>
@@ -29,13 +30,12 @@ MemberService memberService = new MemberService();
 Member member =memberService.findMember(sUserId);
 
 OrdersService orderService = new OrdersService();
-List<Orders> orderList = orderService.ordersListAll(sUserId);
 
 ProductService productService = new ProductService();
 
 CartService cartService = new CartService();
 List<Cart> cartList = new ArrayList<Cart>();
-
+//3가지 방법 모두 카트리스트에 임시로 담아서 뽑아낸다.
 if(buyType.equals("cart")){
 	cartList = cartService.cartItemList(sUserId);
 }else if(buyType.equals("cart_select")){
@@ -43,7 +43,8 @@ if(buyType.equals("cart")){
 		cartList.add(cartService.getCartItem(Integer.parseInt(cart_no_select)));
 	}
 }else if(buyType.equals("direct")){
-	
+	Product product = productService.selectByNO(Integer.parseInt(p_no));
+	cartList.add(new Cart(0,Integer.parseInt(p_qty),member,product));
 }
 %>
 
@@ -67,6 +68,26 @@ if(buyType.equals("cart")){
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
+<script>
+/*
+수량변경
+*/
+function change_cart_qty(){
+	var change_cart_qty_list = document.getElementsByName("change_cart_qty");
+	var cart_qty_selected="1";
+	document.order_create_form.innerHTML='';
+	document.order_create_form.innerHTML+="<input type='hidden' name='p_qty'>";
+	var tot_price=0;
+	for(var i=0; i<change_cart_qty_list.item(i).)
+
+}
+
+
+
+
+
+
+</script>
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp"/>
@@ -144,7 +165,7 @@ if(buyType.equals("cart")){
 	</tr>
 	</table>
 
-<form name="f" method="post">
+<form name="update_order_count" method="post" action="order_create_action">
 <table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB";>
 			
@@ -153,12 +174,32 @@ if(buyType.equals("cart")){
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>수량</font></td>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>가격</font></td>
 	</tr>
-	
+	<%
+	int tot_price=0;
+	for(Cart cart:cartList){
+		tot_price+=cart.getCart_qty()*cart.getProduct().getP_price();
+	%>
 	<tr>
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3></font></td>
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=member.getName() %></font></td>
-	</tr>
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3><%=cart.getProduct().getP_name() %></font></td>
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
 	
+	<select name="change_cart_qty" onclick="">
+	<option value="1">1
+	<option value="2">2
+	<option value="3">3
+	<option value="4">4
+	<option value="5">5
+	<option value="6">6
+	<option value="7">7 
+	<option value="8">8
+	<option value="9">9
+	<option value="10">10
+	</select> 권<br><br> 
+	</input></font></td>
+	
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=tot_price %></font></td>
+	</tr>
+	<%} %>
 	
 </table>
 </form>
