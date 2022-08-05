@@ -1,5 +1,7 @@
 <%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
