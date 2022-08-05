@@ -6,8 +6,7 @@
 
 <%
 ProductService productService = new ProductService();
-String type_noStr = request.getParameter("type_no");
-List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
+List<Product> productList = productService.selectListDate("p_publish_date");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

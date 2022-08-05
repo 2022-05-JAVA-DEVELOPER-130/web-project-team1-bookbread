@@ -317,4 +317,27 @@ public class ProductDao {
 		return deleteRowCount;
 	}
 	
+	// 출판일로 도서리스트
+	public List<Product> selectListDate(String p_publish_date)throws Exception{
+		List<Product> productListDate = new ArrayList<>();
+		Connection con =dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PORDUCT_LIST_DATE);
+		pstmt.setString(1, p_publish_date);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			productListDate.add(
+					new Product(rs.getInt("p_no"),
+							rs.getString("p_name"),
+							rs.getString("p_author"),
+							rs.getString("p_publisher"),
+							rs.getString("p_publish_date"),
+							rs.getInt("p_price"),
+							rs.getString("p_image"),
+							rs.getString("p_detail"),
+							new BookType(rs.getInt("type_no"),null))
+					);
+		}
+		con.close();
+		return productListDate;
+	}
 }
