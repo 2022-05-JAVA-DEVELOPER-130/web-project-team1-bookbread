@@ -660,3 +660,7 @@ ul.product-info-btn li:last-child a {
 	padding : 30px;
 	 color: #323232;
 }
+
+.hidden-col{
+	display : none;
+}
