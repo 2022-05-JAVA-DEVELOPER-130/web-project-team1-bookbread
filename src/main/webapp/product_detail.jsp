@@ -100,6 +100,12 @@
 	<jsp:include page="include_common_top.jsp"/>
 	<!-- include_common_top.jsp end-->
 
+<form name="product_detail_form">
+<input type="hidden" name="p_no" value=<%=product.getP_no() %>>
+<input type="hidden" name="p_qty" value="1">
+<input type="hidden" name="buyType" value="direct">
+</form>
+
 
 <table style="margin: auto" border=0 width=70% height=400
 								align=center>
