@@ -68,7 +68,7 @@ if(buyType.equals("cart")){
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
-<script>
+<script type="text/javascript">
 /*
 수량변경
 */
@@ -78,13 +78,14 @@ function change_cart_qty(){
 	document.order_create_form.innerHTML='';
 	document.order_create_form.innerHTML+="<input type='hidden' name='p_qty'>";
 	var tot_price=0;
-	for(var i=0; i<change_cart_qty_list.item(i).)
+	//for(var i=0; i<change_cart_qty_list.item(i).)
 
 }
-
-function addressModifyAction(){
-	form
-	
+function addressModifyAction() {
+	f.action = "address_modify_action.jsp";
+	f.method = 'POST';
+	f.submit();
+	alert("주소가 변경되었습니다.");
 }
 
 
@@ -152,15 +153,14 @@ function addressModifyAction(){
 	</td>
 	
 	<td width=50 align=center>
-	<input type="button" value="변경" onclick="addressModifyAction();">
+	<input type="button" value="변경" onClick="addressModifyAction()">
 	</td>
 	
 	</tr>
 	
 </table>
 <br>
-
-</form name="f" method="post">
+</form>
 
 <table width=50% align=center>
 	<tr>

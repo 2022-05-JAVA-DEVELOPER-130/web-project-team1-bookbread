@@ -61,7 +61,7 @@ public class MemberService {
 	}
 
 	// 아이디 찾기
-	public Member findId(String name, String phone) throws Exception {
+	public String findId(String name, String phone) throws Exception {
 		return memberDao.findId(name, phone);
 	}
 

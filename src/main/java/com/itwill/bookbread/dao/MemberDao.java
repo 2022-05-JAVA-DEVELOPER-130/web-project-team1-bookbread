@@ -127,7 +127,9 @@ public class MemberDao {
 		return findMemberList;
 	}
 	//아이디 찾기
-	public Member findId(String name, String phone)throws Exception {
+	public String findId(String name, String phone)throws Exception {
+		String mid = null;
+		
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.FIND_MEMBER_ID);
 		Member findId = null;
@@ -135,19 +137,12 @@ public class MemberDao {
 		pstmt.setString(2, phone);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			findId = new Member(rs.getString("userId"),
-							    rs.getString("password"),
-							    rs.getString("name"),
-							    rs.getString("phone"),
-							    rs.getString("birth"),
-							    rs.getString("address"),
-							  	rs.getString("email"),
-							  	rs.getString("interest"));
+			mid = rs.getString("userId");
 		}
 		con.close();
 		pstmt.close();
 		rs.close();
-		return findId;
+		return mid;
 	}
 	//비밀번호 찾기
 	public Member findPassword(String userId,String email)throws Exception{
