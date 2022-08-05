@@ -90,6 +90,9 @@
 	function productList() {
 		location.href = 'product_list1.jsp?type_no='+'<%=product.getBookType().getType_no()%>';
 	}
+	function reviewCreate() {
+		location.href = 'review_board_write.jsp?p_no='+'<%=product.getP_no()%>';
+	}
 </script>
 </head>
 <body>
@@ -174,6 +177,8 @@
 									<td align=center><input type="button" value="주문하기[주문폼]"
 										onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
+										<td align=center><input
+										type="button" value="리뷰작성하기" onClick="reviewCreate();"></td>
 								</tr>
 							</table><br/><br/><br/>
 							
