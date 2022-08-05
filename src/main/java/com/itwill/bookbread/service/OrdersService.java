@@ -25,11 +25,11 @@ public class OrdersService {
 	 */
 	public int create(String userId, int oi_qty, int p_no) throws Exception{
 		Product product = productDao.selectByNO(p_no);
-		OrderItem orderItem = new OrderItem(0, oi_qty, 0, product);
+		OrderItem orderItem = new OrderItem(0, oi_qty, p_no, product);
 		List<OrderItem> orderItemList = new ArrayList<OrderItem>();
 		orderItemList.add(orderItem);
 		String desc = orderItemList.get(0).getProduct().getP_name()+"외"+(oi_qty-1)+"권";
-		int totprice=orderItem.getOi_qty()*orderItem.getProduct().getP_price();
+		int totprice=orderItemList.get(0).getOi_qty()*orderItemList.get(0).getProduct().getP_price();
 		Orders newOrder = new Orders(0, desc, null, totprice, userId, orderItemList);
 		return ordersDao.create(newOrder);
 	}
