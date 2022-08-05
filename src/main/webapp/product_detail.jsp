@@ -72,7 +72,6 @@
 			location.href = 'member_login_form.jsp';
 		} else {
 			document.add_cart_form.action = 'cart_add_action.jsp';
-			document.add_cart_form.target = 'cartForm';
 			document.add_cart_form.method = 'POST';
 			document.add_cart_form.submit();
 		}
@@ -120,7 +119,7 @@
 										src='images/<%=product.getP_image()%>'></td>
 									<td width=30% height=300 class=t1>
 										<ul type="disc">
-											<li type="none"><font size=6px><b><%=product.getP_name()%></b></font>&nbsp;&nbsp;&nbsp;
+											<li type="none"><font size=6px><b>[&nbsp;<%=product.getP_name()%>&nbsp;]</b></font>&nbsp;&nbsp;&nbsp;
 											</b></li><br/>
 											<li><font size=3px><b>저&nbsp;&nbsp;&nbsp;자 : <%=product.getP_author()%></b></font> &nbsp;&nbsp;&nbsp;
 											</b></li>
@@ -153,8 +152,8 @@
 												<option value="9">9
 												<option value="10">10
 											</select> 권<br><br> 
-												<input type=submit value="장바구니에담기[장바구니보여주기]"/><br><br> 
-												<input type=button onclick="add_cart_popup_window();" value="장바구니에담기[계속쇼핑팝업]" />
+												<input type=button onclick="add_cart_action();" value="장바구니 담기[장바구니 이동]"/><br><br> 
+												<input type=button onclick="add_cart_popup_window();" value="장바구니 담기[계속 쇼핑하기]" />
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
 									</td>
