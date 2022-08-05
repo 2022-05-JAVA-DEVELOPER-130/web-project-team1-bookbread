@@ -9,6 +9,7 @@ ProductService productService = new ProductService();
 String type_noStr = request.getParameter("type_no");
 List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,6 +31,7 @@ List<Product> productList = productService.selectListType(Integer.parseInt(type_
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
+
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp" />
@@ -37,7 +39,6 @@ List<Product> productList = productService.selectListType(Integer.parseInt(type_
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
-
 <div class="slider">
 <div class="container">
 <div class="row">
@@ -78,14 +79,6 @@ List<Product> productList = productService.selectListType(Integer.parseInt(type_
 </div>
 </div>
 </div>
-
-
-
-		
-
-
-
-
 	<!-- jQuery Library -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
