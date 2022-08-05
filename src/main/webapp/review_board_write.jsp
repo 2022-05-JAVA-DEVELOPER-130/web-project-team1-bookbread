@@ -66,7 +66,7 @@ function boardCreate() {
 }
 
 function boardList() {
-	f.action = "board_list.jsp";
+	f.action = "shop_main.jsp";
 	f.submit();
 }
 </script>
