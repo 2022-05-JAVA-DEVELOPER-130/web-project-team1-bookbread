@@ -1,16 +1,21 @@
 
+<%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@page import="com.itwill.bookbread.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="login_check.jspf"%>
 <%
 
-String msg1 = request.getParameter("msg1");
-String msg2 = request.getParameter("msg2");
-if (msg1 == null)
-	msg1 = "";
-if (msg2 == null)
-	msg2 = "";
+if(request.getMethod().equalsIgnoreCase("GET")){
+	response.sendRedirect("member_find_id_form.jsp");
+	return;
+}
 
+ String name = request.getParameter("name");
+ String phone = request.getParameter("phone");
+ MemberService memberService = new MemberService();
+ String mid = memberService.findId(name, phone);
+ 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,7 +41,7 @@ if (msg2 == null)
 
 <script type="text/javascript">
 function findId() {
-	f.action = "member_find_id_confirm_form.jsp";
+	f.action = "member_find_id_action.jsp";
 	f.submit();
 }
 </script>
@@ -53,26 +58,10 @@ function findId() {
 							<form name="f" method="post">
 								<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
-									<tr>
-
-										<td width=100 align="center" bgcolor="ffecbb" height="22">사용자
-											이름</td>
-										<td width=190 align="center" bgcolor="ffffff"
-
-											style="padding-left: 5px"><input type="text"
-											style="width: 150" name="name"
-											value="">&nbsp;&nbsp;<font
-											color="red"><%=msg1%></font></td>
-									</tr>
-
-										<td width=100 align="center" bgcolor="ffecbb" height="22">핸드폰번호</td>
-										<td width=190 align="center" bgcolor="ffffff"
-
-											style="padding-left: 5px"><input type="text"
-											style="width: 150" name="phone"
-											value="">&nbsp;&nbsp;<font
-											color="red"><%=msg2%></font></td>
-									</tr>
+									<h2>회원님의 아이디는</h2>
+									<%=
+									mid
+									%>									
 								</table>
 							</form> <br />
 							<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1">

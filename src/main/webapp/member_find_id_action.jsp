@@ -7,58 +7,10 @@
     pageEncoding="UTF-8" session="true"%>
 
 <%
-if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("member_login_form.jsp");
-	return;
-}
-String name=null;
-String phone=null;
-try{
-	name=request.getParameter("name");
-	phone=request.getParameter("phone");
-	MemberService userService=new MemberService();
-	Member findId = userService.findId(name, phone);
-	session.setAttribute("name", name);
-	response.sendRedirect("shop_main.jsp");
-	
-}catch(UserNotFoundException e){
-	/*********************case3[forward]****************
-	request.setAttribute("msg1", e.getMessage());
-	request.setAttribute("fuser",new User(userId,password,"",""));
-	RequestDispatcher rd=
-			request.getRequestDispatcher("user_login_form.jsp");
-	rd.forward(request, response);
-	***********************************/
-	/***************case1[redirect]****************/
-	response.sendRedirect("member_find_id_form.jsp?msg1="+URLEncoder.encode(e.getMessage(), "UTF-8"));
-	/************************************/
-	/*****************case2[정상응답]**********************
-	out.println("<script>");
-	out.println("alert('"+e.getMessage()+"');");
-	out.println("location.href='user_login_form.jsp';");
-	out.println("</script>");
-	********************************************/
-	
-}catch(PasswordMismatchException e){
-	
-	/*********************case3[forward]****************
-	request.setAttribute("msg2", e.getMessage());
-	request.setAttribute("fuser",new User(userId,password,"",""));
-	RequestDispatcher rd=
-			request.getRequestDispatcher("user_login_form.jsp");
-	rd.forward(request, response);
-	***********************************/
-	/***************case1[redirect]****************/
-	response.sendRedirect("member_find_id_form.jsp?msg2="+URLEncoder.encode(e.getMessage(), "UTF-8"));
-	/************************************/
-	/*****************case2[정상응답]**********************
-	out.println("<script>");
-	out.println("alert('"+e.getMessage()+"');");
-	out.println("location.href='user_login_form.jsp';");
-	out.println("</script>");
-	********************************************/
-}catch(Exception e){
-	e.printStackTrace();
-	response.sendRedirect("member_error.jsp");
-}
+
+ 
+ if(mid != null){
+	 response.sendRedirect("member_find_id_confirm_form.jsp");
+ }
+
 %>			
