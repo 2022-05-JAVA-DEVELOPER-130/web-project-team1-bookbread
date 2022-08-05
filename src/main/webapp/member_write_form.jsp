@@ -88,6 +88,12 @@ if (msg == null)
 		f.action = "shop_main.jsp";
 		f.submit();
 	}
+	/*
+	아이디중복체크
+	*/
+	function IdCheck(){
+		window.open('member_id_check_form.jsp','checkForm','width=500,height=300,resizable = no,scrollbar = no');
+	}
 </script>
 
 </head>
@@ -116,8 +122,12 @@ if (msg == null)
 						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
 							<font color="#fff"><b>회원아이디</b></font>
 						</td>
-						<td style="padding-left: 15px"><input type="text"
-							name="userId" value="<%=fmember.getUserId()%>"></td>
+						<td style="padding-left: 15px">
+						<input type="text"
+							name="userId" value="<%=fmember.getUserId()%>">
+						<input type="button" value="아이디중복검사" onclick="IdCheck();">
+											<font color="red"></font>
+						</td>
 					</tr>
 					<tr>
 						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
