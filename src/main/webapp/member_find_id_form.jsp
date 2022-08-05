@@ -33,32 +33,8 @@ if (msg2 == null)
 <link rel="stylesheet" href="css/responsive.css">
 
 <script type="text/javascript">
-function MemberCreate() {
-	f.action = "member_write_form.jsp";
-	f.submit();
-}
-function findId(){
+function findId() {
 	f.action = "member_find_id_form.jsp";
-	f.submit();
-}
-function findPassword(){
-	f.action = "member_find_password_form.jsp";
-	f.submit();
-}
-
-function login() {
-	if (f.userId.value == "") {
-		alert("사용자 아이디를 입력하십시요.");
-		f.userId.focus();
-		return false;
-	}
-	if (f.password.value == "") {
-		alert("비밀번호를 입력하십시요.");
-		f.password.focus();
-		return false;
-	}
-
-	f.action = "member_login_action.jsp";
 	f.submit();
 }
 </script>
@@ -78,7 +54,7 @@ function login() {
 									<tr>
 
 										<td width=100 align="center" bgcolor="ffecbb" height="22">사용자
-											아이디</td>
+											이름</td>
 										<td width=190 align="center" bgcolor="ffffff"
 
 											style="padding-left: 5px"><input type="text"
@@ -87,10 +63,10 @@ function login() {
 											color="red"><%=msg1%></font></td>
 									</tr>
 
-										<td width=100 align="center" bgcolor="ffecbb" height="22">비밀번호</td>
+										<td width=100 align="center" bgcolor="ffecbb" height="22">핸드폰번호</td>
 										<td width=190 align="center" bgcolor="ffffff"
 
-											style="padding-left: 5px"><input type="password"
+											style="padding-left: 5px"><input type="text"
 											style="width: 150" name="password"
 											value="">&nbsp;&nbsp;<font
 											color="red"><%=msg2%></font></td>
@@ -100,21 +76,11 @@ function login() {
 							<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1">
 								<tr>
 									<td align=center>
-										<input type="button" value="로그인" onClick="login();"> &nbsp; 
-										<input type="button" value="회원가입" onClick="MemberCreate()"></td><br>
-										
-										
-								</tr>
-							</table>
-							<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1">
-								<tr>
-									<td align=center>
 										<input type="button" value="아이디찾기" onClick="findId();"> &nbsp; 
-										<input type="button" value="비밀번호찾기" onClick="findPassword();"></td><br>
 										
 										
-								</tr>
-							</table>
+										
+						
 	<!-- jQuery Library -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
