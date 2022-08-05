@@ -72,23 +72,30 @@ if(buyType.equals("cart")){
 /*
 수량변경
 */
-function change_cart_qty(){
-	var change_cart_qty_list = document.getElementsByName("change_cart_qty");
-	var cart_qty_selected="1";
-	document.order_create_form.innerHTML='';
-	document.order_create_form.innerHTML+="<input type='hidden' name='p_qty'>";
-	var tot_price=0;
-	//for(var i=0; i<change_cart_qty_list.item(i).)
+function change_cart_qty(select_cart_id){
+	//alert('확인');
 
+	var cart_qty_select= document.getElementById("cart_qty_select_"+selectId);
+	cart_qty_select_value= cart_qty_select.options[cart_qty_select.selectedIndex].value;
+	var tot_price=0;
+	/*
+	for(var i=0; i<cart_qty_list.item(i).length; i++){
+		var order_qty = console.log(option_values[i].value);
+		var product_price = update_order_count.p_price;
+		tot_price+= order_qty*product_price;
+		
+	}
+	*/
+	
+	document.getElementById("tot_price_select_"+selectId).innerHTML = tot_price;
 }
+
 function addressModifyAction() {
 	f.action = "address_modify_action.jsp";
 	f.method = 'POST';
 	f.submit();
 	alert("주소가 변경되었습니다.");
 }
-
-
 
 
 </script>
@@ -186,7 +193,7 @@ function addressModifyAction() {
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3><%=cart.getProduct().getP_name() %></font></td>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
 	
-	<select name="change_cart_qty" onclick="">
+	<select name="cart_qty_select_<%=cart.getCart_no() %>" onChange="change_cart_qty('<%=cart.getCart_no() %>');">
 	<option value="1">1
 	<option value="2">2
 	<option value="3">3
@@ -199,8 +206,8 @@ function addressModifyAction() {
 	<option value="10">10
 	</select> 권<br><br> 
 	</input></font></td>
-	
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=tot_price %></font></td>
+	<input type="hidden" name = "p_price" value=<%=cart.getProduct().getP_price() %>>
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><span id="tot_price_span_<%=cart.getCart_no()%>"><%=tot_price %></span></font></td>
 	</tr>
 	<%} %>
 	
