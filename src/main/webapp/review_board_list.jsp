@@ -1,5 +1,6 @@
+<%@page import="com.itwill.bookbread.dto.Product"%>
+<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
-<%@page import="com.itwill.bookbread.dao.ReviewBoardDao"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.bookbread.service.ReviewBoardService"%>
@@ -8,12 +9,22 @@
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
-	ReviewBoardService reviewBoardService = new ReviewBoardService();
-	ArrayList<ReviewBoard> reviewList = reviewBoardService.findReviewById(sUserId);
-	
 	MemberService memberService = new MemberService();
 	Member member = memberService.findMember(sUserId);
+
+	String p_noStr = request.getParameter("p_no");
+	/*
+	if(p_noStr==null||p_noStr.equals("")){
+		response.sendRedirect("shop_main.jsp");
+		return;
+	}
+	*/
+	ReviewBoardService reviewBoardService = new ReviewBoardService();
+	ArrayList<ReviewBoard> reviewList = reviewBoardService.findReviewList();
+	//ReviewBoard reviewBoard = reviewBoardService.countUpdate(p_no);
 	
+	ProductService productService = new ProductService();
+	Product product = productService.selectByNO(Integer.parseInt(p_noStr));
 %>
 <!DOCTYPE html>
 <html>
@@ -23,17 +34,27 @@
 </head>
 <body>
 <h1> 리뷰 </h1>
-	<div>
+	<table>
+		<tr>
+			<td>번호</td>
+			<td><%=product.getP_no()%><br></td>
+			
+			<td>도서명</td>
+			<%-- <td><%reviewBoard.getProduct().getP_name(); %><br></td> --%>					
+			<td>
+			저자			: 11<% %><br>
+			
+			회원 아이디	:<% if(member.getInterest().equalsIgnoreCase(sUserId)) %><br>
+			
+			제목			: 11<% session.getAttribute(sUserId); %><br>
+			
+			내용			: 내용<br>
 	
-	회원 아이디	: <%=member.getUserId()%> &nbsp;
 	
-	책 이미지		:
 	
-	작성일		:
-	
-	내용			: <%=reviewBoardService.findReviewList() %>
-	
-	</div>
+			</td>
+		</tr>
+	</table>
 	
 
 	
