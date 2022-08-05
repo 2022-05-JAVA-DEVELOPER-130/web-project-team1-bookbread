@@ -1,3 +1,5 @@
+<%@page import="com.itwill.bookbread.service.ProductService"%>
+<%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
 <%@page import="java.util.ArrayList"%>
@@ -9,6 +11,20 @@
 <%
 MemberService memberService = new MemberService();
 Member member = memberService.findMember(sUserId);
+
+String p_noStr = request.getParameter("p_no");
+if (p_noStr == null || p_noStr.equals("")) {
+	response.sendRedirect("shop_main.jsp");
+	return;
+}
+
+boolean isLogin = false;
+if (session.getAttribute("sUserId") != null) {
+	isLogin = true;
+}
+
+ProductService productService = new ProductService();
+Product product = productService.selectByNO(Integer.parseInt(p_noStr));
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,7 +33,7 @@ Member member = memberService.findMember(sUserId);
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>회원정보 수정</title>
+<title>Delicious Book Review</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -75,12 +91,12 @@ function boardList() {
 				
 				<table align=center width="30%" border="1" cellpadding="0"
 					cellspacing="1" bgcolor="BBBBBB" bordercolor="#fff">
-					<tr>
+					<tr class="hidden">
 						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
 							<font color="#fff"><b>번 호</b></font>
 						</td>
-						<td style="padding-left: 15px"><input type="text" name="no"
-							value="1" readonly></td>
+						<td style="padding-left: 15px"><input type="hidden" name="no"
+							value="<%=product.getP_no() %>" readonly></td>
 
 				</tr>
 					
