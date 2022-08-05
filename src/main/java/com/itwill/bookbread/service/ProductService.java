@@ -20,7 +20,6 @@ public class ProductService {
 		List<Product> productList = productdao.selectAll();
 		return productList;
 	}
-	
 	// 도서이름으로 리스트찾기
 	public List<Product> selectListName(String p_name) throws Exception {
 		return productdao.selectListName(p_name);
@@ -80,4 +79,5 @@ public class ProductService {
 	public int deleteByProductNo(int p_no)throws Exception {
 		return productdao.deleteByProductNo(p_no);
 	}
+	
 }
