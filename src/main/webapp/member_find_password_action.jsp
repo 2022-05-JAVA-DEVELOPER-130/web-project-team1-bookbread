@@ -19,7 +19,6 @@ try{
 	MemberService userService=new MemberService();
 	Member findId = userService.findId(userId, email);
 	session.setAttribute("userId", userId);
-	session.setAttribute("email", email);
 	response.sendRedirect("shop_main.jsp");
 	
 }catch(UserNotFoundException e){
