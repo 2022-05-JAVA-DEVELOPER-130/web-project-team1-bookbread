@@ -1,68 +1,69 @@
-<%@page import="com.itwill.bookbread.dto.Product"%>
-<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
-<%@page import="com.itwill.bookbread.service.MemberService"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="com.itwill.bookbread.service.ReviewBoardService"%>
-<%@page import="com.itwill.bookbread.dto.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
-	MemberService memberService = new MemberService();
-	Member member = memberService.findMember(sUserId);
 
-	String p_noStr = request.getParameter("p_no");
-	/*
-	if(p_noStr==null||p_noStr.equals("")){
-		response.sendRedirect("shop_main.jsp");
+String p_noStr = request.getParameter("p_no");
+if (p_noStr == null || p_noStr.equals("")) {
+		//response.sendRedirect("shop_main.jsp");
 		return;
-	}
-	*/
-	ReviewBoardService reviewBoardService = new ReviewBoardService();
-	ArrayList<ReviewBoard> reviewList = reviewBoardService.findReviewList();
-	//ReviewBoard reviewBoard = reviewBoardService.countUpdate(p_no);
-	
-	ProductService productService = new ProductService();
-	Product product = productService.selectByNO(Integer.parseInt(p_noStr));
+}
+
+ReviewBoardService reviewBoardService = new ReviewBoardService();
+List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewListByPno(Integer.parseInt(p_noStr));
+ReviewBoard rb = new ReviewBoard();
+
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>내가 쓴 리뷰</title>
+<script type="text/javascript">
+<%--
+function myreview() {
+	location.href = ''+'<%=%>';
+}
+--%>
+
+</script>
 </head>
 <body>
-<h1> 리뷰 </h1>
 	<table>
+		<form name="f" method="post">
 		<tr>
-			<td>번호</td>
-			<td><%=product.getP_no()%><br></td>
-			
-			<td>도서명</td>
-			<%-- <td><%reviewBoard.getProduct().getP_name(); %><br></td> --%>					
-			<td>
-			저자			: 11<% %><br>
-			
-			회원 아이디	:<% if(member.getInterest().equalsIgnoreCase(sUserId)) %><br>
-			
-			제목			: 11<% session.getAttribute(sUserId); %><br>
-			
-			내용			: 내용<br>
-	
-	
-	
-			</td>
+			<td><b>리뷰번호</b></td>
+			<td><b>아이디</b></td>
+			<td><b>리뷰제목</b></td>
+			<td><b>리뷰내용</b></td>
+			<td><b>작성날짜</b></td>
 		</tr>
+		<tr>
+			<%
+			for (int i = 0; i < reviewBoardList.size(); i++) {
+			%>
+			<td><b><%=reviewBoardList.get(i).getR_no()%></b></td>
+			<td><b><%=reviewBoardList.get(i).getMember().getUserId()%></b></td>
+			<td><b><%=reviewBoardList.get(i).getR_title()%></b></td>
+			<td><b><%=reviewBoardList.get(i).getR_content()%></b></td>
+			<td><b><%=reviewBoardList.get(i).getR_date()%></b></td>
+			<%
+			}
+			%>
+		</tr>
+		</form>
+		<table>
+			<tr>
+				<td>
+					<input type="button" value="선택삭제" onClick="reviewRemove();" >&nbsp;
+					<input type="button" value="전체삭제" onClick="reviewRemoveAll();" >&nbsp;
+				</td>
+			</tr>
+		</table>
 	</table>
-	
-
-	
-	
-	
-	<input type="button" value="선택삭제" onClick="reviewRemove();"/>&nbsp;
-	<input type="button" value="전체삭제" onClick="reviewRemoveAll();"/>&nbsp;
-	
 
 </body>
 </html>
