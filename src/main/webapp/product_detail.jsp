@@ -177,7 +177,8 @@
 									<td align=center><input type="button" value="주문하기[주문폼]"
 										onClick="order_create_form();"> &nbsp; <input
 										type="button" value="상품리스트" onClick="productList();"></td>
-										<td align=center><input
+										<td align=center>
+										&nbsp;&nbsp;&nbsp;<input
 										type="button" value="리뷰작성하기" onClick="reviewCreate();"></td>
 								</tr>
 							</table><br/><br/><br/>
