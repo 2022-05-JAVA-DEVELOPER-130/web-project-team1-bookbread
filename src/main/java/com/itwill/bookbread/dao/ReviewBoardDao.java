@@ -228,7 +228,7 @@ public class ReviewBoardDao {
 											       rs.getDate("r_date"),
 											       rs.getString("r_title"),
 											       rs.getString("r_content"),
-											       rs.getInt("r_count"),
+											       rs.getInt("p_no"),
 											       new Member(rs.getString("userId"),null,null,null,null,null,null,null),
 												   new Product(rs.getInt("p_no"),null,null,null,null,0,null,null,null)));
 			}

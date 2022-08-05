@@ -66,7 +66,7 @@ function boardCreate() {
 }
 
 function boardList() {
-	f.action = "board_list.jsp";
+	f.action = "shop_main.jsp";
 	f.submit();
 }
 </script>
@@ -118,7 +118,8 @@ function boardList() {
 						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
 							<font color="#fff"><b>회원아이디</b></font>
 						</td>
-						<td style="padding-left: 15px"><b><%=member.getUserId() %></b></td>
+						<td style="padding-left: 15px">
+						<input type="hidden" name="userId" value="<%=member.getUserId()%>" readonly><b><%=member.getUserId() %></b></td>
 
 					</tr>
 					<tr>

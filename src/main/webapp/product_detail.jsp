@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
@@ -23,8 +24,10 @@
   
   ProductService productService = new ProductService();
   Product product = productService.selectByNO(Integer.parseInt(p_noStr));
+  
   ReviewBoardService reviewBoardService = new ReviewBoardService();
-  ReviewBoard reviewBoard = new ReviewBoard();
+  List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewListByPno(Integer.parseInt(p_noStr));
+  ReviewBoard rb = new ReviewBoard();
   
   %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -190,33 +193,36 @@
 								<tr valign=top>
 									<td width=120 align=center class=t1><font size=2
 										color=#000000><b>리뷰 번호</b></font></td>
+										<td width=120 align=center class=t1><font size=2
+										color=#000000><b>아이디</b></font></td>
 									<td width=120 align=center class=t1><font size=2
-										color=#000000><b>작성 날짜</b></font></td>
-									<td width=280 align=center class=t1><font size=2
-										color=#000000><b>도서 이름</b></font></td>
+										color=#000000><b>리뷰 제목</b></font></td>
 									<td width=400 align=center class=t1><font size=2
 										color=#000000><b>리뷰 내용</b></font></td>
 									<td width=120 align=center class=t1><font size=2
-										color=#000000><b>조회수 </b></font></td>
-									<td width=120 align=center class=t1><font size=2
-										color=#000000><b>아이디</b></font></td>
-								</tr>
-								<tr>
-										<td width=280 bgcolor="ffffff" style="padding-left: 10px" align="left">
+										color=#000000><b>작성 날짜</b></font></td>
+										</tr>
 										
-										</a>
-										</td>
-										<td width=120 align=center bgcolor="ffffff"><%=reviewBoard.getR_title()%>
-										</td>
-										<td width=120 bgcolor="ffffff" style="padding-left: 10px" align="left">
+								<%
+										for(int i = 0;i<reviewBoardList.size();i++){
 											
-										</td>
-										<td width=70 align=center bgcolor="ffffff" align="left"><%=reviewBoard.getR_content()%>
-										</td>
-									</tr>
-								
-								
-								
+										%>
+								<tr valign=top>
+									<td width=120 align=center class=t1><font size=2
+										color=#000000><b><%=reviewBoardList.get(i).getR_no()%></b></font></td>
+									<td width=120 align=center class=t1><font size=2
+										color=#000000><b><%=reviewBoardList.get(i).getMember().getUserId()%></b></font></td>
+									
+									<td width=120 align=center class=t1><font size=2
+										color=#000000><b><%=reviewBoardList.get(i).getR_title()%></b></font></td>
+									
+									<td width=400 align=center class=t1><font size=2
+										color=#000000><b><%=reviewBoardList.get(i).getR_content()%></b></font></td>
+									
+									<td width=120 align=center class=t1><font size=2
+										color=#000000><b><%=reviewBoardList.get(i).getR_date()%></b></font></td>
+										</tr>
+											<%} %>	
 								</table>
 									
 							

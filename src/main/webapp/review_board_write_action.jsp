@@ -5,6 +5,8 @@
 <%@page import="com.itwill.bookbread.dto.ReviewBoard"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@include file="login_check.jspf"%>
+    
 
 <%
  if(request.getMethod().equalsIgnoreCase("get")){
@@ -18,16 +20,17 @@ String userId = request.getParameter("userId");
 String title = request.getParameter("title");
 String content = request.getParameter("content");
 
+Member member = new Member(userId,"","","","","","","");
+Product product = new Product(Integer.parseInt(noStr),"","","","",0,"","",new BookType());
+
 
 
 try{
 	ReviewBoard newReview = null;
-	Member member = new Member(userId,"","","","","","","");
-	Product product = new Product(1,"","","","",0,"","",new BookType());
 	newReview = new ReviewBoard(Integer.parseInt(noStr),null,title,content,0,member,product);
 	ReviewBoardService boardService = new ReviewBoardService();
 	int rowCount = boardService.create(newReview);
-	response.sendRedirect("member_view.jsp");
+	response.sendRedirect("product_detail.jsp?p_no="+noStr);
 } catch(Exception e) {
 	e.printStackTrace();
 	response.sendRedirect("member_error.jsp");
