@@ -99,15 +99,26 @@ function boardList() {
 							value="<%=product.getP_no() %>" readonly></td>
 
 				</tr>
-					
+				</table>					
 				<table align=center width="30%" border="1" cellpadding="0"
 					cellspacing="1" bgcolor="BBBBBB" bordercolor="#fff">
 					<tr>
 						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
+							<font color="#fff"><b>도서명</b></font>
+						</td>
+						<td style="padding-left: 15px"><b><%=product.getP_name() %></b></td>
+					</tr>
+					<tr>
+						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
+							<font color="#fff"><b>저 자</b></font>
+						</td>
+						<td style="padding-left: 15px"><b><%=product.getP_author() %></b></td>
+					</tr>
+					<tr>
+						<td width="40%" height=40 align=center bgcolor="#f4bf6f" class=t1>
 							<font color="#fff"><b>회원아이디</b></font>
 						</td>
-						<td style="padding-left: 15px"><input type="text" name="userId"
-							value="<%=member.getUserId() %>" readonly></td>
+						<td style="padding-left: 15px"><b><%=member.getUserId() %></b></td>
 
 					</tr>
 					<tr>
@@ -128,11 +139,11 @@ function boardList() {
 				</table>
 	</form>
 	<br/><br/>
-		<table width=590 border=0 cellpadding=0 cellspacing=0>
+		<table style="margin: auto" border=0 cellpadding=0 cellspacing=0>
 			<tr>
-				<td align=center><input type="button" value="게시판 쓰기"
+				<td align=center><input type="button" value="작성하기"
 					onClick="boardCreate()"> &nbsp; <input type="button"
-					value="게시판 목록" onClick="boardList()"></td>
+					value="메인으로" onClick="boardList()"></td>
 			</tr>
 		</table>
 		</td>
