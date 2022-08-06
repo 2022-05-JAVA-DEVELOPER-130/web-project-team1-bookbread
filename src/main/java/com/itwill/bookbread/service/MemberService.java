@@ -69,5 +69,11 @@ public class MemberService {
 	public String findPassword(String userId, String email) throws Exception {
 		return memberDao.findPassword(userId, email);
 	}
+	
+	//주소변경
+	public int modifyAddress(String address, String userId) throws Exception{
+		
+		return memberDao.modifyAddress(address, userId);
+	}
 
 }

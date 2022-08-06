@@ -12,9 +12,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	
 	MemberService memberService = new MemberService();
 	
-	Member addressModify = new Member(sUserId,"","","","",address,"","");
-
-	memberService.update(addressModify);
+	memberService.modifyAddress(address, sUserId);
 	response.sendRedirect("order_create_form.jsp");
 
 

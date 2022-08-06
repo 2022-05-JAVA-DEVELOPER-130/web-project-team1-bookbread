@@ -32,4 +32,7 @@ public class MemberSQL {
 	//(아이디중복체크)
 	public final static String MEMBER_SELECT_BT_ID_COUNT=
 			"select count(*) cnt from member where userId=?";
+	
+	//주소만 변경
+	public final static String MODIFY_ADDRESS="update member set address=? where userId=?";
 }

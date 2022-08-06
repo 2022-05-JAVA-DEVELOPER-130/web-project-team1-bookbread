@@ -180,7 +180,18 @@ public class MemberDao {
 		return isExist;
 	}
 	
-	
+	//주소만 변경하기
+	public int modifyAddress(String address,String userId) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MODIFY_ADDRESS);
+		
+		pstmt.setString(1, address);
+		pstmt.setString(2, userId);
+		
+		int modifyCount = pstmt.executeUpdate();
+		
+		return modifyCount;
+	}
 }
 	
 	
