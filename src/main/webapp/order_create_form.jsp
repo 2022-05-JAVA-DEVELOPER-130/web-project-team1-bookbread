@@ -156,7 +156,7 @@ function orderAll(){
 	
 	<form name="f" method="post" action="address_modify_action.jsp;">
 	<table align=center width=50%  border="0" cellpadding="0"
-			cellspacing="1" bgcolor="BBBBBB";>
+			cellspacing="1" bgcolor="BBBBBB">
 			
 	<tr>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3>아이디</font></td>
