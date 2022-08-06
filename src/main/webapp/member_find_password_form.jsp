@@ -67,7 +67,7 @@ function findPassword() {
 										<td width=190 align="center" bgcolor="ffffff"
 
 											style="padding-left: 5px"><input type="text"
-											style="width: 150" name="password"
+											style="width: 150" name="email"
 											value="">&nbsp;&nbsp;<font
 											color="red"><%=msg2%></font></td>
 									</tr>

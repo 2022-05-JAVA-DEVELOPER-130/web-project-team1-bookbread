@@ -12,12 +12,12 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	return;
 }
 String userId=null;
-String email=null;
+String password=null;
 try{
 	userId=request.getParameter("userId");
-	email=request.getParameter("email");
+	password=request.getParameter("password");
 	MemberService userService=new MemberService();
-	Member findId = userService.findId(userId, email);
+	Member login = userService.login(userId, password);
 	session.setAttribute("userId", userId);
 	response.sendRedirect("shop_main.jsp");
 	
