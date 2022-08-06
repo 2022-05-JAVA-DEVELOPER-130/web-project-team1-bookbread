@@ -6,7 +6,7 @@
 
 <%
 ProductService productService = new ProductService();
-List<Product> productList = productService.selectListDate("p_publish_date");
+//List<Product> productList = productService.selectListDate(p_publish_date);
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,6 +37,7 @@ List<Product> productList = productService.selectListDate("p_publish_date");
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
+		<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 <div class="slider">
 <div class="container">
@@ -65,7 +66,7 @@ List<Product> productList = productService.selectListDate("p_publish_date");
 					<div class="carousel-inner" role="listbox">
 						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
 							<div class="carousel-caption">
-								<a href="" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<a href="prduct_detail.jsp?p_no=<%=product.getP_no() %>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							</div>
 						</div>
 					</div>

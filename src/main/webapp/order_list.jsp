@@ -46,17 +46,18 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
+		<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 		<div id="content" align="center">
+		
 				<table border=0 cellpadding=0 cellspacing=0>
 					<tr>
 						<td><br />
-						
-						<td align="center" class=t1><font size=4 color=#000000><b>주문목록</b></font></td>
+						<br><br>
+						<td align="center" class=t1><font size=5 color=#000000><b>주문목록</b></font></td>
 							</table>
-							
-							</table> <!--form-->
 							<br>
+							</table> <!--form-->
 							<form name="f" method="post" action="order_delete_all_action.jsp">
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
@@ -68,18 +69,35 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 									
 										<td width=200 height=30 bgcolor=#ffe18f align=center class=t1><font></font></td>
 									</tr>
-								
 									<!-- order start -->
+									<%if(orderList.size()>=1){ %>
+			
+			<% }else{%>
+			<table align=center>
+			<tr>
+			<td>
+	        	<img src="image/emptyCart.png">
+	        	</td>
+	        	</tr>
+			</table>
+			<%} %>
 									<%
+									int tot_price=0;
 									for (Orders orders : orderList) {
+										tot_price= orders.getO_price();
+										if(tot_price<50000){
+											tot_price=tot_price+2500;
+										}else{
+										}
 									%>
 									<tr>
-										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
-										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
-										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
-										<td width=136 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orders.getO_price())%></td>
-										<td width=80 height=40 align=center bgcolor="ffffff" class=t1><a
+										<td width=145 height=60 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
+										<td width=145 height=60 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
+										<td width=112 height=60 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
+										<td width=136 height=60 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(tot_price)%></td>
+										<td width=80 height=60 align=center bgcolor="ffffff" class=t1><a
 											href="order_detail.jsp?o_no=<%=orders.getO_no()%>" class=m1>주문상세</a></td>
+										
 									</tr>
 									<%
 									}
@@ -101,9 +119,9 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 								<tr>
 									<td align=center>&nbsp;&nbsp;
 									<a href=shop_main.jsp
-										class=m1>계속 구경하기</a>
+										class=m1>계속 구경하기&nbsp;&nbsp;&nbsp;&nbsp;</a>
 									<a href='javascript:order_delete_all();'
-										class=m1>주문전체삭제</a>
+										class=m1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문전체삭제</a>
 									</td>
 									
 								</tr>

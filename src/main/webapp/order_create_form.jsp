@@ -19,25 +19,17 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 }
 */
 String buyType = request.getParameter("buyType");
-
 String p_noStr= request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
 String[] cart_no_array = request.getParameterValues("cart_item_no");
-
-
 if(buyType==null)buyType="";
 if(p_noStr==null)p_noStr="";
 if(p_qtyStr==null)p_qtyStr="";
 if(cart_no_array==null)cart_no_array=new String[]{};
-
-
 MemberService memberService = new MemberService();
 Member member =memberService.findMember(sUserId);
-
 OrdersService orderService = new OrdersService();
-
 ProductService productService = new ProductService();
-
 CartService cartService = new CartService();
 List<Cart> cartList = new ArrayList<Cart>();
 //3가지 방법 모두 카트리스트에 임시로 담아서 뽑아낸다.
@@ -81,7 +73,6 @@ if(buyType.equals("cart")){
 /*
 function cart_qty_change(){
 	//alert('확인');
-
 	var cart_qty_select = document.getElementById("cart_qty_select");
 	var cart_qty_value = (cart_qty_select.options[cart_qty_select.selectedIndex].value);
 	var product_price_select = update_order_count.p_price.value;
@@ -101,31 +92,61 @@ function cart_qty_change(){
 	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
 */
+<<<<<<< HEAD
 *-->
+=======
+/*
+ * 팝업창을 따로 만들어도 안되는구나...
+ function addressModifyAction(){
+		var left = Math.ceil(( window.screen.width)/3);
+		var top = Math.ceil(( window.screen.height)/3); 
+		console.log(left);
+		console.log(top);
+		var cartWin = window.open("about:blank","cartForm","width=300,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+		f.action = "address_modify_action.jsp";
+		f.method = 'POST';
+		f.submit();
+} //readonly, disabled 도 다 안됨. form을 여러개로 나눠서 이름을 줘도 안됨 ㅎ..
+ */
+function deliveryCheck() {
+	var tot_price=0;
+	tot_price = document.getElementById('total_price').value;
+	var d_price = 0;
+	var t_d_price=0;
+	if(tot_price<50000){
+		d_price=2500;
+	}else{
+		d_price=0;
+	}
+	t_d_price=Number(tot_price)+Number(d_price);
+	document.getElementById('d_price').innerHTML=d_price.toLocaleString();
+	document.getElementById('total_price_deliver').innerHTML=t_d_price.toLocaleString();
+}
+>>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team1-bookbread.git
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
 	f.method = 'POST';
 	f.action = "address_modify_action.jsp";
 	f.submit();
-}
 	alert("주소가 변경되었습니다.");
 }
-
+	
+}
 function orderAll(){
 	order_create_form.action = "order_create_action.jsp";
 	order_create_form.method='POST';
 	order_create_form.submit();
 	alert("주문이 완료되었습니다.");
 }
-
 </script>
 </head>
-<body>
+<body onload="deliveryCheck();">
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp"/>
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
+	<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 	<form name="order_create_form" method="post">
 		<input type="hidden" name="buyType" value="<%=buyType%>"> <input
@@ -139,14 +160,15 @@ function orderAll(){
 		}
 		%>
 	</form>
+	<br>
 	<table>
 		<center>
-	<b><font size=4>주문/결제</font></b>
+	<b><font size=5>주문/결제</font></b>
 	</center>
 	</table>
 	
 	<br>
-	
+	<br>
 
 	<table width=50% align=center>
 	<tr>
@@ -222,13 +244,31 @@ function orderAll(){
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=new DecimalFormat("#,###").format(cart.getCart_qty()*cart.getProduct().getP_price())%>원</font></td>
 	</tr>
 	<%} %>
-	
+	<%
+	int d_price=0;
+	if(tot_price<50000){
+	d_price = 2500;
+	}else{
+		d_price=0;
+	}
+	 %>
 </table>
 </form>
 <br>
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<table align=center border="0" cellpadding="0" cellspacing="1" width="400">
+<tr>
+<td align=center>
+
+&nbsp;&nbsp;&nbsp;배송비 : <span id="d_price"><%=d_price %></span>원
+</td>
+</table>
+
 <br>
 
 		<table align=center border="0" cellpadding="0"
@@ -237,9 +277,12 @@ function orderAll(){
 									<td align=center>&nbsp;
 										<a href="shop_main.jsp">취소하기</a>
 									</td>
+										<td><input type="hidden" id="total_price" value="<%=tot_price %>"></td>
 									<td align=center>&nbsp;
-										총 주문금액 : <%=new DecimalFormat("#,###").format(tot_price)%></a> 
+										총 주문금액 : <span id="tot_price_deliver"><%=new DecimalFormat("#,###").format(tot_price+d_price)%></span>원
+									
 									</td>
+								
 									<td align=center>&nbsp;
 										<a href = "javascript:orderAll();">구매하기</a> 
 									</td>
