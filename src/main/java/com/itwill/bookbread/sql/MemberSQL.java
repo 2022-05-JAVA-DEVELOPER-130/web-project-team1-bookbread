@@ -4,6 +4,10 @@ public class MemberSQL {
 	//update_pk(회원정보수정)
 	public final static String MEMBER_UPDATE=
 			"update member set password=?,name=?,phone=?,birth=?,address=?,email=?,interest=? where userId=?";
+	
+	//update_address(주소만 수정)
+	public final static String MEMBER_UPDATE_ADDRESS =
+			"update member set address=?where userId=?";
 
 	//delete_pk(회원탈퇴)
     public final static String MEMBER_DELETE=

@@ -44,6 +44,11 @@ public class MemberService {
 	public int update(Member member) throws Exception {
 		return memberDao.update(member);
 	}
+	// 회원수정
+	
+	public int updateAddress(Member member) throws Exception {
+		return memberDao.updateAddress(member);
+	}
 
 	// 회원탈퇴
 	public int remove(String userId) throws Exception {

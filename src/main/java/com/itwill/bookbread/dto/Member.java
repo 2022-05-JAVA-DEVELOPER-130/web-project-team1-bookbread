@@ -13,6 +13,7 @@ public class Member {
 	public Member() {
 		// TODO Auto-generated constructor stub
 	}
+
 	public Member(String userId, String password, String name, String phone, String birth, String address, String email,
 			String interest) {
 		super();

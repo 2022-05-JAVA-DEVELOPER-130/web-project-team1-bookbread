@@ -25,7 +25,7 @@
 		
 		int updateRowCount = memberService.update(member);
 		
-		response.sendRedirect("member_view.jsp");
+		response.sendRedirect("member_modify_form.jsp");
 	}
 	catch(Exception e){
 		e.printStackTrace();

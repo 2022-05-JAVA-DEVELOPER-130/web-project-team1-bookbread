@@ -12,10 +12,12 @@
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
+/*
 if(request.getMethod().equalsIgnoreCase("GET")){
 	response.sendRedirect("order_list.jsp");
 	return;
 }
+*/
 String buyType = request.getParameter("buyType");
 
 String p_noStr= request.getParameter("p_no");

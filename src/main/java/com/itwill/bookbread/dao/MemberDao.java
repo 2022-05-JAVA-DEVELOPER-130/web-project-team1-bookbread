@@ -72,6 +72,19 @@ public class MemberDao {
 		con.close();
 		return updateRowCount;
 	}
+	/*
+	 * 주소수정
+	 */
+	public int updateAddress(Member member) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_UPDATE_ADDRESS);
+		pstmt.setString(1, member.getAddress());
+		pstmt.setString(2, member.getUserId());
+		int updateRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return updateRowCount;
+	}
 	//회원탈퇴
 	public int delete(String userId) throws Exception{
 		Connection con = dataSource.getConnection();
