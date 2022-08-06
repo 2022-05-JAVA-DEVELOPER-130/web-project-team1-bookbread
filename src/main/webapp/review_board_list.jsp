@@ -6,15 +6,20 @@
 <%@include file="login_check.jspf"%>
 <%
 
-String p_noStr = request.getParameter("p_no");
-if (p_noStr == null || p_noStr.equals("")) {
-		//response.sendRedirect("shop_main.jsp");
-		return;
+String pageno = request.getParameter("pageno");
+if(pageno==null||pageno.equals("")){
+	pageno="1";
 }
 
+String userId=(String) session.getAttribute("userId");
+if(userId==null){
+	response.sendRedirect("shop_main.jsp");
+	return;
+}
+
+
 ReviewBoardService reviewBoardService = new ReviewBoardService();
-List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewListByPno(Integer.parseInt(p_noStr));
-ReviewBoard rb = new ReviewBoard();
+List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewById(userId);
 
 %>
 <!DOCTYPE html>
@@ -23,11 +28,6 @@ ReviewBoard rb = new ReviewBoard();
 <meta charset="UTF-8">
 <title>내가 쓴 리뷰</title>
 <script type="text/javascript">
-<%--
-function myreview() {
-	location.href = ''+'<%=%>';
-}
---%>
 
 </script>
 </head>
@@ -40,29 +40,37 @@ function myreview() {
 			<td><b>리뷰제목</b></td>
 			<td><b>리뷰내용</b></td>
 			<td><b>작성날짜</b></td>
-		</tr>
-		<tr>
+		</tr>			
 			<%
 			for (int i = 0; i < reviewBoardList.size(); i++) {
 			%>
-			<td><b><%=reviewBoardList.get(i).getR_no()%></b></td>
-			<td><b><%=reviewBoardList.get(i).getMember().getUserId()%></b></td>
-			<td><b><%=reviewBoardList.get(i).getR_title()%></b></td>
-			<td><b><%=reviewBoardList.get(i).getR_content()%></b></td>
-			<td><b><%=reviewBoardList.get(i).getR_date()%></b></td>
+		<tr>
+			<td>
+			<a href='product_detail.jsp?p_no='<%=reviewBoardList.get(i).getR_no()%>></a></td>
+			<td>
+			<a href='product_detail.jsp?p_no='<%=reviewBoardList.get(i).getMember().getUserId()%>></a></td>
+			<td>
+			<a href='product_detail.jsp?p_no='<%=reviewBoardList.get(i).getR_title()%>></a></td>
+			<td>
+			<a href='product_detail.jsp?p_no='<%=reviewBoardList.get(i).getR_content()%>></a></td>
+			<td>
+			<a href='product_detail.jsp?p_no='<%=reviewBoardList.get(i).getR_date()%>></a></td>
 			<%
 			}
 			%>
-		</tr>
+			</tr>
 		</form>
+		
 		<table>
 			<tr>
 				<td>
+					<input type="button" value="수정" onClick="reviewupdate();" >&nbsp;
 					<input type="button" value="선택삭제" onClick="reviewRemove();" >&nbsp;
-					<input type="button" value="전체삭제" onClick="reviewRemoveAll();" >&nbsp;
+					<input type="button" value="내정보" onClick="memberview();" >&nbsp;
 				</td>
 			</tr>
 		</table>
+		
 	</table>
 
 </body>
