@@ -209,9 +209,6 @@ ol.carousel-indicators li {
     background: #494949;
     border: none;
 }
-ol.carousel-indicators li.active {
-    background: #f4bf6f;
-}
 .small-slider .carousel-caption {
     text-align: left;
 }
