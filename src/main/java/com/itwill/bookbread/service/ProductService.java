@@ -80,4 +80,8 @@ public class ProductService {
 		return productdao.deleteByProductNo(p_no);
 	}
 	
+	// 출판일로 도서리스트찾기
+	public List<Product> selectListDate(String p_publish_date)throws Exception {
+		return productdao.selectListDate(p_publish_date);
+	}
 }

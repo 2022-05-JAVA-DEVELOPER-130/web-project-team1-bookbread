@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="com.itwill.bookbread.dto.Cart"%>
 <%@page import="java.util.ArrayList"%>
@@ -19,7 +20,7 @@ String buyType = request.getParameter("buyType");
 
 String p_noStr= request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
-String[] cart_no_array = request.getParameterValues("cart_no");
+String[] cart_no_array = request.getParameterValues("cart_item_no");
 
 if(buyType==null)buyType="";
 if(p_noStr==null)p_noStr="";
@@ -73,6 +74,7 @@ if(buyType.equals("cart")){
 /*
 수량변경
 */
+/*
 function cart_qty_change(){
 	//alert('확인');
 
@@ -90,15 +92,17 @@ function cart_qty_change(){
 		tot_price+= order_qty*product_price;
 		
 	}
-	*/
 	//tot_price=cart_qty_value*
 	document.getElementById("tot_price_span").innerHTML = tot_price;
+	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
-
+*/
 function addressModifyAction() {
+	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
 	f.action = "address_modify_action.jsp";
 	f.method = 'POST';
 	f.submit();
+}
 	alert("주소가 변경되었습니다.");
 }
 
@@ -148,7 +152,7 @@ function orderAll(){
 
 	<br>
 	
-	<form name="f" method="post">
+	<form name="f">
 	<table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB";>
 			
@@ -186,7 +190,7 @@ function orderAll(){
 	</tr>
 	</table>
 
-<form name="update_order_count" method="post" action="cart_update_item_action.jsp">
+<form>
 <table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB";>
 			
@@ -205,37 +209,39 @@ function orderAll(){
 	</a></td>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
 	
-	<select id="cart_qty_select" onChange="cart_qty_change();">
-	<option name = "cart_qty_select" value="1">1
-	<option name = "cart_qty_select" value="2">2
-	<option name = "cart_qty_select" value="3">3
-	<option name = "cart_qty_select" value="4">4
-	<option name = "cart_qty_select" value="5">5
-	<option name = "cart_qty_select" value="6">6
-	<option name = "cart_qty_select" value="7">7 
-	<option name = "cart_qty_select" value="8">8
-	<option name = "cart_qty_select" value="9">9
-	<option name = "cart_qty_select" value="10">10
-	</select> 권<br><br> 
-	</input></font></td>
 	
-	<input type="hidden" name = "p_price" value=<%=cart.getProduct().getP_price() %>>
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><span id="tot_price_span"><%=tot_price%></span></font></td>
+	 <%=cart.getCart_qty() %>권
+	</font></td>
+	<!-- <input type="hidden" name = "p_price" value=<cart.getProduct().getP_price() >> -->
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=new DecimalFormat("#,###").format(cart.getCart_qty()*cart.getProduct().getP_price())%>원</font></td>
 	</tr>
 	<%} %>
 	
 </table>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
 
+		<table align=center border="0" cellpadding="0"
+								cellspacing="1" width="400">
+								<tr>
+									<td align=center>&nbsp;
+										<a href="shop_main.jsp">취소하기</a>
+									</td>
+									<td align=center>&nbsp;
+										총 주문금액 : <%=new DecimalFormat("#,###").format(tot_price)%></a> 
+									</td>
+									<td align=center>&nbsp;
+										<a href = "javascript:orderAll();">구매하기</a> 
+									</td>
+									
+								</tr>
+							</table>
 
-<form name = "order" method="POST" action="order_create_action.jsp">
-<table>
-<tr>
-<td>
-<input type="button" value ="주문하기" onClick="orderAll()">
-</td>
-</table>
-</form>
+				</table>
 
 
 

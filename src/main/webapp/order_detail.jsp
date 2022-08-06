@@ -39,6 +39,23 @@ Orders order = ordersService.detail(sUserId, Integer.parseInt(o_noStr));
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
+<script type="text/javascript">
+function deleteSelect() {
+	if(window.confirm('주문내역을 삭제하시겠습니까?')){
+		
+	f.action="order_delete_action.jsp";
+	f.method='POST';
+	f.submit();
+	
+	}
+ alert('주문내역을 삭제하였습니다.');
+}
+
+
+
+
+</script>
+
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp"/>
@@ -56,17 +73,17 @@ Orders order = ordersService.detail(sUserId, Integer.parseInt(o_noStr));
 							
 							</table> <!--form-->
 							<br>
-							<form name="f" method="post" action="order_delete_action.jsp">
-							<input type="hidden" value="<%=order.getO_no()%>"></input>
+							<br>
+							<form name="f" method="post">
+							<input type="hidden" name="o_no" value="<%=order.getO_no()%>"></input>
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=170 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문번호</font></td>
-										<td width=230 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문날짜</font></td>
-										<td width=200 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문자</font></td>
-										<td width=200 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문가격</font></td>
+										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문번호</font></td>
+										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문날짜</font></td>
+										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문자</font></td>
+										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문가격</font></td>
 									
-										<td width=200 height=30 bgcolor=#ffe18f align=center class=t1><font></font></td>
 									</tr>
 									
 									<tr>
@@ -74,23 +91,23 @@ Orders order = ordersService.detail(sUserId, Integer.parseInt(o_noStr));
 										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=order.getO_date()%></td>
 										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=order.getUserId()%></td>
 										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(order.getO_price())%></td>
-										<td width=136 height=40 align=center bgcolor="ffffff" class=t1>
-												<input type="submit" value="삭제">
-										</td>
+										
 									</tr>
 									
 								</table>
 <br>
 <br>
 <br>
-
+<br>
+<br>
 	<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
+									<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d></font></td>
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>책 제목</font></td>
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>수량</font></td>
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>가격</font></td>
-										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>비고</font></td>
+										
 									
 									</tr>
 									<%
@@ -100,26 +117,52 @@ Orders order = ordersService.detail(sUserId, Integer.parseInt(o_noStr));
 									
 									%>
 									<tr>
-									<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orderItem.getProduct().getP_name()%></td>
+									
+									<td width=136 height=40 align=center bgcolor="ffffff" class=t1><img border=0 src='images/<%=orderItem.getProduct().getP_image()%>' style="width:130px;"></td>
+									<td width=145 height=40 align=center bgcolor="ffffff" class=t1><a href="product_detail.jsp?p_no=<%=orderItem.getProduct().getP_no()%>"><%=orderItem.getProduct().getP_name()%></a></td>
+								
 										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orderItem.getOi_qty()%></td>
 										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orderItem.getProduct().getP_price())%></td>
-										<td width=136 height=40 align=center bgcolor="ffffff" class=t1></td>
 
 									</tr>
 <%} %>
 </table>
 
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<table align=center border="0" cellpadding="0"
+								cellspacing="1" width="400">
+								<tr>
+									<td align=center>&nbsp;
+										<a href="order_list.jsp">목록으로 가기</a>
+									</td>
+									<td align=center>&nbsp;
+										총 주문금액 : <%=new DecimalFormat("#,###").format(tot_price)%></a> 
+									</td>
+									<td width=136 height=40 align=center bgcolor="ffffff" class=t1>
+												<a href = "javascript:deleteSelect();">삭제</a>
+										</td>
+									
+								</tr>
+							</table>
 
 
 
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 			<!-- include_content.jsp end-->
 			<!-- content end -->
 		</div>

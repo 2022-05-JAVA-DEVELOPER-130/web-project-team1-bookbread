@@ -126,7 +126,7 @@ public class MemberDao {
 		con.close();
 		return findMemberList;
 	}
-	//아이디 찾기
+	//아이디 찾기 
 	public String findId(String name, String phone)throws Exception {
 		String mid = null;
 		
@@ -145,7 +145,9 @@ public class MemberDao {
 		return mid;
 	}
 	//비밀번호 찾기
-	public Member findPassword(String userId,String email)throws Exception{
+	public String findPassword(String userId,String email)throws Exception{
+		String mid= null;
+		
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.FIND_MEMBER_PASSWORD);
 		Member findPassword = null;
@@ -153,19 +155,12 @@ public class MemberDao {
 		pstmt.setString(2, email);
 		ResultSet rs = pstmt.executeQuery();
 		if(rs.next()) {
-			findPassword = new Member(rs.getString("userId"),
-									  rs.getString("password"),
-									  rs.getString("name"),
-									  rs.getString("phone"),
-									  rs.getString("birth"),
-									  rs.getString("address"),
-									  rs.getString("email"),
-									  rs.getString("interest"));
+			mid = rs.getString("password");
 		}
 		rs.close();
 		pstmt.close();
 		con.close();
-		return findPassword;
+		return mid;
 	}
 	//아이디 중복체크
 	public boolean existedUser(String userId) throws Exception{

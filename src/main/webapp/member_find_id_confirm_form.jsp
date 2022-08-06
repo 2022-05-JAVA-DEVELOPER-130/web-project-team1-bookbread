@@ -39,8 +39,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 <link rel="stylesheet" href="css/responsive.css">
 
 <script type="text/javascript">
-function findId() {
-	f.action = "member_find_id_action.jsp";
+function login() {
+	f.action = "member_login_form.jsp";
 	f.submit();
 }
 </script>
@@ -54,19 +54,19 @@ function findId() {
 	<!-- include_common_top.jsp end-->
 
 							 <!-- login Form  -->
-							<form name="f" method="post">
+							<form name="f" method="post" align=center>
 								<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
-									<h2>회원님의 아이디는</h2>
-									<%=
+									<h >회원님의 아이디는" <%=
 									mid
-									%>									
+									%> " 입니다.	</h>
+																	
 								</table>
 							</form> <br />
 							<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1">
 								<tr>
 									<td align=center>
-										<input type="button" value="아이디찾기" onClick="findId();"> &nbsp; 
+										<input type="button" value="로그인화면으로" onClick="login();"> &nbsp; 
 										
 										
 										

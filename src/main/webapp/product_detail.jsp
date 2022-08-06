@@ -74,7 +74,13 @@
 			alert('로그인 하세요');
 			location.href = 'member_login_form.jsp';
 		} else {
-			document.add_cart_form.action = 'cart_add_action.jsp';
+			var left = Math.ceil(( window.screen.width)/3);
+			var top = Math.ceil(( window.screen.height)/3); 
+			console.log(left);
+			console.log(top);
+			var cartWin = window.open("about:blank","cartForm","width=300,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+			document.add_cart_form.action = 'cart_add_action_popup_window.jsp';
+			document.add_cart_form.target = 'cartForm';
 			document.add_cart_form.method = 'POST';
 			document.add_cart_form.submit();
 		}
@@ -165,7 +171,6 @@
 												<option value="10">10
 											</select> 권<br><br> 
 												<input type=button onclick="add_cart_action();" value="장바구니 담기[장바구니 이동]"/><br><br> 
-												<input type=button onclick="add_cart_popup_window();" value="장바구니 담기[계속 쇼핑하기]" />
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
 									</td>

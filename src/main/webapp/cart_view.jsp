@@ -128,7 +128,15 @@ Cart cart = null;
 		}
 		
 	}
-
+	function cart_delete() {
+		if(window.confirm('장바구니를 전체 삭제하시겠습니까?')){
+			
+		
+		document.cart_view_form.method = 'POST';
+		document.cart_view_form.action = 'cart_delete_action.jsp';
+		document.cart_view_form.submit();
+		}
+	}
 </script>
 
 
@@ -146,15 +154,14 @@ Cart cart = null;
 	<!-- include_common_top.jsp end-->
 	<table style="margin: auto" border=0 width=70% align=center>
 		<tr valign=bottom>
-			<td width=30% align="center" class=t1><font size=4 color=#000000><b>내&nbsp장바구니</b></font></td>
+			<td width=30% align="center" class=t1><font size=4 color=#000000><b>내&nbsp;장바구니</b></font></td>
 	</table>
 	<div width=70% align=center>
 	전체선택<input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();">
 	</div>
 	<div class="slider">
 		<div class="container">
-			<div class="row">
-				<%
+			<div class="row">				<%
 				int cart_column_size = 4;
 				int cart_line_count = 1;
 				int tot_price = 0;
@@ -179,7 +186,7 @@ Cart cart = null;
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<li data-target="#small-featured" data-slide-to="0"
-									class="active"></li>
+									class="active" list-style:none></li>
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
@@ -197,11 +204,11 @@ Cart cart = null;
 									가격:<%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getCart_qty())%><br> 
 									
 									
-									<form method="post" 
+									<form action="cart_update_action.jsp" method="post"
 												id="cart_update_form_<%=cart.getCart_no()%>">
 												<input type="hidden" name="cart_no"
-													value="<%=cart.getCart_no()%>"> 
-													<input type="button" value="-"
+													value="<%=cart.getCart_no()%>"> <input
+													type="button" value="-"
 													onclick="changeNumber('-','cart_update_form_<%=cart.getCart_no()%>');"/>
 												<input type="text" readonly="readonly" size="2"
 													style="text-align: center; width: 15%" name="cart_qty"
@@ -209,8 +216,17 @@ Cart cart = null;
 													type="button" value="+"
 													onclick="changeNumber('+','cart_update_form_<%=cart.getCart_no()%>');"/>
 												<input type="hidden" name="cart_product_unit_price" value="<%=cart.getProduct().getP_price()%>"/>	
-									</form>
-									<form id="cart_delete_item_form_<%=cart.getCart_no()%>">
+											</form>
+										</td>
+
+
+											<%-- 
+											<form action="cart_delete_item_action.jsp" method="post">
+												<input type="hidden" name="cart_no" value="<%=cart.getCart_no()%>">
+												<input type="submit" value="삭제">
+											</form>
+											 --%>
+											<form id="cart_delete_item_form_<%=cart.getCart_no()%>">
 												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> <a
 													href="javascript:cart_delete_item_action('cart_delete_item_form_<%=cart.getCart_no()%>');">
@@ -243,35 +259,30 @@ Cart cart = null;
 			</div>
 		</div>
 	</div>
-	<table>
-		<table align=center border="0" cellpadding=0">
+<table align=center border="0" cellpadding=0">
 			<tr>
 				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;</span>원
 				</td>
 		</table>
 
+	<table align=center border="0" cellpadding="0"
+								cellspacing="1" width="590">
+								<tr>
+									<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
+										class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
+										 if (cartList.size() >= 1) {
+										 %> <a href="javascript:cart_view_form_select_submit();" class=m1>
+										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
+										 	</a>&nbsp;&nbsp;
+											<a href="javascript:cart_delete();" class=m1>장바구니 전체 비우기</a>&nbsp;&nbsp;
+											<%
+											}
+											%>
+									</td>
+								</tr>
+							</table>
 
-		<table style="padding-left: 10px" border="0" cellpadding="0"
-			cellspacing="1" width="1800">
-			<tr>
-				<td align=center>&nbsp;&nbsp; <a href="product_list1.jsp"
-					class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
- if (cartList.size() >= 1) {
- %> <a href="javascript:cart_view_form_order_submit();" class=m1>총 <span
-						style="font-weight: bold;" id="cart_item_select_count"><%=cartList.size()%></span>개
-						주문하기[주문폼]
-				</a> 
-				<form action="cart_delete_action.jsp" method="post">
-					<input type="submit" value="전체삭제" name="cart_userId">
-				</form>
-				
-<%
- }
- %>
-				</td>
-			</tr>
-		</table>
-		</td>
+
 		<!-- jQuery Library -->
 		<script
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
