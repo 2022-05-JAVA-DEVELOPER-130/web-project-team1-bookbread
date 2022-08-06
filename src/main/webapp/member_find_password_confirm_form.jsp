@@ -13,7 +13,12 @@ if(request.getMethod().equalsIgnoreCase("GET")){
  String userId = request.getParameter("userId");
  String email = request.getParameter("email");
  MemberService memberService = new MemberService();
- String mid = memberService.findPassword(userId, email);
+// String mid = memberService.findPassword(userId,email);
+ 
+ String mid = memberService.findPassword("yongchan","yongchan@testmail.com");
+ //여기에서 실제값을 넣으면 출력되는데 왜 인자로 받으면 안되지...
+ 
+ 
  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
