@@ -13,7 +13,9 @@ public class OrderServiceTestMain {
 		int selectCreate = orderService.selectCreate("junyoung", cart_no_array);
 		System.out.println(selectCreate);
 		*/
-		int deleteCount = orderService.deleteAll("soyoon");
+		//int deleteCount = orderService.deleteAll("soyoon");
+		
+		System.out.println(orderService.detail("junyoung", 16));
 	}
 
 }

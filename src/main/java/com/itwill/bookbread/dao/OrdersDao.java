@@ -161,8 +161,43 @@ public class OrdersDao {
 		} // end while
 		return orderList;
 	}// end method
-	
-	
+	/*
+	 * 	주문상세보기 아이디/주문번호
+	 */
+	public Orders detail(String userId, int o_no) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrdersSQL.ORDER_LIST_BY_O_NO);
+		pstmt.setString(1, userId);
+		pstmt.setInt(2, o_no);
+		Orders order = null;
+		ResultSet rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			 order = new Orders(rs.getInt("o_no"), rs.getString("o_desc"), 
+										rs.getDate("o_date"), rs.getInt("o_price"), rs.getString("userId"));
+			
+			do {
+				order.getOrderItemList().add(new OrderItem
+												(rs.getInt("oi_no"), 
+												rs.getInt("oi_qty"), 
+												rs.getInt("o_no"), 
+											new Product(rs.getInt("p_no"), 
+														rs.getString("p_name"), 
+														rs.getString("p_author"), 
+														rs.getString("p_publisher"), 
+														rs.getString("p_publish_date"), 
+														rs.getInt("p_price"), 
+														rs.getString("p_image"),
+														rs.getString("p_detail"), 
+														new BookType(0,""))));
+				
+		
+			}while(rs.next());
+			
+		}
+		
+		return order;
+	}
 	/*
 	 *  주문 전체 조회 
 	 */

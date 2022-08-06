@@ -6,14 +6,14 @@
 <%
 
 if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("member_find_id_form.jsp");
+	response.sendRedirect("member_find_password_form.jsp");
 	return;
 }
 
- String name = request.getParameter("name");
- String phone = request.getParameter("phone");
+ String userId = request.getParameter("userId");
+ String email = request.getParameter("email");
  MemberService memberService = new MemberService();
- String mid = memberService.findId(name, phone);
+ String mid = memberService.findPassword(userId, email);
  
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -57,7 +57,7 @@ function login() {
 							<form name="f" method="post" align=center>
 								<table style = "margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="1"
 									bgcolor="BBBBBB">
-									<h >회원님의 아이디는" <%=
+									<h >회원님의 비밀번호는" <%=
 									mid
 									%> " 입니다.	</h>
 																	

@@ -194,10 +194,10 @@ Cart cart = null;
 									</div>
 								</div>
 								<div align="center">
-									가격:<%=cart.getProduct().getP_price()%><br> 
+									가격:<%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getCart_qty())%><br> 
 									
 									
-									<form method="post"
+									<form method="post" 
 												id="cart_update_form_<%=cart.getCart_no()%>">
 												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> 
@@ -246,7 +246,7 @@ Cart cart = null;
 	<table>
 		<table align=center border="0" cellpadding=0">
 			<tr>
-				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;원
+				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;</span>원
 				</td>
 		</table>
 

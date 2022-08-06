@@ -16,13 +16,14 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	return;
 }
 String buyType = request.getParameter("buyType");
-String p_no = request.getParameter("p_no");
-String p_qty = request.getParameter("p_qty");
+
+String p_noStr= request.getParameter("p_no");
+String p_qtyStr = request.getParameter("p_qty");
 String[] cart_no_array = request.getParameterValues("cart_no");
 
 if(buyType==null)buyType="";
-if(p_no==null)p_no="";
-if(p_qty==null)p_qty="";
+if(p_noStr==null)p_noStr="";
+if(p_qtyStr==null)p_qtyStr="";
 if(cart_no_array==null)cart_no_array=new String[]{};
 
 
@@ -43,8 +44,8 @@ if(buyType.equals("cart")){
 		cartList.add(cartService.getCartItem(Integer.parseInt(cart_no_select)));
 	}
 }else if(buyType.equals("direct")){
-	Product product = productService.selectByNO(Integer.parseInt(p_no));
-	cartList.add(new Cart(0,Integer.parseInt(p_qty),member,product));
+	Product product = productService.selectByNO(Integer.parseInt(p_noStr));
+	cartList.add(new Cart(0,Integer.parseInt(p_qtyStr),member,product));
 }
 %>
 
@@ -72,15 +73,28 @@ if(buyType.equals("cart")){
 /*
 수량변경
 */
-function change_cart_qty(){
-	var change_cart_qty_list = document.getElementsByName("change_cart_qty");
-	var cart_qty_selected="1";
-	document.order_create_form.innerHTML='';
-	document.order_create_form.innerHTML+="<input type='hidden' name='p_qty'>";
-	var tot_price=0;
-	//for(var i=0; i<change_cart_qty_list.item(i).)
+function cart_qty_change(){
+	//alert('확인');
 
+	var cart_qty_select = document.getElementById("cart_qty_select");
+	var cart_qty_value = (cart_qty_select.options[cart_qty_select.selectedIndex].value);
+	var product_price_select = update_order_count.p_price.value;
+	var tot_price=0;
+	tot_price=cart_qty_value*product_price_select;
+	alert("cart_qty_value=" + cart_qty_value+"product_price_select="+product_price_select+
+			"tot_price="+tot_price);
+	/*
+	for(var i=0; i<cart_qty_list.item(i).length; i++){
+		var order_qty = console.log(option_values[i].value);
+		var product_price = update_order_count.p_price;
+		tot_price+= order_qty*product_price;
+		
+	}
+	*/
+	//tot_price=cart_qty_value*
+	document.getElementById("tot_price_span").innerHTML = tot_price;
 }
+
 function addressModifyAction() {
 	f.action = "address_modify_action.jsp";
 	f.method = 'POST';
@@ -88,8 +102,12 @@ function addressModifyAction() {
 	alert("주소가 변경되었습니다.");
 }
 
-
-
+function orderAll(){
+	order_create_form.action = "order_create_action.jsp";
+	order_create_form.method='POST';
+	order_create_form.submit();
+	alert("주문이 완료되었습니다.");
+}
 
 </script>
 <body>
@@ -101,12 +119,12 @@ function addressModifyAction() {
 	<!-- include_common_top.jsp end-->
 	<form name="order_create_form" method="post">
 		<input type="hidden" name="buyType" value="<%=buyType%>"> <input
-			type="hidden" name="p_no" value="<%=p_no%>"> <input
-			type="hidden" name="p_qty" value="<%=p_qty%>">
+			type="hidden" name="p_no" value="<%=p_noStr%>"> <input
+			type="hidden" name="p_qty" value="<%=p_qtyStr%>">
 		<%
-		for (String cart_no : cart_no_array) {
+		for (String cart_noStr : cart_no_array) {
 		%>
-		<input type="hidden" name="cart_item_no" value="<%=cart_no%>">
+		<input type="hidden" name="cart_item_no" value="<%=cart_noStr%>">
 		<%
 		}
 		%>
@@ -168,7 +186,7 @@ function addressModifyAction() {
 	</tr>
 	</table>
 
-<form name="update_order_count" method="post" action="order_create_action">
+<form name="update_order_count" method="post" action="cart_update_item_action.jsp">
 <table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB";>
 			
@@ -183,24 +201,26 @@ function addressModifyAction() {
 		tot_price+=cart.getCart_qty()*cart.getProduct().getP_price();
 	%>
 	<tr>
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3><%=cart.getProduct().getP_name() %></font></td>
+	<td width=200 height=40 bgcolor="white" align=center class=t1><a href='product_detail.jsp?p_no=<%=cart.getProduct().getP_no()%>'><font color=#8d8d8d size=3><%=cart.getProduct().getP_name() %></font>
+	</a></td>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
 	
-	<select name="change_cart_qty" onclick="">
-	<option value="1">1
-	<option value="2">2
-	<option value="3">3
-	<option value="4">4
-	<option value="5">5
-	<option value="6">6
-	<option value="7">7 
-	<option value="8">8
-	<option value="9">9
-	<option value="10">10
+	<select id="cart_qty_select" onChange="cart_qty_change();">
+	<option name = "cart_qty_select" value="1">1
+	<option name = "cart_qty_select" value="2">2
+	<option name = "cart_qty_select" value="3">3
+	<option name = "cart_qty_select" value="4">4
+	<option name = "cart_qty_select" value="5">5
+	<option name = "cart_qty_select" value="6">6
+	<option name = "cart_qty_select" value="7">7 
+	<option name = "cart_qty_select" value="8">8
+	<option name = "cart_qty_select" value="9">9
+	<option name = "cart_qty_select" value="10">10
 	</select> 권<br><br> 
 	</input></font></td>
 	
-	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=tot_price %></font></td>
+	<input type="hidden" name = "p_price" value=<%=cart.getProduct().getP_price() %>>
+	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><span id="tot_price_span"><%=tot_price%></span></font></td>
 	</tr>
 	<%} %>
 	
@@ -208,6 +228,14 @@ function addressModifyAction() {
 </form>
 
 
+<form name = "order" method="POST" action="order_create_action.jsp">
+<table>
+<tr>
+<td>
+<input type="button" value ="주문하기" onClick="orderAll()">
+</td>
+</table>
+</form>
 
 
 
