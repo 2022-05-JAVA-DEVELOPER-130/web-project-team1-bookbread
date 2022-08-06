@@ -174,7 +174,7 @@ public class OrdersDao {
 		
 		if(rs.next()) {
 			 order = new Orders(rs.getInt("o_no"), rs.getString("o_desc"), 
-										rs.getDate("o_date"), rs.getInt("o_price"), rs.getString("userId"), null);
+										rs.getDate("o_date"), rs.getInt("o_price"), rs.getString("userId"));
 			
 			do {
 				order.getOrderItemList().add(new OrderItem
