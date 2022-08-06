@@ -7,6 +7,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+
 ProductService productService = new ProductService();
 String type_noStr = request.getParameter("type_no");
 List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
