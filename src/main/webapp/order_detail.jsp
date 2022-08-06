@@ -46,9 +46,9 @@ function deleteSelect() {
 	f.action="order_delete_action.jsp";
 	f.method='POST';
 	f.submit();
+	 alert('주문내역을 삭제하였습니다.');
 	
 	}
- alert('주문내역을 삭제하였습니다.');
 }
 
 
