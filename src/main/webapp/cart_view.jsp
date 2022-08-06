@@ -223,6 +223,7 @@ Cart cart = null;
 												<input type="submit" value="삭제">
 											</form>
 											 --%>
+											 <br>
 											<form id="cart_delete_item_form_<%=cart.getCart_no()%>">
 												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> <a
