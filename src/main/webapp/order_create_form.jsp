@@ -19,25 +19,17 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 }
 */
 String buyType = request.getParameter("buyType");
-
 String p_noStr= request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
 String[] cart_no_array = request.getParameterValues("cart_item_no");
-
-
 if(buyType==null)buyType="";
 if(p_noStr==null)p_noStr="";
 if(p_qtyStr==null)p_qtyStr="";
 if(cart_no_array==null)cart_no_array=new String[]{};
-
-
 MemberService memberService = new MemberService();
 Member member =memberService.findMember(sUserId);
-
 OrdersService orderService = new OrdersService();
-
 ProductService productService = new ProductService();
-
 CartService cartService = new CartService();
 List<Cart> cartList = new ArrayList<Cart>();
 //3가지 방법 모두 카트리스트에 임시로 담아서 뽑아낸다.
@@ -80,7 +72,6 @@ if(buyType.equals("cart")){
 /*
 function cart_qty_change(){
 	//alert('확인');
-
 	var cart_qty_select = document.getElementById("cart_qty_select");
 	var cart_qty_value = (cart_qty_select.options[cart_qty_select.selectedIndex].value);
 	var product_price_select = update_order_count.p_price.value;
@@ -100,7 +91,19 @@ function cart_qty_change(){
 	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
 */
-
+/*
+ * 팝업창을 따로 만들어도 안되는구나...
+ function addressModifyAction(){
+		var left = Math.ceil(( window.screen.width)/3);
+		var top = Math.ceil(( window.screen.height)/3); 
+		console.log(left);
+		console.log(top);
+		var cartWin = window.open("about:blank","cartForm","width=300,height=200,top="+top+",left="+left+",location=no, directories=no, status=no, menubar=no, scrollbars=no,copyhistory=no");
+		f.action = "address_modify_action.jsp";
+		f.method = 'POST';
+		f.submit();
+} //readonly, disabled 도 다 안됨. form을 여러개로 나눠서 이름을 줘도 안됨 ㅎ..
+ */
 function deliveryCheck() {
 	var tot_price=0;
 	tot_price = document.getElementById('total_price').value;
@@ -124,14 +127,12 @@ function addressModifyAction() {
 }
 	
 }
-
 function orderAll(){
 	order_create_form.action = "order_create_action.jsp";
 	order_create_form.method='POST';
 	order_create_form.submit();
 	alert("주문이 완료되었습니다.");
 }
-
 </script>
 </head>
 <body onload="deliveryCheck();">
