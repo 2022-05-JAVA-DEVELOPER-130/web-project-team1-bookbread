@@ -24,6 +24,7 @@ String p_noStr= request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
 String[] cart_no_array = request.getParameterValues("cart_item_no");
 
+
 if(buyType==null)buyType="";
 if(p_noStr==null)p_noStr="";
 if(p_qtyStr==null)p_qtyStr="";
@@ -71,7 +72,7 @@ if(buyType.equals("cart")){
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
-</head>
+
 <script type="text/javascript">
 /*
 수량변경
@@ -101,8 +102,8 @@ function cart_qty_change(){
 */
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
-	f.action = "address_modify_action.jsp";
 	f.method = 'POST';
+	f.action = "address_modify_action.jsp";
 	f.submit();
 }
 	alert("주소가 변경되었습니다.");
@@ -116,6 +117,7 @@ function orderAll(){
 }
 
 </script>
+</head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp"/>
@@ -154,9 +156,9 @@ function orderAll(){
 
 	<br>
 	
-	<form name="f">
+	<form name="f" method="post" action="address_modify_action.jsp;">
 	<table align=center width=50%  border="0" cellpadding="0"
-			cellspacing="1" bgcolor="BBBBBB";>
+			cellspacing="1" bgcolor="BBBBBB">
 			
 	<tr>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3>아이디</font></td>
@@ -172,12 +174,12 @@ function orderAll(){
 	
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3>주소</font></td>
 	<td width=150 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
-	<input type="text" name="address" value="<%=member.getAddress()%>" align=center>
+	<input type="text" name="address" value="<%=member.getAddress()%>">
 	</font>
 	</td>
 	
 	<td width=50 align=center>
-	<input type="button" value="변경" onClick="addressModifyAction()">
+	<input type="button" value="변경" onClick="addressModifyAction();">
 	</td>
 	
 	</tr>
