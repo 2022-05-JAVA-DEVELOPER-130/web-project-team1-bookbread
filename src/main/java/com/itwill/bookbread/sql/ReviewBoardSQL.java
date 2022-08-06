@@ -16,7 +16,7 @@ public class ReviewBoardSQL {
 
 	//select_pk(내가쓴리뷰보기)
 	public final static String REVIEW_SELECET_BY_ID=
-	"select * from review_board where userId=?";
+	"select * from review_board rb join product p on rb.p_no = p.p_no where userId=?";
 
 	//select_all(리뷰전체보기)
 	public final static String REVIEW_SELECT_ALL=

@@ -65,7 +65,7 @@ Member member = memberService.findMember(sUserId);
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href="review_board_write.jsp"><b>나의리뷰보기</b></a>
+						<a href="review_board_list.jsp"><b>나의리뷰보기</b></a>
 					</td>
 				</tr>
 				<tr>
