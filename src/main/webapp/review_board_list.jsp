@@ -4,7 +4,7 @@
 <%@page import="java.util.List"%>
 <%@page import="com.itwill.bookbread.service.ReviewBoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
 <%
 MemberService memberService = new MemberService();
@@ -42,7 +42,13 @@ List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewById(member.get
 <link rel="stylesheet" href="css/responsive.css">
 
 <script type="text/javascript">
-
+	
+	function reviewRemove() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			document.f.action = "review_board_remove_action.jsp";
+			document.f.submit();
+		}
+	}
 </script>
 
 
@@ -54,54 +60,47 @@ List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewById(member.get
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
-	<br/><br/>
-<table style="margin: auto" border=0 width="70%" height=376 align=center>
-								<tr valign=bottom>
-										<td width=15% align=center class=t1>
-										<font size=2 color=#000000><b>도서 이름</b>
-										</font>
-										</td>
-									<td width=15% align=center class=t1><font size=2
-										color=#000000><b>작성 날짜</b></font></td>
-									<td width=15% align=center class=t1><font size=2
-										color=#000000><b>리뷰 제목</b></font></td>
-										</tr>
-										<tr>
-									<td width=55% align=center class=t1><font size=2
-										color=#000000><b>리뷰 내용</b></font></td>
-										</tr>
-										
-							
-											</table>
-			<table>										
-								<%
-										for(int i = 0;i<reviewBoardList.size();i++){
-											
-										%>
-								<tr valign=bottom>
-									<td width=15% align=center class=t1><font size=2
-										color=#000000><b><%=reviewBoardList.get(i).getProduct().getP_name()%></b></font></td>
-									
-									<td width=15% align=center class=t1><font size=2
-										color=#000000><b><%=reviewBoardList.get(i).getR_date()%></b></font></td>
-									
-									<td width=15% align=center class=t1><font size=2
-										color=#000000><b><%=reviewBoardList.get(i).getR_title()%></b></font></td>
-										</tr>
-										<tr>
-									<td width=55% align=center class=t1><font size=2
-										color=#000000><b><%=reviewBoardList.get(i).getR_content()%></b></font></td>
-										</tr>
-											<%} %>	
-								</table>
-		<table>
-			<tr>
-				<td>
-					<input type="button" value="선택삭제" onClick="reviewRemove();" >&nbsp;
-					<input type="button" value="전체삭제" onClick="reviewRemoveAll();" >&nbsp;
-				</td>
-			</tr>
-		</table>
+	<br />
+	<br />
+	<table style="margin: auto" border=0 width="70%" height=376
+		align=center>
+		<tr valign=bottom>
+			<td width=15% align=center class=t1><font size=2 color=#000000><b>도서
+						이름</b> </font></td>
+			<td width=15% align=center class=t1><font size=2 color=#000000><b>작성
+						날짜</b></font></td>
+			<td width=15% align=center class=t1><font size=2 color=#000000><b>리뷰
+						제목</b></font></td>
+		</tr>
+		<tr>
+			<td width=55% align=center class=t1><font size=2 color=#000000><b>리뷰
+						내용</b></font></td>
+		</tr>
 
+
+	</table>
+	<table>
+		<% for (int i = 0; i < reviewBoardList.size(); i++) { %>
+		<tr valign=bottom>
+			<td width=15% align=center class=t1>
+			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getProduct().getP_name()%></b></font></td>
+			<td width=15% align=center class=t1>
+			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_date()%></b></font></td>
+			<td width=15% align=center class=t1>
+			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_title()%></b></font></td>
+		</tr>
+		<tr>
+			<td width=55% align=center class=t1>
+			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_content()%></b></font></td>
+		</tr>
+		<% } %>
+	</table>
+	<table>
+		<tr>
+			<td>
+			<input type="button" value="삭제" onClick="reviewRemove()"/>&nbsp;
+			</td>
+		</tr>
+	</table>
 </body>
 </html>
