@@ -102,6 +102,23 @@
 	function reviewCreate() {
 		location.href = 'review_board_write.jsp?p_no='+'<%=product.getP_no()%>';
 	}
+	function cart_qty_change(){
+		//alert('확인');
+
+		var cart_qty_select = document.getElementById("cart_qty_select");
+		var cart_qty_value = (cart_qty_select.options[cart_qty_select.selectedIndex].value);
+		alert("cart_qty_value=" + cart_qty_value);
+		/*
+		for(var i=0; i<cart_qty_list.item(i).length; i++){
+			var order_qty = console.log(option_values[i].value);
+			var product_price = update_order_count.p_price;
+			tot_price+= order_qty*product_price;
+			
+		}
+		*/
+		document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
+	}
+
 </script>
 </head>
 <body>
@@ -158,18 +175,19 @@
 											<!-- 
 											 <input type=text name="cart_qty" value=1 size=4 class=TXTFLD>  
 											-->
-											<select name="cart_qty">
-												<option value="1">1
-												<option value="2">2
-												<option value="3">3
-												<option value="4">4
-												<option value="5">5
-												<option value="6">6
-												<option value="7">7 
-												<option value="8">8
-												<option value="9">9
-												<option value="10">10
+											<select id="cart_qty_select" onChange="cart_qty_change();" name="cart_qty">
+												<option name = "cart_qty_select" value="1">1
+												<option name = "cart_qty_select" value="2">2
+												<option name = "cart_qty_select" value="3">3
+												<option name = "cart_qty_select" value="4">4
+												<option name = "cart_qty_select" value="5">5
+												<option name = "cart_qty_select" value="6">6
+												<option name = "cart_qty_select" value="7">7 
+												<option name = "cart_qty_select" value="8">8
+												<option name = "cart_qty_select" value="9">9
+												<option name = "cart_qty_select" value="10">10
 											</select> 권<br><br> 
+											<input type = "hidden" id="cart_item_select_count">
 												<input type=button onclick="add_cart_action();" value="장바구니 담기[장바구니 이동]"/><br><br> 
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
