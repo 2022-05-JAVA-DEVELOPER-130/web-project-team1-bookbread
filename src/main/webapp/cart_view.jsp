@@ -182,7 +182,7 @@ Cart cart = null;
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<li data-target="#small-featured" data-slide-to="0"
-									class="active" list-style:none></li>
+									class="active" ></li>
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">

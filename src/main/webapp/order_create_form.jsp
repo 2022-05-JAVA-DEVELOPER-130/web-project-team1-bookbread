@@ -100,13 +100,29 @@ function cart_qty_change(){
 	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
 */
+
+function deliveryCheck() {
+	var tot_price=0;
+	tot_price = document.getElementById('total_price').value;
+	var d_price = 0;
+	var t_d_price=0;
+	if(tot_price<50000){
+		d_price=2500;
+	}else{
+		d_price=0;
+	}
+	t_d_price=Number(tot_price)+Number(d_price);
+	document.getElementById('d_price').innerHTML=d_price.toLocaleString();
+	document.getElementById('total_price_deliver').innerHTML=t_d_price.toLocaleString();
+}
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
 	f.method = 'POST';
 	f.action = "address_modify_action.jsp";
 	f.submit();
-}
 	alert("주소가 변경되었습니다.");
+}
+	
 }
 
 function orderAll(){
@@ -118,7 +134,7 @@ function orderAll(){
 
 </script>
 </head>
-<body>
+<body onload="deliveryCheck();">
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp"/>
 	<!-- include_common_top_menu.jsp end-->
@@ -220,13 +236,28 @@ function orderAll(){
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><%=new DecimalFormat("#,###").format(cart.getCart_qty()*cart.getProduct().getP_price())%>원</font></td>
 	</tr>
 	<%} %>
-	
+	<%
+	int d_price=0;
+	if(tot_price<50000){
+	d_price = 2500;
+	}else{
+		d_price=0;
+	}
+	 %>
 </table>
 </form>
 <br>
 <br>
 <br>
 <br>
+<table align=center border="0" cellpadding="0" cellspacing="1" width="400">
+<tr>
+<td align=center>
+
+&nbsp;&nbsp;&nbsp;배송비 : <span id="d_price"><%=d_price %></span>원
+</td>
+</table>
+
 <br>
 
 		<table align=center border="0" cellpadding="0"
@@ -235,9 +266,12 @@ function orderAll(){
 									<td align=center>&nbsp;
 										<a href="shop_main.jsp">취소하기</a>
 									</td>
+										<td><input type="hidden" id="total_price" value="<%=tot_price %>"></td>
 									<td align=center>&nbsp;
-										총 주문금액 : <%=new DecimalFormat("#,###").format(tot_price)%></a> 
+										총 주문금액 : <span id="tot_price_deliver"><%=new DecimalFormat("#,###").format(tot_price+d_price)%></span>원
+									
 									</td>
+								
 									<td align=center>&nbsp;
 										<a href = "javascript:orderAll();">구매하기</a> 
 									</td>
