@@ -93,6 +93,7 @@ function cart_qty_change(){
 	*/
 	//tot_price=cart_qty_value*
 	document.getElementById("tot_price_span").innerHTML = tot_price;
+	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
 
 function addressModifyAction() {
@@ -205,20 +206,9 @@ function orderAll(){
 	</a></td>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
 	
-	<select id="cart_qty_select" onChange="cart_qty_change();">
-	<option name = "cart_qty_select" value="1">1
-	<option name = "cart_qty_select" value="2">2
-	<option name = "cart_qty_select" value="3">3
-	<option name = "cart_qty_select" value="4">4
-	<option name = "cart_qty_select" value="5">5
-	<option name = "cart_qty_select" value="6">6
-	<option name = "cart_qty_select" value="7">7 
-	<option name = "cart_qty_select" value="8">8
-	<option name = "cart_qty_select" value="9">9
-	<option name = "cart_qty_select" value="10">10
-	</select> 권<br><br> 
-	</input></font></td>
 	
+	 <%=cart.getCart_qty() %>권<br><br> 
+	</font></td>
 	<input type="hidden" name = "p_price" value=<%=cart.getProduct().getP_price() %>>
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=black size=3><span id="tot_price_span"><%=tot_price%></span></font></td>
 	</tr>
@@ -232,7 +222,13 @@ function orderAll(){
 <table>
 <tr>
 <td>
-<input type="button" value ="주문하기" onClick="orderAll()">
+<%
+if(cartList.size()>=1){%>
+<a href="javascript:orderAll();" class=m1>
+<span style="font-weight : bold;" id = "cart_item_select_count" name="p_qty"></span>주문하기
+
+</a>
+<%}%>
 </td>
 </table>
 </form>
