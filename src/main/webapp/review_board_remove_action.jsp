@@ -3,34 +3,20 @@
     pageEncoding="UTF-8"%>
 <%
 if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("product_detail.jsp");
+	response.sendRedirect("review_board_write.jsp");
 	return;
 }
-String userId = request.getParameter("userId");
-String r_no = request.getParameter("r_no");
-
-ReviewBoardService reviewBoardService = new ReviewBoardService();
-
-boolean result = true;
-String msg = "";
 
 try {
+	ReviewBoardService reviewBoardService = new ReviewBoardService();
+	//Integer r_no = Integer.parseInt(request.getParameter("r_no"));
+	String userId = request.getParameter("userId");
 	reviewBoardService.removeByUserId(userId);
 	response.sendRedirect("review_board_list.jsp");
-	if (userId == null) {
-		result = false;
-		msg = "삭제실패";
-	}else {
-		reviewBoardService.removeByUserId(userId);
-		result = true;
-		msg = "삭제성공";
-	}
+	
 } catch (Exception e) {
 	e.printStackTrace();
 }
-
-
-
 
 
 
