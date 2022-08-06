@@ -117,6 +117,9 @@
 		}
 		*/
 		document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
+		document.getElementById('tot_qty').innerHTML = cart_qty_value;
+		$('input[name=p_qty]').attr('value',cart_qty_value);
+		return cart_qty_value;
 	}
 
 </script>
@@ -131,7 +134,7 @@
 
 <form name="product_detail_form">
 <input type="hidden" name="p_no" value=<%=product.getP_no() %>>
-<input type="hidden" name="p_qty" value="1">>
+<input type="hidden" name="p_qty" value="">
 <input type="hidden" name="buyType" value="direct">
 </form>
 
@@ -201,7 +204,8 @@
 							<table style="margin: auto" border="0" cellpadding="0" cellspacing="1">
 								<tr valign=bottom>
 									<td align=center><input type="button" value="주문하기[주문폼]"
-										onClick="order_create_form();"> &nbsp; <input
+										onClick="cart_qty_change();order_create_form();" id="tot_qty">&nbsp; 
+										<input
 										type="button" value="상품리스트" onClick="productList();"></td>
 										<td align=center>
 										&nbsp;&nbsp;&nbsp;<input
