@@ -46,17 +46,17 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
+		<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 		<div id="content" align="center">
 				<table border=0 cellpadding=0 cellspacing=0>
 					<tr>
 						<td><br />
-						
-						<td align="center" class=t1><font size=4 color=#000000><b>주문목록</b></font></td>
+						<br><br>
+						<td align="center" class=t1><font size=5 color=#000000><b>주문목록</b></font></td>
 							</table>
-							
-							</table> <!--form-->
 							<br>
+							</table> <!--form-->
 							<form name="f" method="post" action="order_delete_all_action.jsp">
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
@@ -68,17 +68,16 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 									
 										<td width=200 height=30 bgcolor=#ffe18f align=center class=t1><font></font></td>
 									</tr>
-								
 									<!-- order start -->
 									<%
 									for (Orders orders : orderList) {
 									%>
 									<tr>
-										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
-										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
-										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
-										<td width=136 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orders.getO_price())%></td>
-										<td width=80 height=40 align=center bgcolor="ffffff" class=t1><a
+										<td width=145 height=60 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
+										<td width=145 height=60 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
+										<td width=112 height=60 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
+										<td width=136 height=60 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orders.getO_price())%></td>
+										<td width=80 height=60 align=center bgcolor="ffffff" class=t1><a
 											href="order_detail.jsp?o_no=<%=orders.getO_no()%>" class=m1>주문상세</a></td>
 									</tr>
 									<%

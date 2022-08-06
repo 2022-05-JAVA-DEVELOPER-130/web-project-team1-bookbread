@@ -151,14 +151,18 @@ Cart cart = null;
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
+	<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
+	<br>
 	<table style="margin: auto" border=0 width=70% align=center>
 		<tr valign=bottom>
-			<td width=30% align="center" class=t1><font size=4 color=#000000><b>내&nbsp;장바구니</b></font></td>
+			<td width=30% align="center" class=t1><font size=5 color=#000000><b>내&nbsp;장바구니</b></font></td>
 	</table>
+	<br>
 	<div width=70% align=center>
 	전체선택<input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();">
 	</div>
+	<br>
 	<div class="slider">
 		<div class="container">
 			<div class="row">				<%
@@ -182,7 +186,7 @@ Cart cart = null;
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<li data-target="#small-featured" data-slide-to="0"
-									class="active" ></li>
+									class="active"></li>
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
@@ -273,7 +277,7 @@ Cart cart = null;
 				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;</span>원
 				</td>
 		</table>
-
+	<br>
 	<table align=center border="0" cellpadding="0"
 								cellspacing="1" width="590">
 								<tr>

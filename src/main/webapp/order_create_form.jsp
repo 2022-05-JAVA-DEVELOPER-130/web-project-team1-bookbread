@@ -140,6 +140,7 @@ function orderAll(){
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
+	<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 	<form name="order_create_form" method="post">
 		<input type="hidden" name="buyType" value="<%=buyType%>"> <input
@@ -153,14 +154,15 @@ function orderAll(){
 		}
 		%>
 	</form>
+	<br>
 	<table>
 		<center>
-	<b><font size=4>주문/결제</font></b>
+	<b><font size=5>주문/결제</font></b>
 	</center>
 	</table>
 	
 	<br>
-	
+	<br>
 
 	<table width=50% align=center>
 	<tr>
@@ -246,6 +248,9 @@ function orderAll(){
 	 %>
 </table>
 </form>
+<br>
+<br>
+<br>
 <br>
 <br>
 <br>
