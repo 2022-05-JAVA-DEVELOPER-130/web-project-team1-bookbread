@@ -1,5 +1,8 @@
 package com.itwill.bookbread.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.itwill.bookbread.dao.MemberDao;
 import com.itwill.bookbread.dto.Member;
 import com.itwill.bookbread.user.exception.ExistedUserException;
@@ -33,7 +36,13 @@ public class MemberService {
 		}
 		return member;
 	}
-
+	
+	// 회원정보 전체출력
+	public List<Member> findAllMember() throws Exception{
+		List<Member> findAllmember = memberDao.findMemeber();
+		return findAllmember;
+	}
+	
 	// 회원정보
 	public Member findMember(String userId) throws Exception {
 		Member findMember = memberDao.findMember(userId);
@@ -44,6 +53,13 @@ public class MemberService {
 	public int update(Member member) throws Exception {
 		return memberDao.update(member);
 	}
+
+	// 관리자가 회원수정
+	public int updateAdmin(Member member) throws Exception {
+		return memberDao.updateAdmin(member);
+	}
+
+	
 	// 회원수정
 	
 	public int updateAddress(Member member) throws Exception {

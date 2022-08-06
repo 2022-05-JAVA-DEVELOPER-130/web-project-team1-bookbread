@@ -27,8 +27,7 @@
   
   ReviewBoardService reviewBoardService = new ReviewBoardService();
   List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewListByPno(Integer.parseInt(p_noStr));
-  ReviewBoard rb = new ReviewBoard();
-  
+	
   %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
