@@ -66,7 +66,7 @@ public class MemberService {
 	}
 
 	// 비밀번호 찾기
-	public Member findPassword(String userId, String email) throws Exception {
+	public String findPassword(String userId, String email) throws Exception {
 		return memberDao.findPassword(userId, email);
 	}
 

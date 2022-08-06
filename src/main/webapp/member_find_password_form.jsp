@@ -34,7 +34,7 @@ if (msg2 == null)
 
 <script type="text/javascript">
 function findPassword() {
-	f.action = "member_find_password_form.jsp";
+	f.action = "member_find_password_confirm_form.jsp";
 	f.submit();
 }
 </script>
