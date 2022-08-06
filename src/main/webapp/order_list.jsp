@@ -61,23 +61,24 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
-										<td width=145 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문번호</font></td>
-										<td width=145 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문이름</font></td>
-										<td width=112 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문날짜</font></td>
-										<td width=136 height=25 bgcolor="white" align=center class=t1><font color=#8d8d8d>주문가격</font></td>
-										<td width=80 height=25 bgcolor="white" align=center class=t1><font></font></td>
+										<td width=170 height=35 align=center class=t1 bgcolor=#ffe18f><font color=#8d8d8d>주문번호</font></td>
+										<td width=230 height=35 align=center class=t1 bgcolor=#ffe18f><font color=#8d8d8d>주문이름</font></td>
+										<td width=200 height=35 align=center class=t1 bgcolor=#ffe18f><font color=#8d8d8d>주문날짜</font></td>
+										<td width=200 height=35 align=center class=t1 bgcolor=#ffe18f><font color=#8d8d8d>주문가격</font></td>
+									
+										<td width=200 height=30 bgcolor=#ffe18f align=center class=t1><font></font></td>
 									</tr>
-
+								
 									<!-- order start -->
 									<%
 									for (Orders orders : orderList) {
 									%>
 									<tr>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
-										<td width=145 height=26 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
-										<td width=112 height=26 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
-										<td width=136 height=26 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orders.getO_price())%></td>
-										<td width=80 height=26 align=center bgcolor="ffffff" class=t1><a
+										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_no()%></td>
+										<td width=145 height=40 align=center bgcolor="ffffff" class=t1><%=orders.getO_desc()%></td>
+										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new SimpleDateFormat("yyyy/MM/dd").format(orders.getO_date())%></td>
+										<td width=136 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(orders.getO_price())%></td>
+										<td width=80 height=40 align=center bgcolor="ffffff" class=t1><a
 											href="order_detail.jsp?o_no=<%=orders.getO_no()%>" class=m1>주문상세</a></td>
 									</tr>
 									<%
@@ -90,6 +91,12 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 
 								</table>
 							</form> <br />
+							<br>
+							<br>
+							<br>
+							<br>
+							<br>
+							
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;

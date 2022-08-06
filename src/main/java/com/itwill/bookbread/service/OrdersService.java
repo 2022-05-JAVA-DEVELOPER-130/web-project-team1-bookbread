@@ -106,5 +106,10 @@ public class OrdersService {
 	public List<Orders> ordersListAll(String userId) throws Exception{
 		return ordersDao.orderListAll(userId);
 	}
-	
+	/*
+	 * 주문목록 아이디/주문번호로 상세보기
+	 */
+	public Orders detail(String userId, int o_no) throws Exception{
+		return ordersDao.detail(userId, o_no);
+	}
 }
