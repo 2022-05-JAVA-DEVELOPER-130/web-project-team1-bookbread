@@ -174,11 +174,7 @@ Cart cart = null;
 			<%
 			if(i%cart_column_size==0){}
 			%>
-			
-				<%
-				
-				
-				%>
+		 
 				<div class="col-md-4 col-sm-4">
 					<div class="slider small-slider">
 						<div id="small-featured" class="carousel slide"
@@ -201,6 +197,7 @@ Cart cart = null;
 									</div>
 								</div>
 								<div align="center">
+								
 									가격:<%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getCart_qty())%><br> 
 									
 									
@@ -259,6 +256,17 @@ Cart cart = null;
 			</div>
 		</div>
 	</div>
+	<%if(cartList.size()>=1){ %>
+			
+			<% }else{%>
+			<table align=center>
+			<tr>
+			<td>
+	        	<img src="image/emptyCart.png">
+	        	</td>
+	        	</tr>
+			</table>
+			<%} %>
 <table align=center border="0" cellpadding=0">
 			<tr>
 				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;</span>원
@@ -269,16 +277,15 @@ Cart cart = null;
 								cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
-										class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
-										 if (cartList.size() >= 1) {
-										 %> <a href="javascript:cart_view_form_select_submit();" class=m1>
+										class=m1>계속 구경하기</a>&nbsp;&nbsp;
+										 <% if (cartList.size() >= 1) { %> 
+										 <a href="javascript:cart_view_form_select_submit();" class=m1>
 										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
 										 	</a>&nbsp;&nbsp;
 											<a href="javascript:cart_delete();" class=m1>장바구니 전체 비우기</a>&nbsp;&nbsp;
-											<%
-											}
-											%>
+											
 									</td>
+										<%} %>	
 								</tr>
 							</table>
 
