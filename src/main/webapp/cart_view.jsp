@@ -129,9 +129,13 @@ Cart cart = null;
 		
 	}
 	function cart_delete() {
+		if(window.confirm('장바구니를 전체 삭제하시겠습니까?')){
+			
+		
 		document.cart_view_form.method = 'POST';
 		document.cart_view_form.action = 'cart_delete_action.jsp';
 		document.cart_view_form.submit();
+		}
 	}
 </script>
 
@@ -261,24 +265,23 @@ Cart cart = null;
 				</td>
 		</table>
 
-	<table style="padding-left: 10px" border="0" cellpadding="0"
+	<table align=center border="0" cellpadding="0"
 								cellspacing="1" width="590">
 								<tr>
-									<td align=center>&nbsp;&nbsp; <a href="product_list.jsp"
+									<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
 										class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
 										 if (cartList.size() >= 1) {
 										 %> <a href="javascript:cart_view_form_select_submit();" class=m1>
 										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
 										 	</a>&nbsp;&nbsp;
-											<a href="javascript:cart_delete();" class=m1>장바구니 비우기</a>&nbsp;&nbsp;
+											<a href="javascript:cart_delete();" class=m1>장바구니 전체 비우기</a>&nbsp;&nbsp;
 											<%
 											}
 											%>
 									</td>
 								</tr>
-							</table></td>
-					</tr>
-				</table>
+							</table>
+
 
 		<!-- jQuery Library -->
 		<script

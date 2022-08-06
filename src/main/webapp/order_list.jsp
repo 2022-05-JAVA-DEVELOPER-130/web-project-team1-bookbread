@@ -15,10 +15,10 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 <!DOCTYPE html>
 <html>
 <script type="text/javascript">
-	function order_delete_all_action(){
-		document.order_delete_all_form.action='order_delete_all_action.jsp';
-		document.order_delete_all_form.method='POST';
-		document.order_delete_all_form.submit();
+	function order_delete_all(){
+		f.method='POST';
+		f.action='order_delete_all_action.jsp';
+		f.submit();
 	}
 </script>
 <head>
@@ -57,7 +57,7 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 							
 							</table> <!--form-->
 							<br>
-							<form name="f" method="post">
+							<form name="f" method="post" action="order_delete_all_action.jsp">
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
 									<tr>
@@ -100,9 +100,9 @@ List<Orders> orderList=ordersService.ordersListAll(sUserId);
 							<table border="0" cellpadding="0" cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp;
-									<a href=product_list1.jsp
+									<a href=shop_main.jsp
 										class=m1>계속 구경하기</a>
-									<a href=order_delete_all_action.jsp
+									<a href='javascript:order_delete_all();'
 										class=m1>주문전체삭제</a>
 									</td>
 									

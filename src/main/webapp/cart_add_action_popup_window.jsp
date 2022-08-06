@@ -1,7 +1,24 @@
+<%@page import="com.itwill.bookbread.dto.Product"%>
+<%@page import="com.itwill.bookbread.dto.Cart"%>
+<%@page import="com.itwill.bookbread.service.CartService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="login_check.jspf"%>
+<%
+if(request.getMethod().equalsIgnoreCase("GET")){
+	response.sendRedirect("product_list.jsp");
+	return;
+}
+String p_noStr = request.getParameter("p_no");
+String cart_qtyStr = request.getParameter("cart_qty");
 
+CartService cartService = new CartService();
+Cart newCart = new Cart(0,Integer.parseInt(cart_qtyStr),new Member(sUserId, "","","","","","",""),
+						new Product(Integer.parseInt(p_noStr),"","","","",0,"","",null));
+cartService.addCart(newCart);
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

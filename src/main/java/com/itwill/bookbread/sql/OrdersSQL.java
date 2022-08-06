@@ -10,7 +10,7 @@ public class OrdersSQL {
 	/*
 	 * 주문전체조회(할 필요 없을듯..? 주문번호 상세조회 리스트로 뽑으면 되지 않나싶어서..)
 	 */
-	public static final String ORDER_LIST_BY_USERID="select * from orders o join order_item oi on oi.o_no = o.o_no join product p on p.p_no = oi.p_no where o.userid= ?";
+	public static final String ORDER_LIST_BY_USERID="select * from orders where userid= ?";
 	
 	/*
 	 * 주문번호 1개 상세조회

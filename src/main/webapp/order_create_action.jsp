@@ -14,14 +14,14 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 String buyType = request.getParameter("buyType");
 String p_noStr = request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
-String[] cart_no_array = request.getParameterValues("cart_no");
+String[] cart_no_array = request.getParameterValues("cart_item_no");
 
 OrdersService orderService = new OrdersService();
 CartService cartService = new CartService();
 
 if(buyType.equals("cart")){
 	orderService.createAll(sUserId);
-}else if(buyType.equals("cart_item_no")){
+}else if(buyType.equals("cart_select")){
 	orderService.selectCreate(sUserId, cart_no_array);
 }else if(buyType.equals("direct")){
 	orderService.create(sUserId, Integer.parseInt(p_qtyStr), Integer.parseInt(p_noStr));
