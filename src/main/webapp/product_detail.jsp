@@ -107,7 +107,7 @@
 
 		var cart_qty_select = document.getElementById("cart_qty_select");
 		var cart_qty_value = (cart_qty_select.options[cart_qty_select.selectedIndex].value);
-		alert("cart_qty_value=" + cart_qty_value);
+		//alert("cart_qty_value=" + cart_qty_value);
 		/*
 		for(var i=0; i<cart_qty_list.item(i).length; i++){
 			var order_qty = console.log(option_values[i].value);
