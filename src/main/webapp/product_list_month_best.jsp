@@ -60,6 +60,13 @@ List<Product> productList = productService.selectListType(mid);
 <div class="slider">
 <div class="container">
 <div class="row">
+<br>
+	<table style="margin: auto" border=0 width=70% align=center>
+		<tr valign=bottom>
+			<td width=30% align="center" class=t1><font size=5 color=#000000><img src="image/bread.png" style="width:40px; height:20px;">&nbsp;&nbsp;<b>회원&nbsp;추천도서</b>&nbsp;&nbsp;<img src="image/bread.png" style="width:40px; height:20px;"></font></td>
+	</table>
+	<br>
+	<br>
 	<%
 	int product_size=productList.size();
 	int product_column_size=4;

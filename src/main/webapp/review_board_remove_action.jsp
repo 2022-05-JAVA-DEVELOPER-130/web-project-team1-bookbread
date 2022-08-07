@@ -5,14 +5,14 @@
     pageEncoding="UTF-8"%>
 <%
 if(request.getMethod().equalsIgnoreCase("GET")){
-	response.sendRedirect("review_board_write.jsp");
+	response.sendRedirect("review_board_list.jsp");
 	return;
 }
 
 try {
+	String rno = request.getParameter("rno");
 	ReviewBoardService reviewBoardService = new ReviewBoardService();
-	//Integer r_no = Integer.parseInt(request.getParameter("r_no"));
-	reviewBoardService.removeByUserId(sUserId);
+	int removeRowCount = reviewBoardService.removeByNo(Integer.parseInt(rno));
 	response.sendRedirect("review_board_list.jsp");
 	
 } catch (Exception e) {

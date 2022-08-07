@@ -14,6 +14,12 @@ public class BookType {
 		this.p_type = p_type;
 	}
 
+	
+	public BookType(int type_no) {
+		super();
+		this.type_no = type_no;
+	}
+
 	public int getType_no() {
 		return type_no;
 	}

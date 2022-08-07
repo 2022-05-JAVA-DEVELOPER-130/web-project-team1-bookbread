@@ -1,4 +1,5 @@
 
+<%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@page import="com.itwill.bookbread.dto.OrderItem"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.List"%>
@@ -15,7 +16,8 @@ if(o_noStr==null|| o_noStr.equals("")){
 }
 OrdersService ordersService= new OrdersService();
 Orders order = ordersService.detail(sUserId, Integer.parseInt(o_noStr));
-
+MemberService memberService = new MemberService();
+Member member = memberService.findMember(sUserId);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -84,6 +86,7 @@ function deleteSelect() {
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문날짜</font></td>
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문자</font></td>
 										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>주문가격</font></td>
+										<td width=250 height=35 bgcolor=#ffe18f align=center class=t1><font color=#8d8d8d>배송지</font></td>
 									
 									</tr>
 									<%
@@ -101,6 +104,7 @@ function deleteSelect() {
 										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=order.getUserId()%></td>
 										
 										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=new DecimalFormat("#,###").format(tot_final_price)%></td>
+										<td width=112 height=40 align=center bgcolor="ffffff" class=t1><%=member.getAddress()%></td>
 										
 									</tr>
 									

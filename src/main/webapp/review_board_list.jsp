@@ -59,49 +59,49 @@ List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewById(member.get
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
-		<jsp:include page="html/mouse_effect.html"/>
+	<jsp:include page="html/mouse_effect.html" />
 	<!-- include_common_top.jsp end-->
 	<br />
 	<br />
 	<table style="margin: auto" border=0 width="70%" height=376
 		align=center>
-		<tr valign=bottom>
-			<td width=15% align=center class=t1><font size=2 color=#000000><b>도서
+
+		<tr valign=middle>
+			<td width=5% align=center class=t1><font size=2 color=#000000><b>작성
+						번호</b> </font></td>
+			<td width=20% align=center class=t1><font size=2 color=#000000><b>도서
 						이름</b> </font></td>
 			<td width=15% align=center class=t1><font size=2 color=#000000><b>작성
 						날짜</b></font></td>
 			<td width=15% align=center class=t1><font size=2 color=#000000><b>리뷰
 						제목</b></font></td>
-		</tr>
-		<tr>
-			<td width=55% align=center class=t1><font size=2 color=#000000><b>리뷰
+			<td width=45% align=center class=t1><font size=2 color=#000000><b>리뷰
 						내용</b></font></td>
+			<td width=5% align=center class=t1><font size=2 color=#000000><b>비
+						고</b></font></td>
 		</tr>
 
-
-	</table>
-	<table>
-		<% for (int i = 0; i < reviewBoardList.size(); i++) { %>
-		<tr valign=bottom>
-			<td width=15% align=center class=t1>
-			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getProduct().getP_name()%></b></font></td>
-			<td width=15% align=center class=t1>
-			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_date()%></b></font></td>
-			<td width=15% align=center class=t1>
-			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_title()%></b></font></td>
+		<%
+		for (int i = 0; i < reviewBoardList.size(); i++) {
+		%>
+		<form method="post" name="f">
+		<tr valign=middle>
+			<td width=5% align=center class=t1><font size=2 color=#000000><input
+					type="hidden" name="rno"
+					value="<%=reviewBoardList.get(i).getR_no()%>"><%=reviewBoardList.get(i).getR_no()%></td>
+			<td width=5% align=center class=t1><font size=2 color=#000000><b><%=reviewBoardList.get(i).getProduct().getP_name()%></b></font></td>
+			<td width=15% align=center class=t1><font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_date()%></b></font></td>
+			<td width=15% align=center class=t1><font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_title()%></b></font></td>
+			<td width=55% align=center class=t1><font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_content()%></b></font></td>
+			<td align=center class=t1><input type=submit
+				onclick="javascript: form.action='review_board_remove_action.jsp';"
+				value="삭제" /></td>
+		
 		</tr>
-		<tr>
-			<td width=55% align=center class=t1>
-			<font size=2 color=#000000><b><%=reviewBoardList.get(i).getR_content()%></b></font></td>
-		</tr>
-		<% } %>
-	</table>
-	<table>
-		<tr>
-			<td>
-			<input type="button" value="삭제" onClick="reviewRemove()"/>&nbsp;
-			</td>
-		</tr>
+		</form>
+		<%
+		}
+		%>
 	</table>
 </body>
 </html>

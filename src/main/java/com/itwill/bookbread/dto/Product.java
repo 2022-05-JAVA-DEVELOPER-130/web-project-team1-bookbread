@@ -29,6 +29,20 @@ public class Product {
 		this.booktype = booktype;
 	}
 
+	
+	public Product(int p_no, String p_name, String p_author, String p_publisher, String p_publish_date, int p_price,
+			String p_image, String p_detail) {
+		super();
+		this.p_no = p_no;
+		this.p_name = p_name;
+		this.p_author = p_author;
+		this.p_publisher = p_publisher;
+		this.p_publish_date = p_publish_date;
+		this.p_price = p_price;
+		this.p_image = p_image;
+		this.p_detail = p_detail;
+	}
+
 	public int getP_no() {
 		return p_no;
 	}

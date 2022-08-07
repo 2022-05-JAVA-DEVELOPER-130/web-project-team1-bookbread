@@ -58,6 +58,11 @@ public class MemberService {
 	public int updateAdmin(Member member) throws Exception {
 		return memberDao.updateAdmin(member);
 	}
+	
+	// 관리자가 회원삭제
+	public int deleteAdmin(Member member) throws Exception {
+		return memberDao.deleteAdmin(member);
+	}
 
 	
 	// 회원수정

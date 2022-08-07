@@ -222,5 +222,20 @@ public class OrdersDao {
 		return listAll;
 	}
 	
+	public List<Orders> orderListAllForAdmin() throws Exception{
+		List<Orders> orderList = new ArrayList<Orders>();
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(OrdersSQL.ORDER_LIST_FOR_ADMIN);
+		ResultSet rs = pstmt.executeQuery();
+		while(rs.next()) {
+			Orders order = new Orders(rs.getInt("o_no"),
+									  rs.getString("o_desc"),
+									  rs.getDate("o_date"),
+									  rs.getInt("o_price"),
+									  rs.getString("userid"));
+		orderList.add(order);
+		}
+		return orderList;
+	}
 	
 }

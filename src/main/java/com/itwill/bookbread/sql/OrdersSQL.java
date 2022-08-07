@@ -11,6 +11,11 @@ public class OrdersSQL {
 	 * 주문전체조회(할 필요 없을듯..? 주문번호 상세조회 리스트로 뽑으면 되지 않나싶어서..)
 	 */
 	public static final String ORDER_LIST_BY_USERID="select * from orders where userid= ?";
+
+	/*
+	 * 관리자가 모든 주문내역 조회
+	 */
+	public static final String ORDER_LIST_FOR_ADMIN="select * from orders";
 	
 	/*
 	 * 주문번호 1개 상세조회
