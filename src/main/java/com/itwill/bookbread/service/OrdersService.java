@@ -112,4 +112,11 @@ public class OrdersService {
 	public Orders detail(String userId, int o_no) throws Exception{
 		return ordersDao.detail(userId, o_no);
 	}
+	
+	/*
+	 * 관리자가 모든 주문내역 조회
+	 */
+	public List<Orders> ordersListForAdmin() throws Exception{
+		return ordersDao.orderListAllForAdmin();
+	}
 }

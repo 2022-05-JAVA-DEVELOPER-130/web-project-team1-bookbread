@@ -50,7 +50,7 @@ BookType bookType = new BookType();
 
 <script type="text/javascript">
 	function adminProductView() {
-		f.action = "admin_product.list.jsp";
+		f.action = "admin_product_list.jsp";
 		f.submit();
 	}
 	function adminMain() {

@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
+
 ProductService productService = new ProductService();
 List<Product> productList = productService.selectAll();
 %>

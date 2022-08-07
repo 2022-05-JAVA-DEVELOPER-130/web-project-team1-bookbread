@@ -57,12 +57,17 @@ if(!member.getUserId().equalsIgnoreCase("admin")){
 
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href=admin_member_list.jsp><b>회원정보</b></a>
+						<a href=admin_member_list.jsp><b>회원정보조회</b></a>
 					</td>
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href="admin_product_list.jsp"><b>도서정보</b></a>
+						<a href="admin_product_list.jsp"><b>도서정보조회</b></a>
+					</td>
+				</tr>
+				<tr>
+					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
+						<a href="admin_order_list.jsp"><b>주문내역조회</b></a>
 					</td>
 				</tr>
 
