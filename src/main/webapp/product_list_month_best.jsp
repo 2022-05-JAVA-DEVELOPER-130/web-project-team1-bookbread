@@ -22,7 +22,7 @@ if(member.getInterest().equals("소설")){
 	mid=2;
 }else if(member.getInterest().equals("어린이")){
 	mid=3;
-}else{
+}else if(member.getInterest().equals("교육")){
 	mid=4;
 }
 List<Product> productList = productService.selectListType(mid);
