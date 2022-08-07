@@ -13,7 +13,6 @@
 
 MemberService memberService=new MemberService();
 ProductService productService = new ProductService();
-
 Member member = memberService.findMember(sUserId);
 String type_noStr = request.getParameter("type_no");
 int mid=0;
