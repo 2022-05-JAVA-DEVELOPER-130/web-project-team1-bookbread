@@ -36,6 +36,14 @@ List<Member> memberList = memberService.findAllMember();
 		order_create_form.submit();
 		alert("주문이 완료되었습니다.");
 	}
+	
+	function userRemove() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			document.update.action = "admin_member_remove_action.jsp";
+			document.update.method = 'POST';
+			document.update.submit();
+		}
+	}
 </script>
 </head>
 <body>
@@ -110,8 +118,8 @@ List<Member> memberList = memberService.findAllMember();
 							value="<%=memberList.get(i).getEmail()%>"/><b><%=memberList.get(i).getEmail()%></b></font></td>
 
 					<td align=center class=t1><input type=submit value="수정" /> <input type=button
-						onclick="add_cart_action();" value="삭제" /></td>
-				
+						onclick="location.href='update?userId='+('#userId').val()" value="삭제" /></td> 
+					
 				</tr>
 		</form>
 			
