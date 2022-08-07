@@ -122,7 +122,9 @@ function deliveryCheck() {
 }
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
-	
+	document.address_modify.method = 'POST';
+	document.address_modify.action = "address_modify_action.jsp";
+	document.address_modify.submit();
 	alert("주소가 변경되었습니다.");
 }
 	
@@ -133,14 +135,6 @@ function orderAll(){
 	order_create_form.submit();
 	alert("주문이 완료되었습니다.");
 }
-function addressModify(){
-	orderAll(()=>{
-	document.address_modify.method = 'POST';
-	document.address_modify.action = "address_modify_action.jsp";
-	document.address_modify.submit();
-});
-}
-addressModify();
 </script>
 </head>
 <body onload="deliveryCheck();">
@@ -288,7 +282,7 @@ addressModify();
 									</td>
 								
 									<td align=center>&nbsp;
-										<a href ="javascript:orderAll();addressModify();">구매하기</a>  
+										<a href ="javascript:orderAll();">구매하기</a>  
 									</td>
 									
 								</tr>
