@@ -135,6 +135,8 @@ function orderAll(){
 	order_create_form.submit();
 	alert("주문이 완료되었습니다.");
 }
+
+
 </script>
 </head>
 <body onload="deliveryCheck();">

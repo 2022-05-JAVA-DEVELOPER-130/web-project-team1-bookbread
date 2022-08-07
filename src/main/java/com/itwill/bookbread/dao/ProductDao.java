@@ -31,8 +31,24 @@ public class ProductDao {
 		basicDataSource.setPassword(properties.getProperty("password"));
 		dataSource = basicDataSource;
 	}
-
-	//관리자가 회원정보수정
+	//관리자가 신규도서추가
+	public int insert(Product product) throws Exception {
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_ADMIN_INSERT);
+		pstmt.setString(1, product.getP_name());
+		pstmt.setString(2, product.getP_author());
+		pstmt.setString(3, product.getP_publisher());
+		pstmt.setString(4, product.getP_publish_date());
+		pstmt.setInt(5, product.getP_price());
+		pstmt.setString(6, product.getP_detail());
+		pstmt.setInt(7, product.getBookType().getType_no());
+		int insertRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return insertRowCount;
+	}
+	
+	//관리자가 도서정보수정
 		public int updateAdmin(Product product)throws Exception{
 			Connection con = dataSource.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_ADMIN_UPDATE);
@@ -318,8 +334,9 @@ public class ProductDao {
 		pstmt.setString(3, product.getP_publisher());
 		pstmt.setString(4, product.getP_publish_date());
 		pstmt.setInt(5, product.getP_price());
-		pstmt.setString(6, product.getP_detail());
-		pstmt.setInt(7, product.getBookType().getType_no());
+		pstmt.setString(6, product.getP_image());
+		pstmt.setString(7, product.getP_detail());
+		pstmt.setInt(8, product.getBookType().getType_no());
 		int insertRowCount = pstmt.executeUpdate();
 		pstmt.close();
 		con.close();

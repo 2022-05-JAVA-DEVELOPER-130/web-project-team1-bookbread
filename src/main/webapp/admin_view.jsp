@@ -65,15 +65,6 @@ if(!member.getUserId().equalsIgnoreCase("admin")){
 						<a href="admin_product_list.jsp"><b>도서정보</b></a>
 					</td>
 				</tr>
-				<tr>
-					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href=order_list.jsp><b>도서분류정보</b></a>
-					</td>
-				</tr>
-				<tr>
-					<td width=100 height=40 align=center bgcolor="ffffff" class=t1
-						onClick="userRemove()"><a href=#><b>주문정보</b></a></td>
-				</tr>
 
 			</table>
 		</form>
