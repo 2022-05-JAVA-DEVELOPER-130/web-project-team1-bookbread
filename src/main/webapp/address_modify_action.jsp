@@ -9,12 +9,8 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	return;
 }
 	String address = request.getParameter("address");
-
-	
 	MemberService memberService = new MemberService();
-	
 	Member addressModify = new Member(sUserId,"","","","",address,"","");
-
 	memberService.updateAddress(addressModify);
 	response.sendRedirect("order_create_form.jsp");
 
