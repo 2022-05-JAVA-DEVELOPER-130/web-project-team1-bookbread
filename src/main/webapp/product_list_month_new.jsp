@@ -11,7 +11,6 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	return;
 }
 */
-String p_publish_date = request.getParameter("p_publish_date");
 ProductService productService = new ProductService();
 List<Product> productList = productService.selectAll();
 %>
@@ -36,18 +35,18 @@ List<Product> productList = productService.selectAll();
 <!-- Theme Stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/newtext.css">
 </head>
 <script type="text/javascript">
 function date_array(){
 	
 	var date_array_list = document.getElementById("publish_date");
-	alert(date_array_list);
+	date_array_list.sort();
 	
 }
 
-
 </script>
-<body>
+<body onload="date_array();">
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp" />
 	<!-- include_common_top_menu.jsp end-->
@@ -58,16 +57,24 @@ function date_array(){
 <div class="slider">
 <div class="container">
 <div class="row">
-
+<br>
+	<table style="margin: auto" border=0 width=70% align=center>
+		<tr valign=bottom>
+			<td width=30% align="center" class=t1><font size=5 color=#000000><img src="image/bread.png" style="width:40px; height:20px;">&nbsp;&nbsp;<b>이&nbsp;달의&nbsp;신규도서&nbsp;</b>&nbsp;&nbsp;<img src="image/bread.png" style="width:40px; height:20px;"></font></td>
+	</table>
+	<br>
+	<br>
 	<%
 	int product_size=productList.size();
 	int product_column_size=4;
 	int product_line_count = 1;
-	String check_date = "2021-01-01";
-	
+	String check_date="2021-02-01";
 	for(int i = 0; i<productList.size(); i++){
 				Product product = productList.get(i);			
-					
+					if(product.getP_publish_date().compareTo(check_date)<0){
+						
+					}else if(product.getP_publish_date().compareTo(check_date)>0){
+						Product newProduct = product;
 	%>
 	
 	<%
@@ -81,12 +88,22 @@ function date_array(){
 						<li data-target="#small-featured" data-slide-to="0" class="active"></li>
 					</ol>
 					<!-- Wrapper for slides -->
+					<div class="txt" align=center>
+					
+  <span>n</span>
+  <span>e</span>
+  <span>w</span>
+  <span>!</span>
+  
+</div>
+<br>
+
 					<div class="carousel-inner" role="listbox">
-					<input type="hidden" id="publish_date" value="<%=product.getP_publish_date() %>">
-						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
+					<input type="hidden" id="publish_date" value="<%=newProduct.getP_publish_date()%>">
+						<div class="item active" style="background-image: url('images/<%=newProduct.getP_image()%>')">
 						
 							<div class="carousel-caption">
-								<a href="prduct_detail.jsp?p_no=<%=product.getP_no() %>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;</a>
+								<a href="product_detail.jsp?p_no=<%=newProduct.getP_no()%>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;</a>
 							</div>
 						</div>
 					</div>
@@ -95,6 +112,7 @@ function date_array(){
 			</div>
 			<%if(i%product_column_size==3){}%>
 		</div>
+		<%} %>
 		<%} %>
 </div>
 </div>
