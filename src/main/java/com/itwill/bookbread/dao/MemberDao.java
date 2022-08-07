@@ -114,6 +114,18 @@ public class MemberDao {
 		con.close();
 		return removeRowCount;
 	}
+	
+	//관리자가 회원삭제
+	public int deleteAdmin(Member member) throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_DELETE);
+		pstmt.setString(1, member.getUserId());
+		int removeRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return removeRowCount;
+	}
+	
 	//내 정보 보기
 	public Member findMember(String userId) throws Exception {
 		Connection con = dataSource.getConnection();

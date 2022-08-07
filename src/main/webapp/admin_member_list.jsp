@@ -28,23 +28,6 @@ List<Member> memberList = memberService.findAllMember();
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 
-<script type="text/javascript">
-
-	function orderAll() {
-		order_create_form.action = "order_create_action.jsp";
-		order_create_form.method = 'POST';
-		order_create_form.submit();
-		alert("주문이 완료되었습니다.");
-	}
-	
-	function userRemove() {
-		if (confirm("정말 삭제하시겠습니까?")) {
-			document.update.action = "admin_member_remove_action.jsp";
-			document.update.method = 'POST';
-			document.update.submit();
-		}
-	}
-</script>
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
@@ -83,7 +66,7 @@ List<Member> memberList = memberService.findAllMember();
 		for (int i = 0; i < memberList.size(); i++) {
 		%>
 			
-		<form name="update" method="post" action="admin_member_modify_form.jsp">
+		<form method="post" name="f">
 				<tr valign=top>
 					<td width=120 align=center class=t1><font size=2 color=#000000><input
 							type="hidden" name="userId" readonly
@@ -117,9 +100,8 @@ List<Member> memberList = memberService.findAllMember();
 							type="hidden" name="interest" readonly
 							value="<%=memberList.get(i).getEmail()%>"/><b><%=memberList.get(i).getEmail()%></b></font></td>
 
-					<td align=center class=t1><input type=submit value="수정" /> <input type=button
-						onclick="location.href='update?userId='+('#userId').val()" value="삭제" /></td> 
-					
+					<td align=center class=t1><input type=submit value="수정" onclick="javascript: form.action='admin_member_modify_form.jsp';" />
+					<input type=submit onclick="javascript: form.action='admin_member_remove_action.jsp';" value="삭제" /></td> 
 				</tr>
 		</form>
 			
