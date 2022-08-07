@@ -1,4 +1,7 @@
 
+<%@page import="com.itwill.bookbread.dto.Product"%>
+<%@page import="java.util.List"%>
+<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@page import="com.itwill.bookbread.service.MemberService"%>
 <%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.dto.BookType"%>
@@ -6,10 +9,26 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+ProductService productService = new ProductService();
+List<Product> productList =productService.selectAll();
 
+%>
 	<%--
 <jsp:include page="include_common_top_menu.jsp"/>
 	 --%>
+	 
+<script type="text/javascript">
+function post_date(){
+	f.method="post";
+	f.action = "product_list_month_new.jsp";
+	f.submit();
+}
+
+
+
+</script>
 	 <body>
 	<div class="header">
 		<div class="container">
@@ -49,17 +68,23 @@
 				</div>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
+			<form method="post" name="product_list" action="product_list_month_new.jsp">
+			<%
+			for(int i=0; i<productList.size(); i++){ 
+				Product product = productList.get(i);
+				%>
 			
+			<input type="hidden" value="<%=productList.get(i).getP_publish_date()%>">
+			<%} %>
+			</form>
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-right">
-				
-				    	
-
-					<li><a href="product_list_month_best.jsp?type_no=">이달의 베스트도서</a></li>
+					<li><a href="product_list_month_best.jsp">이달의 베스트도서</a></li>
 					<li><a href="product_list_month_rek.jsp">이달의 추천도서</a></li>
-					<li><a href="product_list_month_new.jsp">이달의 신규도서</a></li>
+					<li><a href="product_list_month_new.jsp" onclick="post_date();">이달의 신규도서</a></li>
 				</ul>
 			</div>
+			
 			<!-- /.navbar-collapse -->
 		</div>
 		<!-- /.container-fluid --> </nav>

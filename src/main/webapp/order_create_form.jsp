@@ -91,10 +91,8 @@ function cart_qty_change(){
 	document.getElementById("tot_price_span").innerHTML = tot_price;
 	document.getElementById("cart_item_select_count").innerHTML = cart_qty_value;
 }
-*/
-<<<<<<< HEAD
-*-->
-=======
+-->
+
 /*
  * 팝업창을 따로 만들어도 안되는구나...
  function addressModifyAction(){
@@ -122,7 +120,6 @@ function deliveryCheck() {
 	document.getElementById('d_price').innerHTML=d_price.toLocaleString();
 	document.getElementById('total_price_deliver').innerHTML=t_d_price.toLocaleString();
 }
->>>>>>> branch 'master' of https://github.com/2022-05-JAVA-DEVELOPER/web-project-team1-bookbread.git
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
 	f.method = 'POST';
@@ -284,8 +281,7 @@ function orderAll(){
 									</td>
 								
 									<td align=center>&nbsp;
-										<a href = "javascript:addressModifyAction();orderAll();">구매하기</a>  
-										/<!-- 이것도 안되는구나..ㅋ -->
+										<a href ="javascript:orderAll();">구매하기</a>  
 									</td>
 									
 								</tr>
