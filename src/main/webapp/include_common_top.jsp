@@ -21,11 +21,15 @@ List<Product> productList =productService.selectAll();
 	 
 <script type="text/javascript">
 function post_date(){
-	f.method="post";
-	f.action = "product_list_month_new.jsp";
-	f.submit();
+	var publish_date_list =document.getElementById('p_date_list').value;
+	alert(publish_date_list);
+	/*
+	product_list.method="post";
+	product_list.action = "product_list_month_new.jsp";
+	product_list.submit(publish_date_list);
+	*/
 }
-
+window.onload=publish_date_list();
 
 
 </script>
@@ -74,7 +78,7 @@ function post_date(){
 				Product product = productList.get(i);
 				%>
 			
-			<input type="hidden" value="<%=productList.get(i).getP_publish_date()%>">
+			<input type="hidden" value="<%=productList.get(i).getP_publish_date()%>" id="p_date_list">
 			<%} %>
 			</form>
 			<div class="collapse navbar-collapse" id="navbar">
