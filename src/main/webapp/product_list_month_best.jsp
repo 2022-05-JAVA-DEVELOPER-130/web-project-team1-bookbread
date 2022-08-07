@@ -1,13 +1,31 @@
+<%@page import="com.itwill.bookbread.service.MemberService"%>
+<%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="com.itwill.bookbread.service.ProductService"%>
+<%@include file="login_check.jspf"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
+
+MemberService memberService=new MemberService();
 ProductService productService = new ProductService();
+Member member = memberService.findMember(sUserId);
 String type_noStr = request.getParameter("type_no");
-List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
+int mid=0;
+if(member.getInterest().equals("소설")){
+	mid=1;
+}else if(member.getInterest().equals("경영경제")){
+	mid=2;
+}else if(member.getInterest().equals("어린이")){
+	mid=3;
+}else{
+	mid=4;
+}
+List<Product> productList = productService.selectListType(mid);
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -65,7 +83,7 @@ List<Product> productList = productService.selectListType(Integer.parseInt(type_
 					<div class="carousel-inner" role="listbox">
 						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
 							<div class="carousel-caption">
-								<a href="" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<a href="product_detail.jsp?p_no=<%=product.getP_no()%>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
 							</div>
 						</div>
 					</div>
