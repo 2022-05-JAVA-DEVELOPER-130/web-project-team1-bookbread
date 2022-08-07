@@ -1,3 +1,4 @@
+<%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.dto.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -9,8 +10,12 @@
 <%
 
 ProductService productService = new ProductService();
-String type_noStr = request.getParameter("type_no");
-List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
+Member member=new Member();
+
+	String type_noStr = request.getParameter("type_no");
+	List<Product> productList = productService.selectListType(Integer.parseInt(type_noStr));
+
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

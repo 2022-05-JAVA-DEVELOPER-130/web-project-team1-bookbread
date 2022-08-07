@@ -1,5 +1,12 @@
+
+<%@page import="com.itwill.bookbread.service.MemberService"%>
+<%@page import="com.itwill.bookbread.dto.Member"%>
+<%@page import="com.itwill.bookbread.dto.BookType"%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 	<%--
 <jsp:include page="include_common_top_menu.jsp"/>
 	 --%>
@@ -42,9 +49,13 @@
 				</div>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
+			
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="product_list_month_best.jsp">이달의 베스트도서</a></li>
+				
+				    	
+
+					<li><a href="product_list_month_best.jsp?type_no=">이달의 베스트도서</a></li>
 					<li><a href="product_list_month_rek.jsp">이달의 추천도서</a></li>
 					<li><a href="product_list_month_new.jsp">이달의 신규도서</a></li>
 				</ul>
