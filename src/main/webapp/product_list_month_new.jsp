@@ -45,7 +45,7 @@ function date_array(){
 	
 }
 
-window.onload=date_array();
+
 </script>
 <body>
 	<!-- include_common_top_menu.jsp start-->
