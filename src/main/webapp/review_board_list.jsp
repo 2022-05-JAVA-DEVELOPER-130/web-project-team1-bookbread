@@ -45,8 +45,8 @@ List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewById(member.get
 	
 	function reviewRemove() {
 		if (confirm("정말 삭제하시겠습니까?")) {
-			document.f.action = "review_board_remove_action.jsp";
-			document.f.submit();
+			f.action = "review_board_remove_action.jsp";
+			f.submit();
 		}
 	}
 </script>
