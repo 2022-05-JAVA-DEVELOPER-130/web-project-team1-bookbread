@@ -5,8 +5,15 @@
 	pageEncoding="UTF-8"%>
 
 <%
+/*
+if(request.getMethod().equalsIgnoreCase("GET")){
+	response.sendRedirect("shop_main.jsp");
+	return;
+}
+*/
+String p_publish_date = request.getParameter("p_publish_date");
 ProductService productService = new ProductService();
-//List<Product> productList = productService.selectListDate(p_publish_date);
+List<Product> productList = productService.selectAll();
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -30,7 +37,16 @@ ProductService productService = new ProductService();
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 </head>
+<script type="text/javascript">
+function date_array(){
+	
+	var date_array_list = document.getElementById("publish_date");
+	alert(date_array_list);
+	
+}
 
+window.onload=date_array();
+</script>
 <body>
 	<!-- include_common_top_menu.jsp start-->
 	<jsp:include page="include_common_top_menu.jsp" />
@@ -42,14 +58,16 @@ ProductService productService = new ProductService();
 <div class="slider">
 <div class="container">
 <div class="row">
+
 	<%
 	int product_size=productList.size();
 	int product_column_size=4;
 	int product_line_count = 1;
+	String check_date = "2021-01-01";
 	
-	
-	for (int i=0;i<productList.size();i++) {
-			Product product=productList.get(i);
+	for(int i = 0; i<productList.size(); i++){
+				Product product = productList.get(i);			
+					
 	%>
 	
 	<%
@@ -64,9 +82,11 @@ ProductService productService = new ProductService();
 					</ol>
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
+					<input type="hidden" id="publish_date" value="<%=product.getP_publish_date() %>">
 						<div class="item active" style="background-image: url('images/<%=product.getP_image()%>')">
+						
 							<div class="carousel-caption">
-								<a href="prduct_detail.jsp?p_no=<%=product.getP_no() %>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;></a>
+								<a href="prduct_detail.jsp?p_no=<%=product.getP_no() %>" class="btn btn-theme">자세히&nbsp;&nbsp;&nbsp;&nbsp;</a>
 							</div>
 						</div>
 					</div>

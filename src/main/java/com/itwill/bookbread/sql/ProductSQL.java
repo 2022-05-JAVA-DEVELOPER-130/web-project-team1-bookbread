@@ -33,6 +33,6 @@ public class ProductSQL {
 	public final static String PRODUCT_DELETE = "delete from product where p_no=?";
 
 	// 출판일로 도서찾기
-	public final static String PORDUCT_LIST_DATE="select * from product where p_publish_date";
+	public final static String PORDUCT_LIST_DATE="select * from product where p_publish_date=?";
 	
 }
