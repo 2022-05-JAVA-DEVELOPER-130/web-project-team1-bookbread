@@ -55,6 +55,7 @@ List<Product> productList = productService.selectListType(mid);
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
+		<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 
 <div class="slider">

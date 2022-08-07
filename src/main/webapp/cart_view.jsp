@@ -152,13 +152,16 @@ Cart cart = null;
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp" />
 	<!-- include_common_top.jsp end-->
+	<br>
 	<table style="margin: auto" border=0 width=70% align=center>
 		<tr valign=bottom>
-			<td width=30% align="center" class=t1><font size=4 color=#000000><b>내&nbsp;장바구니</b></font></td>
+			<td width=30% align="center" class=t1><font size=5 color=#000000><b>내&nbsp;장바구니</b></font></td>
 	</table>
+	<br>
 	<div width=70% align=center>
 	전체선택<input type="checkbox" id="all_select_checkbox" checked="checked" onchange="cart_item_all_select(event);cart_item_select_count();">
 	</div>
+	<br>
 	<div class="slider">
 		<div class="container">
 			<div class="row">				<%
@@ -174,11 +177,7 @@ Cart cart = null;
 			<%
 			if(i%cart_column_size==0){}
 			%>
-			
-				<%
-				
-				
-				%>
+		 
 				<div class="col-md-4 col-sm-4">
 					<div class="slider small-slider">
 						<div id="small-featured" class="carousel slide"
@@ -186,7 +185,7 @@ Cart cart = null;
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
 								<li data-target="#small-featured" data-slide-to="0"
-									class="active" list-style:none></li>
+									class="active"></li>
 							</ol>
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
@@ -201,6 +200,7 @@ Cart cart = null;
 									</div>
 								</div>
 								<div align="center">
+								
 									가격:<%=new DecimalFormat("#,##0").format(cart.getProduct().getP_price() * cart.getCart_qty())%><br> 
 									
 									
@@ -226,6 +226,7 @@ Cart cart = null;
 												<input type="submit" value="삭제">
 											</form>
 											 --%>
+											 <br>
 											<form id="cart_delete_item_form_<%=cart.getCart_no()%>">
 												<input type="hidden" name="cart_no"
 													value="<%=cart.getCart_no()%>"> <a
@@ -259,26 +260,36 @@ Cart cart = null;
 			</div>
 		</div>
 	</div>
+	<%if(cartList.size()>=1){ %>
+			
+			<% }else{%>
+			<table align=center>
+			<tr>
+			<td>
+	        	<img src="image/emptyCart.png">
+	        	</td>
+	        	</tr>
+			</table>
+			<%} %>
 <table align=center border="0" cellpadding=0">
 			<tr>
 				<td align>총&nbsp;가격&nbsp;:&nbsp;<span id = "tot_order_price"><%=new DecimalFormat("#,##0").format(tot_price)%>&nbsp;</span>원
 				</td>
 		</table>
-
+	<br>
 	<table align=center border="0" cellpadding="0"
 								cellspacing="1" width="590">
 								<tr>
 									<td align=center>&nbsp;&nbsp; <a href="shop_main.jsp"
-										class=m1>계속 구경하기</a>&nbsp;&nbsp; <%
-										 if (cartList.size() >= 1) {
-										 %> <a href="javascript:cart_view_form_select_submit();" class=m1>
+										class=m1>계속 구경하기</a>&nbsp;&nbsp;
+										 <% if (cartList.size() >= 1) { %> 
+										 <a href="javascript:cart_view_form_select_submit();" class=m1>
 										 	총 <span style="font-weight: bold;" id="cart_item_select_count"></span>개 주문하기[주문폼]
 										 	</a>&nbsp;&nbsp;
 											<a href="javascript:cart_delete();" class=m1>장바구니 전체 비우기</a>&nbsp;&nbsp;
-											<%
-											}
-											%>
+											
 									</td>
+										<%} %>	
 								</tr>
 							</table>
 

@@ -27,8 +27,7 @@
   
   ReviewBoardService reviewBoardService = new ReviewBoardService();
   List<ReviewBoard> reviewBoardList = reviewBoardService.findReviewListByPno(Integer.parseInt(p_noStr));
-  ReviewBoard rb = new ReviewBoard();
-  
+	
   %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -130,6 +129,7 @@
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
+		<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 
 <form name="product_detail_form">

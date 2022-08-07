@@ -10,6 +10,7 @@
 	<%--
 <jsp:include page="include_common_top_menu.jsp"/>
 	 --%>
+	 <body>
 	<div class="header">
 		<div class="container">
 			<div class="row">
@@ -63,3 +64,4 @@
 		</div>
 		<!-- /.container-fluid --> </nav>
 	</div>
+	</body>

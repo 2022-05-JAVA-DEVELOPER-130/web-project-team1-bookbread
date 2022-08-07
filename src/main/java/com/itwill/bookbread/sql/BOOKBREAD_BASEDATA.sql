@@ -9,6 +9,8 @@ insert into member(userid, password, name, phone, birth, address, email, interes
                     values('jiwon', '1111', '김지원', '010-5555-5555', '1900-05-05', '서울시 관악구', 'jiwon@testmail.com', '소설');
 insert into member(userid, password, name, phone, birth, address, email, interest)
                     values('heechul', '1111', '김희철', '010-6666-6666', '1900-06-06', '서울시 서초구', 'heechul@testmail.com', '어린이');
+insert into member(userid, password, name, phone, birth, address, email, interest)
+                    values('admin', '1111', 'admin', 'admin', 'admin', '서울시 서초구', 'admin', '어린이');
 
 /**********************book_type insert************************/
 insert into book_type values(book_type_type_no_SEQ.nextval, '소설');

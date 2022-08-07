@@ -26,6 +26,20 @@ public class Member {
 		this.email = email;
 		this.interest = interest;
 	}
+	
+	
+
+	public Member(String userId, String password, String name, String phone, String birth, String address,
+			String email) {
+		super();
+		this.userId = userId;
+		this.password = password;
+		this.name = name;
+		this.phone = phone;
+		this.birth = birth;
+		this.address = address;
+		this.email = email;
+	}
 
 	public String getUserId() {
 		return userId;
