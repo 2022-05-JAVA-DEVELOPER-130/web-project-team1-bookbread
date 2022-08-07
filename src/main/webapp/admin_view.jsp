@@ -6,9 +6,11 @@
 MemberService memberService = new MemberService();
 Member member = memberService.findMember(sUserId);
 
-if(member.getUserId().equalsIgnoreCase("admin")){
-	response.sendRedirect("admin_view.jsp");
+if(!member.getUserId().equalsIgnoreCase("admin")){
+	response.sendRedirect("shop_main.jsp");
+	return;
 }
+
 %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +18,7 @@ if(member.getUserId().equalsIgnoreCase("admin")){
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Delicious Book MyPage</title>
+<title>Delicious Book Admin Page</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -57,29 +59,29 @@ if(member.getUserId().equalsIgnoreCase("admin")){
 			<table align=center width="20%" border="1" cellpadding="0"
 				cellspacing="1" bgcolor="BBBBBB" bordercolor="#BDBDBD">
 				<tr>
-					<td width=100 height=65 bgcolor="#f4bf6f" align=center class=t1>
-						<font color="#fff"><b>회원서비스</b></font>
+					<td width=100 height=65 bgcolor="#FE2E64" align=center class=t1>
+						<font color="#fff"><b>관리자 서비스</b></font>
 					</td>
 				</tr>
 
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href=member_modify_form.jsp><b>나의정보수정</b></a>
+						<a href=admin_member_list.jsp><b>회원정보</b></a>
 					</td>
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href="review_board_list.jsp"><b>나의리뷰보기</b></a>
+						<a href="review_board_list.jsp"><b>도서정보</b></a>
 					</td>
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href=order_list.jsp><b>나의주문내역</b></a>
+						<a href=order_list.jsp><b>도서분류정보</b></a>
 					</td>
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1
-						onClick="userRemove()"><a href=#><b>회원탈퇴하기</b></a></td>
+						onClick="userRemove()"><a href=#><b>주문정보</b></a></td>
 				</tr>
 
 			</table>

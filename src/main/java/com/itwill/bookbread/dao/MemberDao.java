@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.print.attribute.standard.PresentationDirection;
@@ -72,6 +73,24 @@ public class MemberDao {
 		con.close();
 		return updateRowCount;
 	}
+
+	//관리자가 회원정보수정
+	public int updateAdmin(Member member)throws Exception{
+		Connection con = dataSource.getConnection();
+		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_ADMIN_UPDATE);
+		pstmt.setString(1, member.getPassword());
+		pstmt.setString(2, member.getName());
+		pstmt.setString(3, member.getPhone());
+		pstmt.setString(4, member.getBirth());
+		pstmt.setString(5, member.getAddress());
+		pstmt.setString(6, member.getEmail());
+		pstmt.setString(7, member.getUserId());
+		int updateRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
+		return updateRowCount;
+	}
+	
 	/*
 	 * 주소수정
 	 */
@@ -119,11 +138,11 @@ public class MemberDao {
 	}
 	
 	//회원들 정보 보기
-	public ArrayList<Member> findMemeber() throws Exception{
+	public List<Member> findMemeber() throws Exception{
 		Connection con = dataSource.getConnection();
 		PreparedStatement pstmt = con.prepareStatement(MemberSQL.MEMBER_SELECT_ALL);
 		ResultSet rs = pstmt.executeQuery();
-		ArrayList<Member> findMemberList = new  ArrayList<Member>();
+		List<Member> findMemberList = new  ArrayList<Member>();
 		while (rs.next()) {
 			findMemberList.add(new Member(rs.getString("userId"),
 										  rs.getString("password"),
