@@ -279,7 +279,8 @@ function orderAll(){
 									</td>
 								
 									<td align=center>&nbsp;
-										<a href = "javascript:orderAll();">구매하기</a> 
+										<a href = "javascript:addressModifyAction();orderAll();">구매하기</a>  
+										/<!-- 이것도 안되는구나..ㅋ -->
 									</td>
 									
 								</tr>
