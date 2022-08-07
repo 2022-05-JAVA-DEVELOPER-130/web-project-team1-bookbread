@@ -68,7 +68,7 @@ function post_date(){
 				</div>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<form method="post" name="f" action="product_list_month_new.jsp">
+			<form method="post" name="product_list" action="product_list_month_new.jsp">
 			<%
 			for(int i=0; i<productList.size(); i++){ 
 				Product product = productList.get(i);
