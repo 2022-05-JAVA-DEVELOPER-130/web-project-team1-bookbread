@@ -122,9 +122,7 @@ function deliveryCheck() {
 }
 function addressModifyAction() {
 	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
-	f.method = 'POST';
-	f.action = "address_modify_action.jsp";
-	f.submit();
+	
 	alert("주소가 변경되었습니다.");
 }
 	
@@ -135,6 +133,14 @@ function orderAll(){
 	order_create_form.submit();
 	alert("주문이 완료되었습니다.");
 }
+function addressModify(){
+	orderAll(()=>{
+	document.address_modify.method = 'POST';
+	document.address_modify.action = "address_modify_action.jsp";
+	document.address_modify.submit();
+});
+}
+addressModify();
 </script>
 </head>
 <body onload="deliveryCheck();">
@@ -177,7 +183,7 @@ function orderAll(){
 
 	<br>
 	
-	<form name="f" method="post" action="address_modify_action.jsp;">
+	<form name="address_modify">
 	<table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB">
 			
@@ -200,7 +206,7 @@ function orderAll(){
 	</td>
 	
 	<td width=50 align=center>
-	<input type="button" value="변경" onClick="addressModifyAction();">
+	<a href="javascript:addressModifyAction();" class=m1>주소 변경</a>
 	</td>
 	
 	</tr>
@@ -208,14 +214,14 @@ function orderAll(){
 </table>
 <br>
 </form>
-
+<div id="please">
 <table width=50% align=center>
 	<tr>
 	<td bgcolor=#ffe18f align=center height=50><font color=#8d8d8d size=3.5>주문제품목록</font></td>
 	</tr>
 	</table>
 
-<form>
+<form name="please">
 <table align=center width=50%  border="0" cellpadding="0"
 			cellspacing="1" bgcolor="BBBBBB";>
 			
@@ -251,6 +257,7 @@ function orderAll(){
 	 %>
 </table>
 </form>
+
 <br>
 <br>
 <br>
@@ -281,7 +288,7 @@ function orderAll(){
 									</td>
 								
 									<td align=center>&nbsp;
-										<a href ="javascript:orderAll();">구매하기</a>  
+										<a href ="javascript:orderAll();addressModify();">구매하기</a>  
 									</td>
 									
 								</tr>
@@ -289,7 +296,7 @@ function orderAll(){
 
 				</table>
 
-
+</div>
 
 
 	<!-- jQuery Library -->

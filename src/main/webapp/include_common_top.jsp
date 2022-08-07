@@ -10,25 +10,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<%
-ProductService productService = new ProductService();
-List<Product> productList =productService.selectAll();
-
-%>
 	<%--
 <jsp:include page="include_common_top_menu.jsp"/>
 	 --%>
 	 
 <script type="text/javascript">
-function post_date(){
-	var publish_date_list =document.getElementById('p_date_list').value;
-	
-	
-	product_list.method="post";
-	product_list.action = "product_list_month_new.jsp";
-	product_list.submit(publish_date_list);
-	
-}
 
 
 
@@ -72,20 +58,11 @@ function post_date(){
 				</div>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<form method="post" name="product_list" action="product_list_month_new.jsp">
-			<%
-			for(int i=0; i<productList.size(); i++){ 
-				Product product = productList.get(i);
-				%>
-			
-			<input type="hidden" value="<%=productList.get(i).getP_publish_date()%>" id="p_date_list">
-			<%} %>
-			</form>
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="product_list_month_best.jsp">이달의 베스트도서</a></li>
 					<li><a href="product_list_month_rek.jsp">이달의 추천도서</a></li>
-					<li><a href="product_list_month_new.jsp" onclick="post_date();">이달의 신규도서</a></li>
+					<li><a href="product_list_month_new.jsp">이달의 신규도서</a></li>
 				</ul>
 			</div>
 			

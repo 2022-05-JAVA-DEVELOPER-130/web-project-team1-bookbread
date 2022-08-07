@@ -16,7 +16,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	Member addressModify = new Member(sUserId,"","","","",address,"","");
 
 	memberService.updateAddress(addressModify);
-	response.sendRedirect("order_create_form.jsp");
+	response.sendRedirect("order_list.jsp");
 
 
 %>

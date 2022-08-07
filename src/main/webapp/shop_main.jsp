@@ -42,6 +42,8 @@ List<Product> productList = productService.selectAll();
 <div class="slider">
 <div class="container">
 <div class="row">
+<br>
+<br>
 	<%
 	int product_size=productList.size();
 	int product_column_size=4;
