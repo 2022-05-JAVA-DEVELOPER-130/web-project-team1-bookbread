@@ -33,15 +33,6 @@ if(!member.getUserId().equalsIgnoreCase("admin")){
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/responsive.css">
 
-<script type="text/javascript">
-	function userRemove() {
-		if (confirm("정말 탈퇴하시겠습니까? (당신의 지식레벨이 -1 될 수 있습니다.)")) {
-			document.f.action = "member_remove_action.jsp";
-			document.f.method = 'POST';
-			document.f.submit();
-		}
-	}
-</script>
 </head>
 <body>
 	<!-- include_common_top_menu.jsp start-->
@@ -71,7 +62,7 @@ if(!member.getUserId().equalsIgnoreCase("admin")){
 				</tr>
 				<tr>
 					<td width=100 height=40 align=center bgcolor="ffffff" class=t1>
-						<a href="review_board_list.jsp"><b>도서정보</b></a>
+						<a href="admin_product_list.jsp"><b>도서정보</b></a>
 					</td>
 				</tr>
 				<tr>

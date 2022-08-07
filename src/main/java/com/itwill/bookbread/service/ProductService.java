@@ -20,6 +20,12 @@ public class ProductService {
 		List<Product> productList = productdao.selectAll();
 		return productList;
 	}
+	
+	// 관리자가 도서정보 업데이트
+	public int adminUpdateProduct(Product product) throws Exception{
+		return productdao.updateAdmin(product);
+		
+	}
 	// 도서이름으로 리스트찾기
 	public List<Product> selectListName(String p_name) throws Exception {
 		return productdao.selectListName(p_name);

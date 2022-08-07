@@ -1,3 +1,4 @@
+<%@page import="com.itwill.bookbread.service.ProductService"%>
 <%@page import="com.itwill.bookbread.dto.Member"%>
 <%@page import="com.itwill.bookbread.dto.BookType"%>
 <%@page import="com.itwill.bookbread.dto.Product"%>
@@ -12,17 +13,18 @@
 		}
 */
 
-String userId = request.getParameter("userId");
-String password = request.getParameter("password");
-String name = request.getParameter("name");
-String phone = request.getParameter("phone");
-String birth = request.getParameter("birth");
-String address = request.getParameter("address");
-String email = request.getParameter("email");
+String pnoStr = request.getParameter("pno");
+String pname = request.getParameter("pname");
+String pauthor = request.getParameter("pauthor");
+String ppublisher = request.getParameter("ppublisher");
+String ppublishdate = request.getParameter("ppublishdate");
+String pprice = request.getParameter("pprice");
+String pdetail = request.getParameter("pdetail");
+String ptype = request.getParameter("ptype");
+String ptypenoStr = request.getParameter("ptypeno");
 
-MemberService memberService = new MemberService();
-Member member = memberService.findMember(userId);
-Product product = new Product();
+ProductService productService = new ProductService();
+Product product = productService.selectByNO(Integer.parseInt(pnoStr));
 BookType bookType = new BookType();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,58 +49,48 @@ BookType bookType = new BookType();
 <link rel="stylesheet" href="css/responsive.css">
 
 <script type="text/javascript">
-	function memberview() {
-		f.action = "admin_member_list.jsp";
+	function adminProductView() {
+		f.action = "admin_product.list.jsp";
 		f.submit();
 	}
-	function membermain() {
-		f.action = "shop_main.jsp"
+	function adminMain() {
+		f.action = "admin_view.jsp"
 		f.submit();
 	}
 
-	function memberModifyCheck() {
-		if (f.password.value == "") {
-			alert("비밀번호를 입력하세요");
-			f.password.focus();
+	function productModifyCheck() {
+		if (f.pname.value == "") {
+			alert("도서 이름을 입력하세요");
+			f.pname.focus();
 			return false;
 		}
-		if (f.password2.value == "") {
-			alert("비밀번호확인을 입력하세요");
-			f.password2.focus();
+		if (f.pauthor.value == "") {
+			alert("저자를 입력하세요");
+			f.pauthor.focus();
 			return false;
 		}
-		if (f.name.value == "") {
-			alert("사용자 이름을 입력하세요");
-			f.name.focus();
+		if (f.ppublisher.value == "") {
+			alert("출판사를 입력하세요");
+			f.ppublisher.focus();
 			return false;
 		}
-		if (f.phone.value == "") {
-			alert("전화번호를 입력하세요");
-			f.phone.focus();
+		if (f.ppublishdate.value == "") {
+			alert("출판일을 입력하세요");
+			f.ppublishdate.focus();
 			return false;
 		}
-		if (f.birth.value == "") {
-			alert("생년월일을 입력하세요");
-			f.birth.focus();
+		if (f.pprice.value == "") {
+			alert("가격을 입력하세요");
+			f.pprice.focus();
 			return false;
 		}
-		if (f.address.value == "") {
-			alert("주소를 입력하세요");
-			f.address.focus();
+		if (f.pdetail.value == "") {
+			alert("도서 내용을 입력하세요");
+			f.pdetail.focus();
 			return false;
 		}
-		if (f.email.value == "") {
-			alert("이메일을 입력하세요");
-			f.email.focus();
-			return false;
-		}
-		if (f.password.value != f.password2.value) {
-			alert("비밀번호가 일치하지 않습니다.");
-			f.password.focus();
-			f.password.select();
-			return false;
-		}
-		f.action = "admin_member_modify_action.jsp";
+		
+		f.action = "admin_product_modify_action.jsp";
 		f.method = 'POST';
 		f.submit();
 	}
@@ -120,7 +112,7 @@ BookType bookType = new BookType();
 			<table align=center width="30%" border="1" cellpadding="0"
 				bordercolor="#fff">
 				<tr width="50%" height=60 align=center bgcolor="#FE2E64" class=t1>
-					<td><font color="#fff" size=4px><b>회원정보수정</b></font></td>
+					<td><font color="#fff" size=4px><b>도서정보수정</b></font></td>
 				</tr>
 			</table>
 <br/>
@@ -128,58 +120,66 @@ BookType bookType = new BookType();
 				bgcolor="BBBBBB" bordercolor="#fff">
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>회원아이디</b></font>
+						<font color="#fff"><b>도서 번호</b></font>
 					</td>
 					<td style="padding-left: 15px"><input type="text"
-						name="userId" value="<%=userId%>" readonly></td>
+						name="pnoStr" value="<%=pnoStr%>" readonly></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>비밀번호</b></font>
+						<font color="#fff"><b>도서 이름</b></font>
 					<td style="padding-left: 15px"><input type="text"
-						name="password" value="<%=password%>"></td>
+						name="pname" value="<%=pname%>"></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>비밀번호 확인</b></font>
+						<font color="#fff"><b>저 자</b></font>
 					<td style="padding-left: 15px"><input type="text"
-						name="password2" value="<%=password%>"></td>
+						name="pauthor" value="<%=pauthor%>"></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>이 름</b></font>
+						<font color="#fff"><b>출판사</b></font>
 					</td>
-					<td style="padding-left: 15px"><input type="text" name="name"
-						value="<%=name%>"></td>
+					<td style="padding-left: 15px"><input type="text" name="ppublisher"
+						value="<%=ppublisher%>"></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>전화번호</b></font>
+						<font color="#fff"><b>출판일</b></font>
 					</td>
-					<td style="padding-left: 15px"><input type="text" name="phone"
-						value="<%=phone%>"></td>
+					<td style="padding-left: 15px"><input type="text" name="ppublishdate"
+						value="<%=ppublishdate%>"></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>생년월일</b></font>
+						<font color="#fff"><b>도서 가격</b></font>
 					</td>
-					<td style="padding-left: 15px"><input type="text" name="birth"
-						value="<%=birth%>"></td>
+					<td style="padding-left: 15px"><input type="text" name="pprice"
+						value="<%=pprice%>"></td>
 				</tr>
 				<tr>
 					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>주 소</b></font>
+						<font color="#fff"><b>도서 소개</b></font>
 					</td>
-					<td style="padding-left: 15px"><input type="text"
-						name="address" value="<%=address%>"></td>
+					<td style="padding-left: 15px"><input type="text" name="pdetail"
+						value="<%=pdetail%>"></td>
 				</tr>
 				<tr>
-					<td width="30%" height=40 align=center bgcolor="#f4bf6f" class=t1>
-						<font color="#fff"><b>이메일</b></font>
-					</td>
-					<td style="padding-left: 15px"><input type="text" name="email"
-						value="<%=email%>"></td>
-				</tr>
+						<td width=100 height=40 align=center bgcolor="#f4bf6f" class=t1>
+						<font color="#fff"><b>도서 분야</b></font>
+						</td>
+						<td style="padding-left: 15px">
+						
+						<input type="radio" name="ptypeno" value="1"  checked
+						<% if(product.getBookType().getP_type().equalsIgnoreCase("소설")){%>checked<%}%>>소설&nbsp;
+						<input type="radio" name="ptypeno" value="2" 
+						<% if(product.getBookType().getP_type().equalsIgnoreCase("경영경제")){%>checked<%}%>>경영경제&nbsp;
+						<input type="radio" name="ptypeno" value="3" 
+						<% if(product.getBookType().getP_type().equalsIgnoreCase("어린이")){%>checked<%}%>>어린이&nbsp;
+						<input type="radio" name="ptypeno" value="4" 
+						<% if(product.getBookType().getP_type().equalsIgnoreCase("교육")){%>checked<%}%>>교육&nbsp;
+						</td>
 			</table>
 		</form>
 		<br />
@@ -187,9 +187,9 @@ BookType bookType = new BookType();
 		<table align=center>
 			<tr>
 				<td><input type="button" value="수정"
-					onClick="memberModifyCheck();">&nbsp;</td>
-				<td><input type="button" value="돌아가기" onClick="memberview();">&nbsp;</td>
-				<td><input type="button" value="메인" onClick="membermain();">&nbsp;</td>
+					onClick="productModifyCheck();">&nbsp;</td>
+				<td><input type="button" value="돌아가기" onClick="adminProductView();">&nbsp;</td>
+				<td><input type="button" value="메인" onClick="adminMain();">&nbsp;</td>
 			</tr>
 		</table>
 	</table>

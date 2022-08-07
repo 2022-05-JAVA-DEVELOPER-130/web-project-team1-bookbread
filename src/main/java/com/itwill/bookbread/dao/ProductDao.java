@@ -13,6 +13,8 @@ import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 
 import com.itwill.bookbread.dto.Product;
 import com.itwill.bookbread.dto.BookType;
+import com.itwill.bookbread.dto.Member;
+import com.itwill.bookbread.sql.MemberSQL;
 import com.itwill.bookbread.sql.ProductSQL;
 
 public class ProductDao {
@@ -30,6 +32,24 @@ public class ProductDao {
 		dataSource = basicDataSource;
 	}
 
+	//관리자가 회원정보수정
+		public int updateAdmin(Product product)throws Exception{
+			Connection con = dataSource.getConnection();
+			PreparedStatement pstmt = con.prepareStatement(ProductSQL.PRODUCT_ADMIN_UPDATE);
+			pstmt.setString(1, product.getP_name());
+			pstmt.setString(2, product.getP_author());
+			pstmt.setString(3, product.getP_publisher());
+			pstmt.setString(4, product.getP_publish_date());
+			pstmt.setInt(5, product.getP_price());
+			pstmt.setString(6, product.getP_detail());
+			pstmt.setInt(7, product.getBookType().getType_no());
+			pstmt.setInt(8, product.getP_no());
+			int updateRowCount = pstmt.executeUpdate();
+			pstmt.close();
+			con.close();
+			return updateRowCount;
+		}
+		
 	// 전체 도서 리스트
 	public List<Product> selectAll() throws Exception {
 		List<Product> productList = new ArrayList<Product>();
@@ -42,7 +62,7 @@ public class ProductDao {
 											rs.getString("p_author"),
 											rs.getString("p_publisher"), 
 											rs.getString("p_publish_date"),
-											0,
+											rs.getInt("p_price"),
 											rs.getString("p_image"),
 											rs.getString("p_detail"),
 											new BookType(rs.getInt("type_no"),

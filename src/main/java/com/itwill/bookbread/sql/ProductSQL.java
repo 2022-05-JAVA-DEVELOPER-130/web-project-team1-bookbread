@@ -6,7 +6,10 @@ public class ProductSQL {
 	public final static String PRODUCT_LIST = "select * from product";
 
 	// 모든 도서 상세리스트
-	public final static String PRODUCT_LIST_DETAIL = "select * from product p join book_type bt on p.type_no = bt.type_no";
+	public final static String PRODUCT_LIST_DETAIL = "select * from product p join book_type bt on p.type_no = bt.type_no order by p_no asc";
+	
+	// 관리자가 도서 업데이트
+	public final static String PRODUCT_ADMIN_UPDATE = "update product set p_name=?,p_author=?,p_publisher=?,p_publish_date=?,p_price=?,p_detail=?,type_no=? where p_no=?";
 
 	// 도서이름으로 도서찾기
 	public final static String PRODUCT_BY_NAME = "select * from product where p_name=?";
