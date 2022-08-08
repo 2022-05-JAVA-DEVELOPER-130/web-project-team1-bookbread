@@ -10,6 +10,7 @@
 		out.println("alert('로그인이 필요합니다.');");
 		out.println("location.href='member_login_form.jsp';");
 		out.println("</script>");
+		
 		return;
 	} 
 %>  
