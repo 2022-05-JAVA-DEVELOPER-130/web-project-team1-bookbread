@@ -37,7 +37,7 @@ function mainBack() {
 							<td height="10"></td>
 						</tr>
 						<tr>
-							<td>고객님 죄송합니다. 요청하신 페이지를 찾을 수 없습니다.<%--=exception.getMessage()--%></td>
+							<td>고객님 죄송합니다.요청하신 페이지를 찾을 수 없습니다.<%--=exception.getMessage()--%></td>
 						</tr>
 						<tr>
 							<td></td>
