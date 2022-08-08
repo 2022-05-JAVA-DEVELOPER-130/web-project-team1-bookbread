@@ -18,6 +18,7 @@
 <script type="text/javascript">
 
 
+
 </script>
 	 <body>
 	<div class="header">
@@ -60,7 +61,7 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="product_list_month_best.jsp" >회원별 추천도서</a></li>
+					<li><a href="product_list_month_best.jsp">회원별 추천도서</a></li>
 					<li><a href="product_list_month_new.jsp">이달의 신규도서</a></li>
 				</ul>
 			</div>
