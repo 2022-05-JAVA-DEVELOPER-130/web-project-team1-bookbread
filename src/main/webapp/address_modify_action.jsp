@@ -8,7 +8,7 @@ if(request.getMethod().equalsIgnoreCase("GET")){
 	response.sendRedirect("order_create_form.jsp");
 	return;
 }
-	String address = request.getParameter("address");
+	String address = request.getParameter("address1");
 	MemberService memberService = new MemberService();
 	Member addressModify = new Member(sUserId,"","","","",address,"","");
 	memberService.updateAddress(addressModify);
