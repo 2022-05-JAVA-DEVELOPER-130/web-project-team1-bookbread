@@ -27,7 +27,7 @@ function mainBack() {
 			<tr>
 				<td><img
 					src="image/BookBreadLogo.png"
-					width="250" height="150"></td>
+					width="150" height="150"></td>
 			</tr>
 			<tr>
 				<td align="center"
