@@ -68,7 +68,7 @@ function date_array(){
 	int product_size=productList.size();
 	int product_column_size=4;
 	int product_line_count = 1;
-	String check_date="2021-02-01";
+	String check_date="2021-07-01";
 	for(int i = 0; i<productList.size(); i++){
 				Product product = productList.get(i);			
 					if(product.getP_publish_date().compareTo(check_date)<0){

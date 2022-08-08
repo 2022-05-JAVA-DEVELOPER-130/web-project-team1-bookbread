@@ -191,7 +191,7 @@
 												<option name = "cart_qty_select" value="10">10
 											</select> 권<br><br> 
 											<input type = "hidden" id="cart_item_select_count">
-												<input type=button onclick="add_cart_action();" value="장바구니 담기[장바구니 이동]"/><br><br> 
+												<a href onclick="add_cart_action();"/><img src="image/bookcart.png" style="width:120px; height:30px;"></a><br><br> 
 												<input type="hidden" name=p_no value="<%=product.getP_no()%>">
 										</form>
 									</td>
