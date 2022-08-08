@@ -84,6 +84,7 @@ if (msg == null)
 		f.action = "member_write_action.jsp";
 		f.method = 'POST';
 		f.submit();
+		alert('회원가입을 축하합니다!');
 	}
 	function shopMain() {
 		f.action = "shop_main.jsp";
