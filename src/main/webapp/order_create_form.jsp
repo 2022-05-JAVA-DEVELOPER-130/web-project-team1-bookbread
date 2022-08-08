@@ -22,6 +22,8 @@ String buyType = request.getParameter("buyType");
 String p_noStr= request.getParameter("p_no");
 String p_qtyStr = request.getParameter("p_qty");
 String[] cart_no_array = request.getParameterValues("cart_item_no");
+String address = request.getParameter("address");
+
 if(buyType==null)buyType="";
 if(p_noStr==null)p_noStr="";
 if(p_qtyStr==null)p_qtyStr="";
@@ -32,6 +34,8 @@ OrdersService orderService = new OrdersService();
 ProductService productService = new ProductService();
 CartService cartService = new CartService();
 List<Cart> cartList = new ArrayList<Cart>();
+
+
 //3가지 방법 모두 카트리스트에 임시로 담아서 뽑아낸다.
 if(buyType.equals("cart")){
 	cartList = cartService.cartItemList(sUserId);
@@ -120,11 +124,18 @@ function deliveryCheck() {
 	document.getElementById('d_price').innerHTML=d_price.toLocaleString();
 	document.getElementById('total_price_deliver').innerHTML=t_d_price.toLocaleString();
 }
-function addressModifyAction() {
-	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
+function promptAddress(){
+	
 	document.address_modify.method = 'POST';
 	document.address_modify.action = "address_modify_action.jsp";
 	document.address_modify.submit();
+}
+
+function addressModifyAction() {
+	if(window.confirm('주소를 변경하시겠습니까? 변경하시면 기본배송지로 설정됩니다')){
+		var address1 = prompt("배송지를 입력하세요");
+		
+		$('input[name=address]').attr('value',address1);
 	alert("주소가 변경되었습니다.");
 }
 	
@@ -151,6 +162,8 @@ function orderAll(){
 		<input type="hidden" name="buyType" value="<%=buyType%>"> <input
 			type="hidden" name="p_no" value="<%=p_noStr%>"> <input
 			type="hidden" name="p_qty" value="<%=p_qtyStr%>">
+			<input
+			type="hidden" name="address" value="<%=member.getAddress()%>">
 		<%
 		for (String cart_noStr : cart_no_array) {
 		%>
@@ -197,7 +210,7 @@ function orderAll(){
 	
 	<td width=200 height=40 bgcolor="white" align=center class=t1><font color=#8d8d8d size=3>주소</font></td>
 	<td width=150 height=40 bgcolor="white" align=center class=t1><font color=black size=3>
-	<input type="text" name="address" value="<%=member.getAddress()%>">
+	<input type="text" name="address" id="address_modify" value="<%=member.getAddress()%>">
 	</font>
 	</td>
 	

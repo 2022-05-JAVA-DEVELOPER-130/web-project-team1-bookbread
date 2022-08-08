@@ -64,7 +64,6 @@ function deleteSelect() {
 	<!-- include_common_top_menu.jsp end-->
 	<!-- include_common_top.jsp start-->
 	<jsp:include page="include_common_top.jsp"/>
-	<jsp:include page="html/mouse_effect.html"/>
 	<!-- include_common_top.jsp end-->
 		<div id="content" align="center">
 				<table border=0 cellpadding=0 cellspacing=0>
@@ -77,7 +76,7 @@ function deleteSelect() {
 							</table> <!--form-->
 							<br>
 							<br>
-							<form name="f" method="post">
+							<form name="f" method="post" action="order_delete_action.jspß">
 							<input type="hidden" name="o_no" value="<%=order.getO_no()%>"></input>
 								<table align=center width=80%  border="0" cellpadding="0"
 									cellspacing="1" bgcolor="BBBBBB">
@@ -141,7 +140,7 @@ function deleteSelect() {
 									</tr>
 <%} %>
 </table>
-
+		</form>
 <br>
 <br>
 <br>
