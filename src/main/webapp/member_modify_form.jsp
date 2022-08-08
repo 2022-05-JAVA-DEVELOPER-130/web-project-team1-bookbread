@@ -92,6 +92,7 @@ BookType bookType = new BookType();
 		f.action = "member_modify_action.jsp";
 		f.method = 'POST';
 		f.submit();
+		alert('수정되었습니다!');
 	}
 </script>
 
